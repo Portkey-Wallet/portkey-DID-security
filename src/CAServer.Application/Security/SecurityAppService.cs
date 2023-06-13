@@ -26,17 +26,19 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
     private readonly IContractProvider _contractProvider;
     private ChainOptions _chainOptions;
     private readonly IUserAssetsAppService _userAssetsAppService;
-    private readonly IDeviceAppService _deviceAppService;
+    //private readonly IDeviceAppService _deviceAppService;
 
-    public SecurityAppService(IActivityProvider activityProvider, IClusterClient clusterClient,
-        IContractProvider contractProvider, IOptions<ChainOptions> chainOptions,
-        IUserAssetsAppService userAssetsAppService, IDeviceAppService deviceAppService)
+    public SecurityAppService(IActivityProvider activityProvider, 
+        IClusterClient clusterClient,
+        IContractProvider contractProvider, 
+        IOptions<ChainOptions> chainOptions,
+        IUserAssetsAppService userAssetsAppService)
     {
         _activityProvider = activityProvider;
         _clusterClient = clusterClient;
         _contractProvider = contractProvider;
         _userAssetsAppService = userAssetsAppService;
-        _deviceAppService = deviceAppService;
+        //_deviceAppService = deviceAppService;
         _chainOptions = chainOptions.Value;
     }
 
@@ -57,8 +59,8 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
     public async Task AddIpToWhiteListAsync(AddUserIpToWhiteListRequestDto request)
     {
         var grain = _clusterClient.GetGrain<ISecurityGrain>(request.UserIp);
-        var param = JsonConvert.DeserializeObject<SecurityRequestDto>(request.ParamsJsonObject);
-        var caHolderIndex = await _activityProvider.GetCaHolderIndexAsync(param.UserId);
+        // var param = JsonConvert.DeserializeObject<SecurityRequestDto>(request.ParamsJsonObject);
+        var caHolderIndex = await _activityProvider.GetCaHolderIndexAsync(request.UserId);
         var caHash = caHolderIndex.CaHash;
         var caAddress = new List<string>();
         var caAddressInfos = new List<CAAddressInfo>();
@@ -86,7 +88,7 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
                 //TODO How to transfer to DevicesInfo;
                 var data = manager.ExtraData;
                 
-                await _deviceAppService.EncryptExtraDataAsync(data, caHash);
+                //await _deviceAppService.EncryptExtraDataAsync(data, caHash);
                 
             }
             

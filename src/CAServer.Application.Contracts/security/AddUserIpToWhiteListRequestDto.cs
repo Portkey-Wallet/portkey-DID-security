@@ -1,10 +1,11 @@
+using System;
+
 namespace CAVerifierServer.IpWhiteList;
 
 public class AddUserIpToWhiteListRequestDto
 {
-    public string Path { get; set; }
 
-    public string ParamsJsonObject { get; set; }
+    public Guid UserId { get; set; }
 
     public string UserIp { get; set; }
 }

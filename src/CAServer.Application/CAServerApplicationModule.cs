@@ -41,7 +41,7 @@ public class CAServerApplicationModule : AbpModule
         context.Services.AddSingleton<ISearchService, ChainsInfoSearchService>();
         context.Services.AddSingleton<ISearchService, CAHolderSearchService>();
         context.Services.AddSingleton<ISearchService, GuardianSearchService>();
-        
+        Configure<TokenInfoOptions>(configuration.GetSection("TokenInfo"));
         
         Configure<ChainOptions>(configuration.GetSection("Chains"));
         Configure<DeviceOptions>(configuration.GetSection("EncryptionInfo"));
