@@ -15,6 +15,7 @@ using CAVerifierServer.IpWhiteList;
 using CAVerifierServer.Security.Provider;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Orleans;
 using Volo.Abp.DependencyInjection;
 
@@ -61,6 +62,13 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
     public async Task AddIpToWhiteListAsync(AddUserIpToWhiteListRequestDto request)
     {
         var grain = _clusterClient.GetGrain<ISecurityGrain>(request.UserIp);
+
+        var result = await grain.IsUserIpInWhiteListAsync(request.UserIp);
+        if (result)
+        {
+            return;
+        }
+
         var caHolderIndex = await _activityProvider.GetCaHolderIndexAsync(request.UserId);
         var caHash = caHolderIndex.CaHash;
         var caAddress = new List<string>();
@@ -84,17 +92,22 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             }
 
             var managerInfos = output.ManagerInfos;
-            foreach (var manager in managerInfos)
+            // foreach (var manager in managerInfos)
+            // {
+            //     //TODO How to transfer to DevicesInfo;
+            //     var data = manager.ExtraData;
+            //
+            //     //await _deviceAppService.EncryptExtraDataAsync(data, caHash);
+            // }
+
+            var devices = managerInfos?.Select(t => GetDevices(t.ExtraData)).Where(t => !t.IsNullOrEmpty())?.ToList();
+            if (devices is { Count: >= 2 })
             {
-                //TODO How to transfer to DevicesInfo;
-                var data = manager.ExtraData;
-
-                //await _deviceAppService.EncryptExtraDataAsync(data, caHash);
+                await grain.AddUserIpToWhiteListAsync(request.UserIp);
+                break;
             }
-
-            var device = managerInfos.Select(t => t.ExtraData).Distinct();
         }
-        
+
         var contactNum = await _securityProvider.GetContactCountAsync(request.UserId);
         if (contactNum > 2)
         {
@@ -107,6 +120,8 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             CaAddressInfos = caAddressInfos
         };
         var tokenAsync = await _userAssetsAppService.GetTokenAsync(requestDto);
+        // var tokenInfos = await _securityProvider.GetUserTokenInfoAsync(caAddressInfos, "",
+        //     0, requestDto.SkipCount + requestDto.MaxResultCount);
         if (tokenAsync.Data != null)
         {
             if (tokenAsync.Data.Any(token => int.Parse(token.Balance) > 0))
@@ -114,6 +129,17 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
             }
         }
+    }
+
+    private string GetDevices(string jsonStr)
+    {
+        if (jsonStr.IsNullOrWhiteSpace())
+        {
+            return string.Empty;
+        }
+
+        var jo = JObject.Parse(jsonStr);
+        return jo["deviceInfo"]?.ToString();
     }
 
     public Task RemoveIpFromWhiteListAsync(string userIp)

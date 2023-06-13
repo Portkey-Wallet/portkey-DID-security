@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AElf.Indexing.Elasticsearch;
 using CAServer.Entities.Es;
+using CAServer.UserAssets;
+using CAServer.UserAssets.Provider;
 using Nest;
 using Volo.Abp.DependencyInjection;
 
@@ -11,6 +13,9 @@ namespace CAVerifierServer.Security.Provider;
 public interface ISecurityProvider
 {
     Task<long> GetContactCountAsync(Guid userId);
+    
+    // Task<IndexerTokenInfos> GetUserTokenInfoAsync(List<CAAddressInfo> caAddressInfos, string symbol, int inputSkipCount,
+    //     int inputMaxResultCount);
 }
 
 public class SecurityProvider: ISecurityProvider, ISingletonDependency

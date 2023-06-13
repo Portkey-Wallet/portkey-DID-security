@@ -1,4 +1,3 @@
-using System.Globalization;
 using CAVerifierServer.Grains.State;
 using Orleans;
 using Orleans.Providers;
@@ -25,7 +24,7 @@ public class SecurityGrain : Grain<SecurityState>,
     public async Task<bool> IsUserIpInWhiteListAsync(string ip)
     {
         var dic = State.IpWhiteListDic;
-        if (dic.Count == 0)
+        if (dic == null || dic.Count == 0)
         {
             return false;
         }
@@ -39,7 +38,6 @@ public class SecurityGrain : Grain<SecurityState>,
         dic.Remove(ip);
         await WriteStateAsync();
         return false;
-
     }
 
     public async Task AddUserIpToWhiteListAsync(string userIp)

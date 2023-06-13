@@ -159,23 +159,8 @@ public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
                 .ToList());
 
             resultList = resultList.Skip(requestDto.SkipCount).Take(requestDto.MaxResultCount).ToList();
-            var symbols = resultList.Select(t => t.Symbol).ToList();
 
             dto.Data.AddRange(resultList);
-
-            // var priceDict = await GetSymbolPrice(symbols);
-            // foreach (var token in dto.Data)
-            // {
-            //     if (!priceDict.ContainsKey(token.Symbol))
-            //     {
-            //         continue;
-            //     }
-            //
-            //     var balanceInUsd = CalculationHelper.GetBalanceInUsd(priceDict[token.Symbol], long.Parse(token.Balance),
-            //         token.Decimals);
-            //     token.Price = priceDict[token.Symbol];
-            //     token.BalanceInUsd = balanceInUsd.ToString();
-            // }
 
             return dto;
         }
