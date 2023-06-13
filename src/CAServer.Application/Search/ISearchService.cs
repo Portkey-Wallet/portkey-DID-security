@@ -126,64 +126,6 @@ public class ChainsInfoSearchService : SearchService<ChainsInfoIndex, string>
     }
 }
 
-public class AccountRecoverySearchService : SearchService<AccountRecoverIndex, Guid>
-{
-    private readonly IndexSettingOptions _indexSettingOptions;
-    public override string IndexName => $"{_indexSettingOptions.IndexPrefix.ToLower()}.accountrecoverindex";
-
-    public AccountRecoverySearchService(INESTRepository<AccountRecoverIndex, Guid> nestRepository,
-        IOptionsSnapshot<IndexSettingOptions> indexSettingOptions) : base(nestRepository)
-    {
-        _indexSettingOptions = indexSettingOptions.Value;
-    }
-}
-
-public class AccountRegisterSearchService : SearchService<AccountRegisterIndex, Guid>
-{
-    private readonly IndexSettingOptions _indexSettingOptions;
-    public override string IndexName => $"{_indexSettingOptions.IndexPrefix.ToLower()}.accountregisterindex";
-
-    public AccountRegisterSearchService(INESTRepository<AccountRegisterIndex, Guid> nestRepository,
-        IOptionsSnapshot<IndexSettingOptions> indexSettingOptions) : base(nestRepository)
-    {
-        _indexSettingOptions = indexSettingOptions.Value;
-    }
-}
-public class OrderSearchService : SearchService<OrderIndex, Guid>
-{
-    private readonly IndexSettingOptions _indexSettingOptions;
-    public override string IndexName => $"{_indexSettingOptions.IndexPrefix.ToLower()}.orderindex";
-
-    public OrderSearchService(INESTRepository<OrderIndex, Guid> nestRepository,
-        IOptionsSnapshot<IndexSettingOptions> indexSettingOptions) : base(nestRepository)
-    {
-        _indexSettingOptions = indexSettingOptions.Value;
-    }
-}
-public class UserExtraInfoSearchService : SearchService<UserExtraInfoIndex, String>
-{
-    private readonly IndexSettingOptions _indexSettingOptions;
-    public override string IndexName => $"{_indexSettingOptions.IndexPrefix.ToLower()}.userextrainfoindex";
-
-    public UserExtraInfoSearchService(INESTRepository<UserExtraInfoIndex, String> nestRepository,
-        IOptionsSnapshot<IndexSettingOptions> indexSettingOptions) : base(nestRepository)
-    {
-        _indexSettingOptions = indexSettingOptions.Value;
-    }
-}
-
-public class NotifySearchService : SearchService<NotifyRulesIndex, Guid>
-{
-    private readonly IndexSettingOptions _indexSettingOptions;
-    public override string IndexName => $"{_indexSettingOptions.IndexPrefix.ToLower()}.notifyrulesindex";
-
-    public NotifySearchService(INESTRepository<NotifyRulesIndex, Guid> nestRepository,
-        IOptionsSnapshot<IndexSettingOptions> indexSettingOptions) : base(nestRepository)
-    {
-        _indexSettingOptions = indexSettingOptions.Value;
-    }
-}
-
 public class GuardianSearchService : SearchService<GuardianIndex, String>
 {
     private readonly IndexSettingOptions _indexSettingOptions;

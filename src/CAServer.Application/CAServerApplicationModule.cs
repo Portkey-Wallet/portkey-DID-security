@@ -2,10 +2,8 @@
 using CAServer.AccountValidator;
 using CAServer.Common;
 using CAServer.Grains;
-using CAServer.IpInfo;
 using CAServer.Options;
 using CAServer.Search;
-using CAServer.Settings;
 using CAServer.Signature;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,12 +39,7 @@ public class CAServerApplicationModule : AbpModule
         context.Services.AddSingleton<ISearchService, UserTokenSearchService>();
         context.Services.AddSingleton<ISearchService, ContactSearchService>();
         context.Services.AddSingleton<ISearchService, ChainsInfoSearchService>();
-        context.Services.AddSingleton<ISearchService, AccountRecoverySearchService>();
-        context.Services.AddSingleton<ISearchService, AccountRegisterSearchService>();
         context.Services.AddSingleton<ISearchService, CAHolderSearchService>();
-        context.Services.AddSingleton<ISearchService, OrderSearchService>();
-        context.Services.AddSingleton<ISearchService, UserExtraInfoSearchService>();
-        context.Services.AddSingleton<ISearchService, NotifySearchService>();
         context.Services.AddSingleton<ISearchService, GuardianSearchService>();
         
         
