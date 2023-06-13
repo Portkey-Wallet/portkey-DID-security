@@ -36,7 +36,6 @@ public class CAServerApplicationModule : AbpModule
     {
         Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CAServerApplicationModule>(); });
         var configuration = context.Services.GetConfiguration();
-        Configure<TokenInfoOptions>(configuration.GetSection("TokenInfo"));
         Configure<ChainOptions>(configuration.GetSection("Chains"));
         context.Services.AddSingleton<IAccountValidator, EmailValidator>();
         context.Services.AddSingleton<IAccountValidator, PhoneValidator>();
