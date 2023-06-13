@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yTurvfXyh9K3ntQq2GcMKDbAbl0BjTp2wphH4lbUtf9A/S10hebpcOX2SzIbl0kanhhcwtETypiAbWpcwWbRfQ==",
+  "dgSpecHash": "VOs92xdoK0L4UPp3fKVOz6vrwntDYS7ET8n1awTmOil1enGX+u2oCMfONsS36XMW/EHAZD+ugxDF6jRE3RZ5QA==",
   "success": true,
   "projectFilePath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.HttpApi/CAServer.HttpApi.csproj",
   "expectedPackageFiles": [

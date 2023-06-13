@@ -5945,7 +5945,6 @@
         "dependencies": {
           "AElf.Types": "1.2.3",
           "CAServer.Application.Contracts": "1.0.0",
-          "CAServer.Hub": "1.0.0",
           "StackExchange.Redis": "2.2.4",
           "Volo.Abp.Account.HttpApi": "7.0.0",
           "Volo.Abp.AspNetCore.SignalR": "7.0.0",
@@ -5961,21 +5960,6 @@
         },
         "runtime": {
           "bin/placeholder/CAServer.HttpApi.dll": {}
-        }
-      },
-      "CAServer.Hub/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "CAServer.Application.Contracts": "1.0.0",
-          "StackExchange.Redis": "2.2.4",
-          "Volo.Abp.Core": "7.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CAServer.Hub.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CAServer.Hub.dll": {}
         }
       },
       "CAServer.Signature/1.0.0": {
@@ -14836,11 +14820,6 @@
       "type": "project",
       "path": "../CAServer.HttpApi/CAServer.HttpApi.csproj",
       "msbuildProject": "../CAServer.HttpApi/CAServer.HttpApi.csproj"
-    },
-    "CAServer.Hub/1.0.0": {
-      "type": "project",
-      "path": "../CAServer.Hub/CAServer.Hub.csproj",
-      "msbuildProject": "../CAServer.Hub/CAServer.Hub.csproj"
     },
     "CAServer.Signature/1.0.0": {
       "type": "project",

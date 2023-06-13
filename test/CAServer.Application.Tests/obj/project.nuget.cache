@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jrS84W+Vt2s7F/sdQCQjdZYjxd/7d1Z9qvJ+MlL2GhxtGhGviMB8XGW0b07MARrovLOZJ0oRxoeh1XzZfprEgA==",
+  "dgSpecHash": "fSDjk7fWA4gl5dGo8ZNyLVFrHpCqIgnx3zocyD+be5vaps6OQFAWIQAN12JnDucsXqaefG8hfUWiED2fQJIy9A==",
   "success": true,
   "projectFilePath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Application.Tests/CAServer.Application.Tests.csproj",
   "expectedPackageFiles": [

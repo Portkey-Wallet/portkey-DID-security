@@ -1,10 +1,5 @@
-using AElf;
-using AElf.Types;
 using AutoMapper;
 using CAServer.Grains;
-using CAServer.Grains.Grain.Account;
-using CAServer.Grains.Grain.ApplicationHandler;
-using CAServer.Grains.Grain.Tokens.TokenPrice;
 using CAServer.Signature;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
@@ -56,63 +51,13 @@ public class ClusterFixture : IDisposable, ISingletonDependency
         {
             hostBuilder.ConfigureServices(services =>
                 {
-
-                    var mockTokenProvider = new Mock<ITokenPriceProvider>();
-                    mockTokenProvider.Setup(o => o.GetPriceAsync(It.IsAny<string>()))
-                        .ReturnsAsync(123);
-                    mockTokenProvider.Setup(o => o.GetHistoryPriceAsync(It.IsAny<string>(),It.IsAny<string>()))
-                        .ReturnsAsync(123);
-                    services.AddSingleton<ITokenPriceProvider>(mockTokenProvider.Object);
+                    
                     
                     var mockSignatureProvider = new Mock<ISignatureProvider>();
                     mockSignatureProvider.Setup(o => o.SignTxMsg(It.IsAny<string>(), It.IsAny<string>()))
                         .ReturnsAsync("123");
                     services.AddSingleton<ISignatureProvider>(mockSignatureProvider.Object);
-                    services.Configure<ChainOptions>(o =>
-                    {
-                        o.ChainInfos = new Dictionary<string, Grains.Grain.ApplicationHandler.ChainInfo>
-                        {
-                            {
-                                "AELF", new Grains.Grain.ApplicationHandler.ChainInfo
-                                {
-                                    ChainId = "AELF",
-                                    BaseUrl = "url",
-                                    ContractAddress = Address.FromPublicKey("AAA".HexToByteArray()).ToBase58(),
-                                    TokenContractAddress = Address.FromPublicKey("AAA".HexToByteArray()).ToBase58(),
-                                    CrossChainContractAddress =
-                                        Address.FromPublicKey("AAA".HexToByteArray()).ToBase58(),
-                                    PublicKey = HashHelper.ComputeFrom("private").ToHex(),
-                                    IsMainChain = true
-                                }
-                            },
-                            {
-                                "tDVV", new Grains.Grain.ApplicationHandler.ChainInfo
-                                {
-                                    ChainId = "tDVV",
-                                    BaseUrl = "url",
-                                    ContractAddress = Address.FromPublicKey("AAA".HexToByteArray()).ToBase58(),
-                                    TokenContractAddress = Address.FromPublicKey("AAA".HexToByteArray()).ToBase58(),
-                                    CrossChainContractAddress =
-                                        Address.FromPublicKey("AAA".HexToByteArray()).ToBase58(),
-                                    PublicKey = "private",
-                                    IsMainChain = false
-                                }
-                            }
-                        };
-                    });
 
-                    services.Configure<GrainOptions>(o =>
-                    {
-                        o.Delay = 1;
-                        o.RetryDelay = 1;
-                        o.RetryTimes = 1;
-                    });
-          
-                    services.Configure<CAAccountOption>(o =>
-                    {
-                        o.CAAccountRequestInfoMaxLength = 100;
-                        o.CAAccountRequestInfoExpirationTime = 1;
-                    });
                     services.AddMemoryCache();
                     services.AddDistributedMemoryCache();
                     services.AddAutoMapper(typeof(CAServerGrainsModule).Assembly);

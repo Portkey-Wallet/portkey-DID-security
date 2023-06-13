@@ -1,5 +1,4 @@
 ﻿using CAServer.Grains;
-using CAServer.Grains.Grain.Account;
 using CAServer.Signature;
 using Microsoft.Extensions.DependencyInjection;
 using Orleans;
@@ -25,10 +24,5 @@ public class CAServerGrainTestModule : AbpModule
     {
         context.Services.AddSingleton<IClusterClient>(sp => sp.GetService<ClusterFixture>().Cluster.Client);
         context.Services.AddHttpClient();
-        context.Services.Configure<CAAccountOption>(o =>
-        {
-            o.CAAccountRequestInfoMaxLength = 100;
-            o.CAAccountRequestInfoExpirationTime = 1;
-        });
     }
 }

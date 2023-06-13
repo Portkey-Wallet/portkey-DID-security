@@ -37,6 +37,46 @@
   <ItemGroup>
     <Orleans_CodeGenInputs Remove="Sample\ISampleAppService.cs" />
     <Orleans_CodeGenInputs Remove="Sample\TestDto.cs" />
+    <Orleans_CodeGenInputs Remove="Hubs\GetHubRequestDto.cs" />
+    <Orleans_CodeGenInputs Remove="Hubs\HubPingRequest.cs" />
+    <Orleans_CodeGenInputs Remove="Hubs\HubRequestBase.cs" />
+    <Orleans_CodeGenInputs Remove="Hubs\HubResponse.cs" />
+    <Orleans_CodeGenInputs Remove="Hubs\IHubProvider.cs" />
+    <Orleans_CodeGenInputs Remove="Hubs\IHubService.cs" />
+    <Orleans_CodeGenInputs Remove="ClaimToken\Dtos\ClaimTokenRequestDto.cs" />
+    <Orleans_CodeGenInputs Remove="ClaimToken\Dtos\ClaimTokenResponseDto.cs" />
+    <Orleans_CodeGenInputs Remove="ClaimToken\IClaimTokenAppService.cs" />
+    <Orleans_CodeGenInputs Remove="Phone\Dtos\PhoneDto.cs" />
+    <Orleans_CodeGenInputs Remove="Phone\IPhoneAppService.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\AccountOperationStatus.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\AccountCompletedMessage.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\AccountResultDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\ActivityHeader.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\CAAccountBase.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\CAHolderDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\CAHolderResultDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\GuardianDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\GuardianIdentifierType.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\HubRequestContextDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RecoveryCompletedMessageDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RecoveryDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RecoveryRequestDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RegisterCompletedMessageDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RegisterDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RegisterInfoDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RegisterInfoResultDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RegisterRequestDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\RegisterStatus.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\UpdateNickNameDto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Dtos\Validation\ValidManagerAttribute.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Etos\AccountRecoverCompletedEto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Etos\AccountRecoverCreateEto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Etos\AccountRegisterCompletedEto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Etos\AccountRegisterCreateEto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Etos\CAAccountEto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\Etos\CAAccountRecoveryEto.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\ICAAccountAppService.cs" />
+    <Orleans_CodeGenInputs Remove="CAAccount\INickNameAppService.cs" />
   </ItemGroup>
 
 </Project>

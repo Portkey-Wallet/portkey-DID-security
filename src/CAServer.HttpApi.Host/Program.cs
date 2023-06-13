@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CAServer.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,7 +42,6 @@ public class Program
             builder.Services.AddSignalR();
             await builder.AddApplicationAsync<CAServerHttpApiHostModule>();
             var app = builder.Build();
-            app.MapHub<CAHub>("ca");
             await app.InitializeApplicationAsync();
             await app.RunAsync();
             return 0;

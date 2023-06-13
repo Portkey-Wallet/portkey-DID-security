@@ -14,7 +14,6 @@ using Microsoft.Extensions.Options;
 using Portkey.Contracts.CA;
 using Portkey.Contracts.TokenClaim;
 using Volo.Abp.DependencyInjection;
-using ChainOptions = CAServer.Grains.Grain.ApplicationHandler.ChainOptions;
 
 namespace CAServer.Common;
 
@@ -23,25 +22,21 @@ public interface IContractProvider
     public Task<GetHolderInfoOutput> GetHolderInfoAsync(Hash caHash, Hash loginGuardianIdentifierHash, string chainId);
     public Task<GetVerifierServersOutput> GetVerifierServersListAsync(string chainId);
     public Task<GetBalanceOutput> GetBalanceAsync(string symbol, string address, string chainId);
-    public Task ClaimTokenAsync(string symbol, string address, string chainId);
-    public Task<SendTransactionOutput> SendTransferAsync(string symbol, string amount, string address, string chainId);
 }
 
 public class ContractProvider : IContractProvider, ISingletonDependency
 {
     private readonly ChainOptions _chainOptions;
     private readonly ILogger<ContractProvider> _logger;
-    private readonly ClaimTokenInfoOptions _claimTokenInfoOption;
     private readonly ISignatureProvider _signatureProvider;
     private readonly ContractOptions _contractOptions;
 
     public ContractProvider(IOptions<ChainOptions> chainOptions, ILogger<ContractProvider> logger,
-        ISignatureProvider signatureProvider, IOptionsSnapshot<ClaimTokenInfoOptions> claimTokenInfoOption,
+        ISignatureProvider signatureProvider,
         IOptionsSnapshot<ContractOptions> contractOptions)
     {
         _chainOptions = chainOptions.Value;
         _logger = logger;
-        _claimTokenInfoOption = claimTokenInfoOption.Value;
         _signatureProvider = signatureProvider;
         _contractOptions = contractOptions.Value;
     }
@@ -91,9 +86,6 @@ public class ContractProvider : IContractProvider, ISingletonDependency
         var ownAddress = client.GetAddressFromPubKey(senderPubKey);
 
         var transaction = await client.GenerateTransactionAsync(ownAddress, contractAddress, methodName, param);
-
-        _logger.LogDebug("Send tx methodName is: {methodName} param is: {transaction}, publicKey is:{publicKey} ",
-            methodName, transaction, _claimTokenInfoOption.PublicKey);
 
         var txWithSign = await _signatureProvider.SignTxMsg(ownAddress, transaction.GetHash().ToHex());
 
@@ -145,29 +137,5 @@ public class ContractProvider : IContractProvider, ISingletonDependency
         return await CallTransactionAsync<GetBalanceOutput>(AElfContractMethodName.GetBalance, getBalanceParam,
             _chainOptions.ChainInfos[chainId].TokenContractAddress, chainId);
     }
-
-    public async Task ClaimTokenAsync(string symbol, string address, string chainId)
-    {
-        var claimTokenParam = new ClaimTokenInput
-        {
-            Symbol = symbol,
-            Amount = _claimTokenInfoOption.ClaimTokenAmount
-        };
-        await SendTransactionAsync<ClaimTokenInput>(AElfContractMethodName.ClaimToken, claimTokenParam,
-            _claimTokenInfoOption.PublicKey, address, chainId);
-    }
-
-    public async Task<SendTransactionOutput> SendTransferAsync(string symbol, string amount, string address,
-        string chainId)
-    {
-        var transferParam = new TransferInput
-        {
-            Symbol = symbol,
-            Amount = long.Parse(amount),
-            To = Address.FromBase58(address)
-        };
-
-        return await SendTransactionAsync<TransferInput>(AElfContractMethodName.Transfer, transferParam,
-            _claimTokenInfoOption.PublicKey, _chainOptions.ChainInfos[chainId].TokenContractAddress, chainId);
-    }
+    
 }

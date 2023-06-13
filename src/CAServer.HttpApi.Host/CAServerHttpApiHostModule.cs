@@ -2,12 +2,9 @@ using System;
 using System.IO;
 using System.Linq;
 using CAServer.Grains;
-using CAServer.Hub;
 using CAServer.MongoDB;
 using CAServer.MultiTenancy;
 using CAServer.Options;
-using CAServer.Redis;
-using CAServer.Signature;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
@@ -52,8 +49,6 @@ namespace CAServer;
     typeof(CAServerApplicationModule),
     typeof(CAServerMongoDbModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(CAServerHubModule),
-    typeof(CAServerRedisModule),
     typeof(AbpSwashbuckleModule)
 )]
 public class CAServerHttpApiHostModule : AbpModule
@@ -64,7 +59,6 @@ public class CAServerHttpApiHostModule : AbpModule
         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
         Configure<ChainOptions>(configuration.GetSection("Chains"));
-        Configure<CAServer.Grains.Grain.ApplicationHandler.ChainOptions>(configuration.GetSection("Chains"));
         
         ConfigureConventionalControllers();
         ConfigureAuthentication(context, configuration);
@@ -73,16 +67,15 @@ public class CAServerHttpApiHostModule : AbpModule
         ConfigureVirtualFileSystem(context);
         ConfigureDataProtection(context, configuration, hostingEnvironment);
         ConfigureDistributedLocking(context, configuration);
-        ConfigureHub(context, configuration);
         ConfigureGraphQl(context, configuration);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
-        ConfigureOrleans(context, configuration);
+        //ConfigureOrleans(context, configuration);
     }
 
     private void ConfigureCache(IConfiguration configuration)
     {
-        Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "CAServer:"; });
+        Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "CASecurity:"; });
     }
 
     private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
@@ -245,16 +238,6 @@ public class CAServerHttpApiHostModule : AbpModule
                 .Connect(configuration["Redis:Configuration"]);
             return new RedisDistributedSynchronizationProvider(connection.GetDatabase());
         });
-    }
-
-    private void ConfigureHub(
-        ServiceConfigurationContext context,
-        IConfiguration configuration)
-    {
-        var multiplexer = ConnectionMultiplexer
-            .Connect(configuration["Redis:Configuration"]);
-        context.Services.AddSingleton<IConnectionMultiplexer>(multiplexer);
-        Configure<HubCacheOptions>(configuration.GetSection("Hub:Configuration"));
     }
 
     private void ConfigureGraphQl(ServiceConfigurationContext context,

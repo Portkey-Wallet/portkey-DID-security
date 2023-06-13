@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "No4yrYwHdiyKfGSou4Q8zvA6rmyl2eBk4g2W7TO3+UFkDmzY8PcIFMMP/Wl0Bum3K2WHtue5MZBcp5mcEpPtdA==",
+  "dgSpecHash": "wJ2lqApWBLc7swhRg0BmZmm4S5xPPvKYm/intjBL74cf0gDgzIvrNcvCTie+G5f1JrJjaELhwH9Y0zSSZQV9Yw==",
   "success": true,
   "projectFilePath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application/CAServer.Application.csproj",
   "expectedPackageFiles": [

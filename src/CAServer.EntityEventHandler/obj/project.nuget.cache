@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "td36kJxWJpT3opjmm7fSwzDWQ0Y2B74hAb5oVv8r3CYSo2yz6vtNbmz28wAU1JJ5HzvQz4UBBhqDR8HGnDz/aQ==",
+  "dgSpecHash": "K7QhOhbjjR7XtEhPlRm1UYdizbHLqIIb4glZXBUh+hkqCeOMz2UhzUHP5cJbzz5SMbZZL7b+zErpDOocUul46A==",
   "success": true,
   "projectFilePath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.EntityEventHandler/CAServer.EntityEventHandler.csproj",
   "expectedPackageFiles": [
