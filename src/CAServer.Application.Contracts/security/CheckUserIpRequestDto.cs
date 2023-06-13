@@ -5,9 +5,5 @@ namespace CAVerifierServer.Account;
 
 public class CheckUserIpRequestDto
 {
-    [JsonPropertyName("ip")]
     public string Ip { get; set; }
-    
-   
-
 }

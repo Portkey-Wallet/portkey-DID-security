@@ -49,8 +49,4 @@
     <Compile Remove="Hubs\ICAHubProvider.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Security\Provider" />
-  </ItemGroup>
-
 </Project>

@@ -12,6 +12,7 @@ using CAServer.UserAssets;
 using CAVerifierServer.Account;
 using CAVerifierServer.Grains.Grain;
 using CAVerifierServer.IpWhiteList;
+using CAVerifierServer.Security.Provider;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Orleans;
@@ -26,19 +27,20 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
     private readonly IContractProvider _contractProvider;
     private ChainOptions _chainOptions;
     private readonly IUserAssetsAppService _userAssetsAppService;
-    //private readonly IDeviceAppService _deviceAppService;
+    private readonly ISecurityProvider _securityProvider;
 
-    public SecurityAppService(IActivityProvider activityProvider, 
+    public SecurityAppService(IActivityProvider activityProvider,
         IClusterClient clusterClient,
-        IContractProvider contractProvider, 
+        IContractProvider contractProvider,
         IOptions<ChainOptions> chainOptions,
-        IUserAssetsAppService userAssetsAppService)
+        IUserAssetsAppService userAssetsAppService,
+        ISecurityProvider securityProvider)
     {
         _activityProvider = activityProvider;
         _clusterClient = clusterClient;
         _contractProvider = contractProvider;
         _userAssetsAppService = userAssetsAppService;
-        //_deviceAppService = deviceAppService;
+        _securityProvider = securityProvider;
         _chainOptions = chainOptions.Value;
     }
 
@@ -59,7 +61,6 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
     public async Task AddIpToWhiteListAsync(AddUserIpToWhiteListRequestDto request)
     {
         var grain = _clusterClient.GetGrain<ISecurityGrain>(request.UserIp);
-        // var param = JsonConvert.DeserializeObject<SecurityRequestDto>(request.ParamsJsonObject);
         var caHolderIndex = await _activityProvider.GetCaHolderIndexAsync(request.UserId);
         var caHash = caHolderIndex.CaHash;
         var caAddress = new List<string>();
@@ -78,7 +79,7 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             var count = output.GuardianList.Guardians.Count;
             if (count >= 2)
             {
-                await grain.AddUserIptoWhiteListAsync(request.UserIp);
+                await grain.AddUserIpToWhiteListAsync(request.UserIp);
                 break;
             }
 
@@ -87,13 +88,17 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             {
                 //TODO How to transfer to DevicesInfo;
                 var data = manager.ExtraData;
-                
+
                 //await _deviceAppService.EncryptExtraDataAsync(data, caHash);
-                
             }
-            
-            //TODO Contacts
-            
+
+            var device = managerInfos.Select(t => t.ExtraData).Distinct();
+        }
+        
+        var contactNum = await _securityProvider.GetContactCountAsync(request.UserId);
+        if (contactNum > 2)
+        {
+            await grain.AddUserIpToWhiteListAsync(request.UserIp);
         }
 
         var requestDto = new GetTokenRequestDto()
@@ -106,14 +111,9 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
         {
             if (tokenAsync.Data.Any(token => int.Parse(token.Balance) > 0))
             {
-                await grain.AddUserIptoWhiteListAsync(request.UserIp);
+                await grain.AddUserIpToWhiteListAsync(request.UserIp);
             }
         }
-        
-        
-        
-        
-        
     }
 
     public Task RemoveIpFromWhiteListAsync(string userIp)

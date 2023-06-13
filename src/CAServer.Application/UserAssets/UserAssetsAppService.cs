@@ -25,18 +25,19 @@ namespace CAServer.UserAssets;
 public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
 {
     private readonly ILogger<UserAssetsAppService> _logger;
-    private readonly ITokenAppService _tokenAppService;
+    //private readonly ITokenAppService _tokenAppService;
     private readonly IUserAssetsProvider _userAssetsProvider;
     private readonly TokenInfoOptions _tokenInfoOptions;
 
     public UserAssetsAppService(
-        ILogger<UserAssetsAppService> logger, IUserAssetsProvider userAssetsProvider, ITokenAppService tokenAppService,
+        ILogger<UserAssetsAppService> logger, IUserAssetsProvider userAssetsProvider,
+        //ITokenAppService tokenAppService,
         IOptions<TokenInfoOptions> tokenInfoOptions)
     {
         _logger = logger;
         _userAssetsProvider = userAssetsProvider;
         _tokenInfoOptions = tokenInfoOptions.Value;
-        _tokenAppService = tokenAppService;
+        //_tokenAppService = tokenAppService;
     }
 
     public async Task<GetTokenDto> GetTokenAsync(GetTokenRequestDto requestDto)
@@ -162,19 +163,19 @@ public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
 
             dto.Data.AddRange(resultList);
 
-            var priceDict = await GetSymbolPrice(symbols);
-            foreach (var token in dto.Data)
-            {
-                if (!priceDict.ContainsKey(token.Symbol))
-                {
-                    continue;
-                }
-
-                var balanceInUsd = CalculationHelper.GetBalanceInUsd(priceDict[token.Symbol], long.Parse(token.Balance),
-                    token.Decimals);
-                token.Price = priceDict[token.Symbol];
-                token.BalanceInUsd = balanceInUsd.ToString();
-            }
+            // var priceDict = await GetSymbolPrice(symbols);
+            // foreach (var token in dto.Data)
+            // {
+            //     if (!priceDict.ContainsKey(token.Symbol))
+            //     {
+            //         continue;
+            //     }
+            //
+            //     var balanceInUsd = CalculationHelper.GetBalanceInUsd(priceDict[token.Symbol], long.Parse(token.Balance),
+            //         token.Decimals);
+            //     token.Price = priceDict[token.Symbol];
+            //     token.BalanceInUsd = balanceInUsd.ToString();
+            // }
 
             return dto;
         }
@@ -423,41 +424,41 @@ public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
             var symbols = (from searchItem in res.CaHolderSearchTokenNFT.Data
                 where searchItem.TokenInfo != null
                 select searchItem.TokenInfo.Symbol).ToList();
-            var symbolPrices = await GetSymbolPrice(symbols);
-            foreach (var searchItem in res.CaHolderSearchTokenNFT.Data)
-            {
-                var item = ObjectMapper.Map<IndexerSearchTokenNft, UserAsset>(searchItem);
-
-                if (searchItem.TokenInfo != null)
-                {
-                    var price = decimal.Zero;
-                    if (symbolPrices.ContainsKey(item.Symbol))
-                    {
-                        price = symbolPrices[item.Symbol];
-                    }
-
-                    var tokenInfo = ObjectMapper.Map<IndexerSearchTokenNft, TokenInfoDto>(searchItem);
-                    tokenInfo.BalanceInUsd = tokenInfo.BalanceInUsd = CalculationHelper
-                        .GetBalanceInUsd(price, searchItem.Balance, Convert.ToInt32(tokenInfo.Decimals)).ToString();
-
-                    item.TokenInfo = tokenInfo;
-                }
-
-                if (searchItem.NftInfo != null)
-                {
-                    if (searchItem.NftInfo.Symbol.IsNullOrEmpty())
-                    {
-                        continue;
-                    }
-
-                    item.NftInfo = ObjectMapper.Map<IndexerSearchTokenNft, NftInfoDto>(searchItem);
-
-                    item.NftInfo.TokenId = searchItem.NftInfo.Symbol.Split("-").Last();
-                    
-                }
-
-                dto.Data.Add(item);
-            }
+            // var symbolPrices = await GetSymbolPrice(symbols);
+            // foreach (var searchItem in res.CaHolderSearchTokenNFT.Data)
+            // {
+            //     var item = ObjectMapper.Map<IndexerSearchTokenNft, UserAsset>(searchItem);
+            //
+            //     if (searchItem.TokenInfo != null)
+            //     {
+            //         var price = decimal.Zero;
+            //         if (symbolPrices.ContainsKey(item.Symbol))
+            //         {
+            //             price = symbolPrices[item.Symbol];
+            //         }
+            //
+            //         var tokenInfo = ObjectMapper.Map<IndexerSearchTokenNft, TokenInfoDto>(searchItem);
+            //         tokenInfo.BalanceInUsd = tokenInfo.BalanceInUsd = CalculationHelper
+            //             .GetBalanceInUsd(price, searchItem.Balance, Convert.ToInt32(tokenInfo.Decimals)).ToString();
+            //
+            //         item.TokenInfo = tokenInfo;
+            //     }
+            //
+            //     if (searchItem.NftInfo != null)
+            //     {
+            //         if (searchItem.NftInfo.Symbol.IsNullOrEmpty())
+            //         {
+            //             continue;
+            //         }
+            //
+            //         item.NftInfo = ObjectMapper.Map<IndexerSearchTokenNft, NftInfoDto>(searchItem);
+            //
+            //         item.NftInfo.TokenId = searchItem.NftInfo.Symbol.Split("-").Last();
+            //         
+            //     }
+            //
+            //     dto.Data.Add(item);
+            // }
 
             return dto;
         }
@@ -480,30 +481,5 @@ public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
         dto.SymbolImages = _tokenInfoOptions.TokenInfos.ToDictionary(k => k.Key, v => v.Value.ImageUrl);
 
         return dto;
-    }
-
-    private async Task<Dictionary<string, decimal>> GetSymbolPrice(List<string> symbols)
-    {
-        try
-        {
-            var priceList = await _tokenAppService.GetTokenPriceListAsync(symbols);
-            var dict = new Dictionary<string, decimal>();
-            if (priceList == null)
-            {
-                return dict;
-            }
-
-            foreach (var price in priceList.Items)
-            {
-                dict[price.Symbol.ToUpper()] = price.PriceInUsd;
-            }
-
-            return dict;
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "get symbols price failed, symbol={symbols}", symbols);
-            return new Dictionary<string, decimal>();
-        }
     }
 }

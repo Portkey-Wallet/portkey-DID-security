@@ -42,7 +42,7 @@ public class SecurityGrain : Grain<SecurityState>,
 
     }
 
-    public async Task AddUserIptoWhiteListAsync(string userIp)
+    public async Task AddUserIpToWhiteListAsync(string userIp)
     {
         State.IpWhiteListDic.Add(userIp,
             DateTime.Now.Add(TimeSpan.FromDays(15)));

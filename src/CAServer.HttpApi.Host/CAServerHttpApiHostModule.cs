@@ -149,18 +149,6 @@ public class CAServerHttpApiHostModule : AbpModule
                 });
             }
         );
-        // context.Services.AddAbpSwaggerGenWithOAuth(
-        //     configuration["AuthServer:Authority"],
-        //     new Dictionary<string, string>
-        //     {
-        //         { "CAServer", "CAServer API" }
-        //     },
-        //     options =>
-        //     {
-        //         options.SwaggerDoc("v1", new OpenApiInfo { Title = "CAServer API", Version = "v1" });
-        //         options.DocInclusionPredicate((docName, description) => true);
-        //         options.CustomSchemaIds(type => type.FullName);
-        //     });
     }
 
     private static void ConfigureOrleans(ServiceConfigurationContext context, IConfiguration configuration)
@@ -173,7 +161,6 @@ public class CAServerHttpApiHostModule : AbpModule
                 .UseMongoDBClustering(options =>
                 {
                     options.DatabaseName = configuration["Orleans:DataBase"];
-                    ;
                     options.Strategy = MongoDBMembershipStrategy.SingleDocument;
                 })
                 .Configure<ClusterOptions>(options =>
@@ -300,10 +287,6 @@ public class CAServerHttpApiHostModule : AbpModule
             app.UseAbpSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "CAServer API");
-
-                // var configuration = context.GetConfiguration();
-                // options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
-                // options.OAuthScopes("CAServer");
             });
         }
 
