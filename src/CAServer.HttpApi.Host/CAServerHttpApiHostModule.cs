@@ -70,7 +70,7 @@ public class CAServerHttpApiHostModule : AbpModule
         ConfigureGraphQl(context, configuration);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
-        //ConfigureOrleans(context, configuration);
+        ConfigureOrleans(context, configuration);
     }
 
     private void ConfigureCache(IConfiguration configuration)
