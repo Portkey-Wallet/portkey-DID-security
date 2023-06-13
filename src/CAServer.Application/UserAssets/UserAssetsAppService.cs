@@ -24,20 +24,12 @@ namespace CAServer.UserAssets;
 [DisableAuditing]
 public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
 {
-    private readonly ILogger<UserAssetsAppService> _logger;
-    //private readonly ITokenAppService _tokenAppService;
     private readonly IUserAssetsProvider _userAssetsProvider;
-    private readonly TokenInfoOptions _tokenInfoOptions;
 
     public UserAssetsAppService(
-        ILogger<UserAssetsAppService> logger, IUserAssetsProvider userAssetsProvider,
-        //ITokenAppService tokenAppService,
-        IOptions<TokenInfoOptions> tokenInfoOptions)
+        IUserAssetsProvider userAssetsProvider)
     {
-        _logger = logger;
         _userAssetsProvider = userAssetsProvider;
-        _tokenInfoOptions = tokenInfoOptions.Value;
-        //_tokenAppService = tokenAppService;
     }
 
     public async Task<GetTokenDto> GetTokenAsync(GetTokenRequestDto requestDto)
@@ -75,7 +67,7 @@ public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
 
             if (userTokenSymbols.IsNullOrEmpty())
             {
-                _logger.LogError("get no result from current user {id}", CurrentUser.GetId());
+                Logger.LogError("get no result from current user {id}", CurrentUser.GetId());
                 return dto;
             }
 
@@ -114,11 +106,6 @@ public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
                 }
 
                 var token = ObjectMapper.Map<IndexerTokenInfo, Token>(tokenInfo);
-
-                if (_tokenInfoOptions.TokenInfos.ContainsKey(token.Symbol))
-                {
-                    token.ImageUrl = _tokenInfoOptions.TokenInfos[token.Symbol].ImageUrl;
-                }
 
                 list.Add(token);
             }
@@ -166,305 +153,8 @@ public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "GetTokenAsync Error. {dto}", requestDto);
+            Logger.LogError(e, "GetTokenAsync Error. {dto}", requestDto);
             return new GetTokenDto { Data = new List<Token>(), TotalRecordCount = 0 };
         }
-    }
-
-    public async Task<GetNftCollectionsDto> GetNFTCollectionsAsync(GetNftCollectionsRequestDto requestDto)
-    {
-        try
-        {
-            var caAddressInfos = requestDto.CaAddressInfos;
-            if (caAddressInfos == null)
-            {
-                caAddressInfos = requestDto.CaAddresses.Select(address => new CAAddressInfo { CaAddress = address })
-                    .ToList();
-            }
-
-            var res = await _userAssetsProvider.GetUserNftCollectionInfoAsync(caAddressInfos,
-                requestDto.SkipCount, requestDto.MaxResultCount);
-
-            var dto = new GetNftCollectionsDto
-            {
-                Data = new List<NftCollection>(),
-                TotalRecordCount = res?.CaHolderNFTCollectionBalanceInfo?.TotalRecordCount ?? 0
-            };
-
-            if (res?.CaHolderNFTCollectionBalanceInfo?.Data == null ||
-                res.CaHolderNFTCollectionBalanceInfo.Data.Count == 0)
-            {
-                return dto;
-            }
-
-            foreach (var nftCollectionInfo in res.CaHolderNFTCollectionBalanceInfo.Data)
-            {
-                var nftCollection =
-                    ObjectMapper.Map<IndexerNftCollectionInfo, NftCollection>(nftCollectionInfo);
-                if (nftCollectionInfo == null || nftCollectionInfo.NftCollectionInfo == null)
-                {
-                    dto.Data.Add(nftCollection);
-                }
-                else
-                {
-                    dto.Data.Add(nftCollection);
-                }
-            }
-
-            return dto;
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "GetNFTCollectionsAsync Error. {dto}", requestDto);
-            return new GetNftCollectionsDto { Data = new List<NftCollection>(), TotalRecordCount = 0 };
-        }
-    }
-
-    public async Task<GetNftItemsDto> GetNFTItemsAsync(GetNftItemsRequestDto requestDto)
-    {
-        try
-        {
-            var caAddressInfos = requestDto.CaAddressInfos;
-            if (caAddressInfos == null)
-            {
-                caAddressInfos = requestDto.CaAddresses.Select(address => new CAAddressInfo { CaAddress = address })
-                    .ToList();
-            }
-
-            var res = await _userAssetsProvider.GetUserNftInfoAsync(caAddressInfos,
-                requestDto.Symbol, requestDto.SkipCount, requestDto.MaxResultCount);
-
-            var dto = new GetNftItemsDto
-            {
-                Data = new List<NftItem>(),
-                TotalRecordCount = res?.CaHolderNFTBalanceInfo?.TotalRecordCount ?? 0
-            };
-
-            if (res?.CaHolderNFTBalanceInfo?.Data == null || res.CaHolderNFTBalanceInfo.Data.Count == 0)
-            {
-                return dto;
-            }
-
-            foreach (var nftInfo in res.CaHolderNFTBalanceInfo.Data.Where(n => n.NftInfo != null))
-            {
-                if (nftInfo.NftInfo.Symbol.IsNullOrEmpty())
-                {
-                    continue;
-                }
-
-                var nftItem = ObjectMapper.Map<IndexerNftInfo, NftItem>(nftInfo);
-
-                nftItem.TokenId = nftInfo.NftInfo.Symbol.Split("-").Last();
-                nftItem.TotalSupply = nftInfo.NftInfo.TotalSupply;
-                nftItem.CirculatingSupply = nftInfo.NftInfo.Supply;
-                dto.Data.Add(nftItem);
-            }
-
-            return dto;
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "GetNFTItemsAsync Error. {dto}", requestDto);
-            return new GetNftItemsDto { Data = new List<NftItem>(), TotalRecordCount = 0 };
-        }
-    }
-
-    //Data with the same name needs to be deduplicated
-    public async Task<GetRecentTransactionUsersDto> GetRecentTransactionUsersAsync(
-        GetRecentTransactionUsersRequestDto requestDto)
-    {
-        try
-        {
-            var caAddressInfos = requestDto.CaAddressInfos;
-            if (caAddressInfos == null)
-            {
-                caAddressInfos = requestDto.CaAddresses.Select(address => new CAAddressInfo { CaAddress = address })
-                    .ToList();
-            }
-
-            var res = await _userAssetsProvider.GetRecentTransactionUsersAsync(caAddressInfos,
-                requestDto.SkipCount, requestDto.MaxResultCount);
-
-            var dto = new GetRecentTransactionUsersDto
-            {
-                Data = new List<RecentTransactionUser>(),
-                TotalRecordCount = res?.CaHolderTransactionAddressInfo?.TotalRecordCount ?? 0
-            };
-
-            if (res?.CaHolderTransactionAddressInfo?.Data == null || res.CaHolderTransactionAddressInfo.Data.Count == 0)
-            {
-                return dto;
-            }
-
-            var userCaAddresses = res.CaHolderTransactionAddressInfo.Data.Select(t => t.Address)?.Distinct()?.ToList();
-
-            foreach (var info in res.CaHolderTransactionAddressInfo.Data)
-            {
-                dto.Data.Add(ObjectMapper.Map<CAHolderTransactionAddress, RecentTransactionUser>(info));
-            }
-            
-            //  At this time, maybe there is data in the list with the same name but different address
-
-            var users = GetDuplicatedUser(dto.Data);
-
-            dto.Data = users;
-            dto.TotalRecordCount = res.CaHolderTransactionAddressInfo.TotalRecordCount;
-
-            return dto;
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "GetRecentTransactionUsersAsync Error. {dto}", requestDto);
-            return new GetRecentTransactionUsersDto { Data = new List<RecentTransactionUser>(), TotalRecordCount = 0 };
-        }
-    }
-
-    //Deduplicate data with same name，And put the TransactionTime of the corresponding address list in the position of the corresponding address list of the unremoved name, Then sort according to the time
-    private List<RecentTransactionUser> GetDuplicatedUser(List<RecentTransactionUser> users)
-    {
-        var userDic = new Dictionary<string, RecentTransactionUser>();
-        var result = new List<RecentTransactionUser>();
-        if (users == null)
-        {
-            return result;
-        }
-
-        foreach (var user in users)
-        {
-            if (string.IsNullOrWhiteSpace(user.Name))
-            {
-                result.Add(user);
-                continue;
-            }
-
-            if (userDic.ContainsKey(user.Name))
-            {
-                var contactAddressDto =
-                    user.Addresses.FirstOrDefault(t => !string.IsNullOrWhiteSpace(t.TransactionTime));
-
-                if (contactAddressDto == null) continue;
-
-                var preContactAddressDto = userDic[user.Name].Addresses.First(t =>
-                    t.ChainId == contactAddressDto.ChainId && t.Address == contactAddressDto.Address);
-
-                preContactAddressDto.TransactionTime = contactAddressDto.TransactionTime;
-            }
-            else
-            {
-                userDic.Add(user.Name, user);
-                result.Add(user);
-            }
-        }
-
-        users.ForEach(t =>
-        {
-            t.Addresses ??= new List<UserContactAddressDto>();
-            t.Addresses = t.Addresses
-                .OrderByDescending(f => string.IsNullOrEmpty(f.TransactionTime) ? 0 : long.Parse(f.TransactionTime))
-                .ToList();
-        });
-
-        return result;
-    }
-
-    private string GetIndex(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name)) return "#";
-
-        var firstChar = char.ToUpperInvariant(name[0]);
-        if (firstChar >= 'A' && firstChar <= 'Z')
-        {
-            return firstChar.ToString();
-        }
-
-        return "#";
-    }
-
-    public async Task<SearchUserAssetsDto> SearchUserAssetsAsync(SearchUserAssetsRequestDto requestDto)
-    {
-        try
-        {
-            var caAddressInfos = requestDto.CaAddressInfos;
-            if (caAddressInfos == null)
-            {
-                caAddressInfos = requestDto.CaAddresses.Select(address => new CAAddressInfo { CaAddress = address })
-                    .ToList();
-            }
-
-            var res = await _userAssetsProvider.SearchUserAssetsAsync(caAddressInfos,
-                requestDto.Keyword.IsNullOrEmpty() ? "" : requestDto.Keyword,
-                requestDto.SkipCount, requestDto.MaxResultCount);
-
-            var dto = new SearchUserAssetsDto
-            {
-                Data = new List<UserAsset>(),
-                TotalRecordCount = res?.CaHolderSearchTokenNFT?.TotalRecordCount ?? 0
-            };
-
-            if (res?.CaHolderSearchTokenNFT?.Data == null || res.CaHolderSearchTokenNFT.Data.Count == 0)
-            {
-                return dto;
-            }
-
-            var symbols = (from searchItem in res.CaHolderSearchTokenNFT.Data
-                where searchItem.TokenInfo != null
-                select searchItem.TokenInfo.Symbol).ToList();
-            // var symbolPrices = await GetSymbolPrice(symbols);
-            // foreach (var searchItem in res.CaHolderSearchTokenNFT.Data)
-            // {
-            //     var item = ObjectMapper.Map<IndexerSearchTokenNft, UserAsset>(searchItem);
-            //
-            //     if (searchItem.TokenInfo != null)
-            //     {
-            //         var price = decimal.Zero;
-            //         if (symbolPrices.ContainsKey(item.Symbol))
-            //         {
-            //             price = symbolPrices[item.Symbol];
-            //         }
-            //
-            //         var tokenInfo = ObjectMapper.Map<IndexerSearchTokenNft, TokenInfoDto>(searchItem);
-            //         tokenInfo.BalanceInUsd = tokenInfo.BalanceInUsd = CalculationHelper
-            //             .GetBalanceInUsd(price, searchItem.Balance, Convert.ToInt32(tokenInfo.Decimals)).ToString();
-            //
-            //         item.TokenInfo = tokenInfo;
-            //     }
-            //
-            //     if (searchItem.NftInfo != null)
-            //     {
-            //         if (searchItem.NftInfo.Symbol.IsNullOrEmpty())
-            //         {
-            //             continue;
-            //         }
-            //
-            //         item.NftInfo = ObjectMapper.Map<IndexerSearchTokenNft, NftInfoDto>(searchItem);
-            //
-            //         item.NftInfo.TokenId = searchItem.NftInfo.Symbol.Split("-").Last();
-            //         
-            //     }
-            //
-            //     dto.Data.Add(item);
-            // }
-
-            return dto;
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "SearchUserAssetsAsync Error. {dto}", requestDto);
-            return new SearchUserAssetsDto { Data = new List<UserAsset>(), TotalRecordCount = 0 };
-        }
-    }
-
-    public SymbolImagesDto GetSymbolImagesAsync()
-    {
-        var dto = new SymbolImagesDto { SymbolImages = new Dictionary<string, string>() };
-
-        if (_tokenInfoOptions.TokenInfos.IsNullOrEmpty())
-        {
-            return dto;
-        }
-
-        dto.SymbolImages = _tokenInfoOptions.TokenInfos.ToDictionary(k => k.Key, v => v.Value.ImageUrl);
-
-        return dto;
     }
 }

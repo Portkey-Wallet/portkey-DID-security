@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AElf.Types;
-using CAServer.CAActivity.Provider;
 using CAServer.Common;
-using CAServer.Device;
 using CAServer.Options;
-using CAServer.security;
 using CAServer.UserAssets;
 using CAVerifierServer.Account;
 using CAVerifierServer.Grains.Grain;
 using CAVerifierServer.IpWhiteList;
 using CAVerifierServer.Security.Provider;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Orleans;
 using Volo.Abp.DependencyInjection;
@@ -24,20 +20,18 @@ namespace CAVerifierServer.Security;
 public class SecurityAppService : ISecurityAppService, ISingletonDependency
 {
     private readonly IClusterClient _clusterClient;
-    private readonly IActivityProvider _activityProvider;
     private readonly IContractProvider _contractProvider;
-    private ChainOptions _chainOptions;
+    private readonly ChainOptions _chainOptions;
     private readonly IUserAssetsAppService _userAssetsAppService;
     private readonly ISecurityProvider _securityProvider;
 
-    public SecurityAppService(IActivityProvider activityProvider,
+    public SecurityAppService(
         IClusterClient clusterClient,
         IContractProvider contractProvider,
         IOptions<ChainOptions> chainOptions,
         IUserAssetsAppService userAssetsAppService,
         ISecurityProvider securityProvider)
     {
-        _activityProvider = activityProvider;
         _clusterClient = clusterClient;
         _contractProvider = contractProvider;
         _userAssetsAppService = userAssetsAppService;
@@ -69,7 +63,7 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             return;
         }
 
-        var caHolderIndex = await _activityProvider.GetCaHolderIndexAsync(request.UserId);
+        var caHolderIndex = await _securityProvider.GetCaHolderIndexAsync(request.UserId);
         var caHash = caHolderIndex.CaHash;
         var caAddress = new List<string>();
         var caAddressInfos = new List<CAAddressInfo>();
@@ -88,23 +82,17 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             if (count >= 2)
             {
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
-                break;
+                return;
             }
 
             var managerInfos = output.ManagerInfos;
-            // foreach (var manager in managerInfos)
-            // {
-            //     //TODO How to transfer to DevicesInfo;
-            //     var data = manager.ExtraData;
-            //
-            //     //await _deviceAppService.EncryptExtraDataAsync(data, caHash);
-            // }
 
-            var devices = managerInfos?.Select(t => GetDevices(t.ExtraData)).Where(t => !t.IsNullOrEmpty())?.ToList();
+            var devices = managerInfos?.Select(t => GetDevices(t.ExtraData)).Where(t => !t.IsNullOrEmpty()).Distinct()
+                .ToList();
             if (devices is { Count: >= 2 })
             {
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
-                break;
+                return;
             }
         }
 

@@ -36,15 +36,8 @@ public class CAServerApplicationModule : AbpModule
     {
         Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CAServerApplicationModule>(); });
         var configuration = context.Services.GetConfiguration();
-        context.Services.AddSingleton<ISearchService, UserTokenSearchService>();
-        context.Services.AddSingleton<ISearchService, ContactSearchService>();
-        context.Services.AddSingleton<ISearchService, ChainsInfoSearchService>();
-        context.Services.AddSingleton<ISearchService, CAHolderSearchService>();
-        context.Services.AddSingleton<ISearchService, GuardianSearchService>();
         Configure<TokenInfoOptions>(configuration.GetSection("TokenInfo"));
-        
         Configure<ChainOptions>(configuration.GetSection("Chains"));
-        Configure<DeviceOptions>(configuration.GetSection("EncryptionInfo"));
         context.Services.AddSingleton<IAccountValidator, EmailValidator>();
         context.Services.AddSingleton<IAccountValidator, PhoneValidator>();
         Configure<ContractOptions>(configuration.GetSection("ContractOptions"));

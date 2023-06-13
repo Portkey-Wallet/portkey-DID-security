@@ -33,7 +33,6 @@ public class CAServerApplicationTestModule : AbpModule
 
         var configuration = builder.Build();
 
-        context.Services.AddSingleton<ISearchAppService, SearchAppService>();
         Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CAServerApplicationModule>(); });
 
         
