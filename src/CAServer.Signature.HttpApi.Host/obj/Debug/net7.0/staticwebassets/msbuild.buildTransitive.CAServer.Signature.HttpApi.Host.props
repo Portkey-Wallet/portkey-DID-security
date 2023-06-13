@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/CAServer.Signature.HttpApi.Host.props" />
-</Project>

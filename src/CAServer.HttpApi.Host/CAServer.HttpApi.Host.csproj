@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CAServer.Application\CAServer.Application.csproj" />
-    <ProjectReference Include="..\CAServer.CoinGeckoApi\CAServer.CoinGeckoApi.csproj" />
     <ProjectReference Include="..\CAServer.MongoDB\CAServer.MongoDB.csproj" />
     <ProjectReference Include="..\CAServer.HttpApi\CAServer.HttpApi.csproj" />
     <ProjectReference Include="..\CAServer.Redis\CAServer.Redis.csproj" />

@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj": {}
+    "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj": {}
   },
   "projects": {
-    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj": {
+    "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj",
+        "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj",
         "projectName": "CAServer.HttpApi.Tests",
-        "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj",
-        "packagesPath": "/Users/wangyue/.nuget/packages/",
-        "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.HttpApi.Tests/obj/",
+        "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.HttpApi.Tests/CAServer.HttpApi.Tests.csproj",
+        "packagesPath": "/Users/zhaolei/.nuget/packages/",
+        "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.HttpApi.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-          "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+          "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+          "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"

@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CAServer.EntityEventHandler.Core
-build_property.ProjectDir = /Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.EntityEventHandler.Core/
+build_property.ProjectDir = /Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.EntityEventHandler.Core/

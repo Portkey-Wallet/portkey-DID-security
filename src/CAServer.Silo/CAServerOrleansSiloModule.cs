@@ -1,4 +1,3 @@
-using CAServer.CoinGeckoApi;
 using CAServer.Grains;
 using CAServer.Grains.Grain.ApplicationHandler;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,10 +9,7 @@ namespace CAServer.Silo;
 
 [DependsOn(typeof(AbpAutofacModule),
     typeof(AbpAspNetCoreSerilogModule),
-    //typeof(CAServerApplicationModule),
-    typeof(CAServerGrainsModule),
-    //typeof(CABackGroundModule)，
-    typeof(CAServerCoinGeckoApiModule)
+    typeof(CAServerGrainsModule)
 )]
 public class CAServerOrleansSiloModule : AbpModule
 {

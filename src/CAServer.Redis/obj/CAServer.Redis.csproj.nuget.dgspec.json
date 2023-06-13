@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj": {}
+    "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj": {}
   },
   "projects": {
-    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
+    "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj",
+        "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj",
         "projectName": "CAServer.Application.Contracts",
-        "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj",
-        "packagesPath": "/Users/wangyue/.nuget/packages/",
-        "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/obj/",
+        "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj",
+        "packagesPath": "/Users/zhaolei/.nuget/packages/",
+        "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-          "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+          "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+          "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj": {
-                "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj"
+              "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj": {
+                "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj"
               }
             }
           }
@@ -135,18 +135,18 @@
         }
       }
     },
-    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj": {
+    "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj",
+        "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj",
         "projectName": "CAServer.Domain.Shared",
-        "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj",
-        "packagesPath": "/Users/wangyue/.nuget/packages/",
-        "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain.Shared/obj/",
+        "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain.Shared/CAServer.Domain.Shared.csproj",
+        "packagesPath": "/Users/zhaolei/.nuget/packages/",
+        "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain.Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-          "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+          "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+          "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -228,18 +228,18 @@
         }
       }
     },
-    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj": {
+    "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj",
+        "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj",
         "projectName": "CAServer.Hub",
-        "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj",
-        "packagesPath": "/Users/wangyue/.nuget/packages/",
-        "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Hub/obj/",
+        "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj",
+        "packagesPath": "/Users/zhaolei/.nuget/packages/",
+        "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Hub/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-          "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+          "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+          "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -252,8 +252,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
-                "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
+              "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
+                "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
               }
             }
           }
@@ -297,18 +297,18 @@
         }
       }
     },
-    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj": {
+    "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj",
+        "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj",
         "projectName": "CAServer.Redis",
-        "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj",
-        "packagesPath": "/Users/wangyue/.nuget/packages/",
-        "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Redis/obj/",
+        "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Redis/CAServer.Redis.csproj",
+        "packagesPath": "/Users/zhaolei/.nuget/packages/",
+        "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Redis/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-          "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+          "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+          "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -321,11 +321,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
-                "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
+              "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
+                "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
               },
-              "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj": {
-                "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj"
+              "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj": {
+                "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Hub/CAServer.Hub.csproj"
               }
             }
           }

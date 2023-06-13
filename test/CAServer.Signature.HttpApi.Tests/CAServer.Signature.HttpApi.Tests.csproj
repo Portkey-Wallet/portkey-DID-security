@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\CAServer.Signature.HttpApi\CAServer.Signature.HttpApi.csproj" />
         <ProjectReference Include="..\CAServer.TestBase\CAServer.TestBase.csproj" />
     </ItemGroup>
 

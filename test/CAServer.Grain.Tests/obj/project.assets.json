@@ -243,18 +243,6 @@
           }
         }
       },
-      "CoinGeckoAsyncApi/1.6.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/CoinGecko.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/CoinGecko.dll": {}
-        }
-      },
       "coverlet.collector/3.2.0": {
         "type": "package",
         "build": {
@@ -6567,23 +6555,6 @@
           "bin/placeholder/CAServer.Application.Contracts.dll": {}
         }
       },
-      "CAServer.CoinGeckoApi/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "CAServer.Grains": "1.0.0",
-          "CoinGeckoAsyncApi": "1.6.0",
-          "Microsoft.Extensions.Http": "7.0.0",
-          "Volo.Abp.Caching": "7.0.0",
-          "Volo.Abp.Core": "7.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CAServer.CoinGeckoApi.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CAServer.CoinGeckoApi.dll": {}
-        }
-      },
       "CAServer.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -7001,18 +6972,6 @@
         "lib/net6.0/Castle.Core.AsyncInterceptor.xml",
         "lib/netstandard2.0/Castle.Core.AsyncInterceptor.dll",
         "lib/netstandard2.0/Castle.Core.AsyncInterceptor.xml"
-      ]
-    },
-    "CoinGeckoAsyncApi/1.6.0": {
-      "sha512": "F6fuZcv60UQuOSnlouTWmwZp0igSPBmo6DukY7JmSkrK0j2LZ4G/Uobv9PYDmvFZ8KbAk848pucEjIethL0cIA==",
-      "type": "package",
-      "path": "coingeckoasyncapi/1.6.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "coingeckoasyncapi.1.6.0.nupkg.sha512",
-        "coingeckoasyncapi.nuspec",
-        "lib/netstandard2.0/CoinGecko.dll"
       ]
     },
     "coverlet.collector/3.2.0": {
@@ -17003,11 +16962,6 @@
       "path": "../../src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj",
       "msbuildProject": "../../src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
     },
-    "CAServer.CoinGeckoApi/1.0.0": {
-      "type": "project",
-      "path": "../../src/CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj",
-      "msbuildProject": "../../src/CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj"
-    },
     "CAServer.Domain/1.0.0": {
       "type": "project",
       "path": "../../src/CAServer.Domain/CAServer.Domain.csproj",
@@ -17052,7 +17006,6 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
-      "CAServer.CoinGeckoApi >= 1.0.0",
       "CAServer.Domain.Tests >= 1.0.0",
       "CAServer.Grains >= 1.0.0",
       "CAServer.TestBase >= 1.0.0",
@@ -17069,20 +17022,20 @@
     ]
   },
   "packageFolders": {
-    "/Users/wangyue/.nuget/packages/": {}
+    "/Users/zhaolei/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Grain.Tests/CAServer.Grain.Tests.csproj",
+      "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Grain.Tests/CAServer.Grain.Tests.csproj",
       "projectName": "CAServer.Grain.Tests",
-      "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Grain.Tests/CAServer.Grain.Tests.csproj",
-      "packagesPath": "/Users/wangyue/.nuget/packages/",
-      "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Grain.Tests/obj/",
+      "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Grain.Tests/CAServer.Grain.Tests.csproj",
+      "packagesPath": "/Users/zhaolei/.nuget/packages/",
+      "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Grain.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-        "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+        "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+        "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -17095,17 +17048,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj"
-            },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj"
             }
           }
         }

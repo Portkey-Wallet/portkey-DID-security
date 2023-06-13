@@ -14867,20 +14867,20 @@
     ]
   },
   "packageFolders": {
-    "/Users/wangyue/.nuget/packages/": {}
+    "/Users/zhaolei/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application/CAServer.Application.csproj",
+      "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application/CAServer.Application.csproj",
       "projectName": "CAServer.Application",
-      "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application/CAServer.Application.csproj",
-      "packagesPath": "/Users/wangyue/.nuget/packages/",
-      "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application/obj/",
+      "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application/CAServer.Application.csproj",
+      "packagesPath": "/Users/zhaolei/.nuget/packages/",
+      "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-        "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+        "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+        "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -14893,20 +14893,20 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain/CAServer.Domain.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Domain/CAServer.Domain.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain/CAServer.Domain.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Domain/CAServer.Domain.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi/CAServer.HttpApi.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi/CAServer.HttpApi.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.HttpApi/CAServer.HttpApi.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.HttpApi/CAServer.HttpApi.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/CAServer.Signature.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/CAServer.Signature.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Signature/CAServer.Signature.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Signature/CAServer.Signature.csproj"
             }
           }
         }

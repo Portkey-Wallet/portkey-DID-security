@@ -18819,20 +18819,20 @@
     ]
   },
   "packageFolders": {
-    "/Users/wangyue/.nuget/packages/": {}
+    "/Users/zhaolei/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.EntityEventHandler.Core.Tests/CAServer.EntityEventHandler.Core.Tests.csproj",
+      "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.EntityEventHandler.Core.Tests/CAServer.EntityEventHandler.Core.Tests.csproj",
       "projectName": "CAServer.EntityEventHandler.Core.Tests",
-      "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.EntityEventHandler.Core.Tests/CAServer.EntityEventHandler.Core.Tests.csproj",
-      "packagesPath": "/Users/wangyue/.nuget/packages/",
-      "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.EntityEventHandler.Core.Tests/obj/",
+      "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.EntityEventHandler.Core.Tests/CAServer.EntityEventHandler.Core.Tests.csproj",
+      "packagesPath": "/Users/zhaolei/.nuget/packages/",
+      "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.EntityEventHandler.Core.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-        "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+        "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+        "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -18845,17 +18845,17 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.EntityEventHandler.Core/CAServer.EntityEventHandler.Core.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.EntityEventHandler.Core/CAServer.EntityEventHandler.Core.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.EntityEventHandler.Core/CAServer.EntityEventHandler.Core.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.EntityEventHandler.Core/CAServer.EntityEventHandler.Core.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Domain.Tests/CAServer.Domain.Tests.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Orleans.TestBase/CAServer.Orleans.TestBase.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Orleans.TestBase/CAServer.Orleans.TestBase.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Orleans.TestBase/CAServer.Orleans.TestBase.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Orleans.TestBase/CAServer.Orleans.TestBase.csproj"
             },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.TestBase/CAServer.TestBase.csproj"
             }
           }
         }

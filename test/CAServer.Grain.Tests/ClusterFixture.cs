@@ -1,7 +1,6 @@
 using AElf;
 using AElf.Types;
 using AutoMapper;
-using CAServer.CoinGeckoApi;
 using CAServer.Grains;
 using CAServer.Grains.Grain.Account;
 using CAServer.Grains.Grain.ApplicationHandler;
@@ -69,7 +68,6 @@ public class ClusterFixture : IDisposable, ISingletonDependency
                     mockSignatureProvider.Setup(o => o.SignTxMsg(It.IsAny<string>(), It.IsAny<string>()))
                         .ReturnsAsync("123");
                     services.AddSingleton<ISignatureProvider>(mockSignatureProvider.Object);
-                    services.AddSingleton<IRequestLimitProvider, RequestLimitProvider>();
                     services.Configure<ChainOptions>(o =>
                     {
                         o.ChainInfos = new Dictionary<string, Grains.Grain.ApplicationHandler.ChainInfo>
@@ -109,13 +107,7 @@ public class ClusterFixture : IDisposable, ISingletonDependency
                         o.RetryDelay = 1;
                         o.RetryTimes = 1;
                     });
-                    services.Configure<CoinGeckoOptions>(o =>
-                    {
-                        o.CoinIdMapping = new Dictionary<string, string>
-                        {
-                            { "ELF", "aelf" }
-                        };
-                    });
+          
                     services.Configure<CAAccountOption>(o =>
                     {
                         o.CAAccountRequestInfoMaxLength = 100;

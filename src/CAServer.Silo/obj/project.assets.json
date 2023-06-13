@@ -230,18 +230,6 @@
           }
         }
       },
-      "CoinGeckoAsyncApi/1.6.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/CoinGecko.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/CoinGecko.dll": {}
-        }
-      },
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -5331,23 +5319,6 @@
           "bin/placeholder/CAServer.Application.Contracts.dll": {}
         }
       },
-      "CAServer.CoinGeckoApi/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "CAServer.Grains": "1.0.0",
-          "CoinGeckoAsyncApi": "1.6.0",
-          "Microsoft.Extensions.Http": "7.0.0",
-          "Volo.Abp.Caching": "7.0.0",
-          "Volo.Abp.Core": "7.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CAServer.CoinGeckoApi.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CAServer.CoinGeckoApi.dll": {}
-        }
-      },
       "CAServer.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -5676,18 +5647,6 @@
         "lib/net6.0/Castle.Core.AsyncInterceptor.xml",
         "lib/netstandard2.0/Castle.Core.AsyncInterceptor.dll",
         "lib/netstandard2.0/Castle.Core.AsyncInterceptor.xml"
-      ]
-    },
-    "CoinGeckoAsyncApi/1.6.0": {
-      "sha512": "F6fuZcv60UQuOSnlouTWmwZp0igSPBmo6DukY7JmSkrK0j2LZ4G/Uobv9PYDmvFZ8KbAk848pucEjIethL0cIA==",
-      "type": "package",
-      "path": "coingeckoasyncapi/1.6.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "coingeckoasyncapi.1.6.0.nupkg.sha512",
-        "coingeckoasyncapi.nuspec",
-        "lib/netstandard2.0/CoinGecko.dll"
       ]
     },
     "DnsClient/1.6.1": {
@@ -13730,11 +13689,6 @@
       "path": "../CAServer.Application.Contracts/CAServer.Application.Contracts.csproj",
       "msbuildProject": "../CAServer.Application.Contracts/CAServer.Application.Contracts.csproj"
     },
-    "CAServer.CoinGeckoApi/1.0.0": {
-      "type": "project",
-      "path": "../CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj",
-      "msbuildProject": "../CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj"
-    },
     "CAServer.Domain/1.0.0": {
       "type": "project",
       "path": "../CAServer.Domain/CAServer.Domain.csproj",
@@ -13758,7 +13712,6 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "CAServer.CoinGeckoApi >= 1.0.0",
       "CAServer.Grains >= 1.0.0",
       "JsonNet.PrivateSettersContractResolvers >= 1.0.0",
       "Microsoft.Orleans.OrleansTelemetryConsumers.Linux >= 3.6.5",
@@ -13772,20 +13725,20 @@
     ]
   },
   "packageFolders": {
-    "/Users/wangyue/.nuget/packages/": {}
+    "/Users/zhaolei/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Silo/CAServer.Silo.csproj",
+      "projectUniqueName": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Silo/CAServer.Silo.csproj",
       "projectName": "CAServer.Silo",
-      "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Silo/CAServer.Silo.csproj",
-      "packagesPath": "/Users/wangyue/.nuget/packages/",
-      "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Silo/obj/",
+      "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Silo/CAServer.Silo.csproj",
+      "packagesPath": "/Users/zhaolei/.nuget/packages/",
+      "outputPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Silo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
-        "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+        "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/NuGet.Config",
+        "/Users/zhaolei/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -13798,11 +13751,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.CoinGeckoApi/CAServer.CoinGeckoApi.csproj"
-            },
-            "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj"
+            "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj": {
+              "projectPath": "/Users/zhaolei/Desktop/work/security-service/portkey-DID-security/src/CAServer.Grains/CAServer.Grains.csproj"
             }
           }
         }

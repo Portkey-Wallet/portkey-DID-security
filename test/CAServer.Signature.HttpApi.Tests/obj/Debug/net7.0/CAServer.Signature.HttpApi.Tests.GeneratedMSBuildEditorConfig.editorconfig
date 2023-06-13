@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CAServer.Signature.Test
-build_property.ProjectDir = /Users/wangyue/Desktop/didSecurity/portkey-DID-security/test/CAServer.Signature.HttpApi.Tests/
+build_property.ProjectDir = /Users/zhaolei/Desktop/work/security-service/portkey-DID-security/test/CAServer.Signature.HttpApi.Tests/
