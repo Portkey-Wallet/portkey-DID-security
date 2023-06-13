@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "asq7ErPZwI/91v7JwFITOESxK/XaYwiLmB7q7JizG+U=",
+  "Source": "CAServer.Signature.HttpApi.Host",
+  "BasePath": "_content/CAServer.Signature.HttpApi.Host",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

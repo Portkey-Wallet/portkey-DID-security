@@ -1,0 +1,17 @@
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/bin/Debug/net7.0/CAServer.MongoDB.deps.json
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/bin/Debug/net7.0/CAServer.MongoDB.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/bin/Debug/net7.0/CAServer.MongoDB.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/bin/Debug/net7.0/CAServer.Domain.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/bin/Debug/net7.0/CAServer.Domain.Shared.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/bin/Debug/net7.0/CAServer.Domain.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/bin/Debug/net7.0/CAServer.Domain.Shared.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.csproj.AssemblyReference.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.GeneratedMSBuildEditorConfig.editorconfig
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.AssemblyInfoInputs.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.AssemblyInfo.cs
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.csproj.CoreCompileInputs.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.csproj.CopyComplete
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/refint/CAServer.MongoDB.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/CAServer.MongoDB.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.MongoDB/obj/Debug/net7.0/ref/CAServer.MongoDB.dll

@@ -1,0 +1,12 @@
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/bin/Debug/net7.0/CAServer.Signature.deps.json
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/bin/Debug/net7.0/CAServer.Signature.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/bin/Debug/net7.0/CAServer.Signature.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/CAServer.Signature.csproj.AssemblyReference.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/CAServer.Signature.GeneratedMSBuildEditorConfig.editorconfig
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/CAServer.Signature.AssemblyInfoInputs.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/CAServer.Signature.AssemblyInfo.cs
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/CAServer.Signature.csproj.CoreCompileInputs.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/CAServer.Signature.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/refint/CAServer.Signature.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/CAServer.Signature.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature/obj/Debug/net7.0/ref/CAServer.Signature.dll

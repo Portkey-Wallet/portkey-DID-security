@@ -1,0 +1,17 @@
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/bin/Debug/net7.0/CAServer.HttpApi.Client.deps.json
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/bin/Debug/net7.0/CAServer.HttpApi.Client.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/bin/Debug/net7.0/CAServer.HttpApi.Client.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/bin/Debug/net7.0/CAServer.Application.Contracts.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/bin/Debug/net7.0/CAServer.Domain.Shared.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/bin/Debug/net7.0/CAServer.Application.Contracts.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/bin/Debug/net7.0/CAServer.Domain.Shared.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.csproj.AssemblyReference.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.GeneratedMSBuildEditorConfig.editorconfig
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.AssemblyInfoInputs.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.AssemblyInfo.cs
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.csproj.CoreCompileInputs.cache
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.csproj.CopyComplete
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/refint/CAServer.HttpApi.Client.dll
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/CAServer.HttpApi.Client.pdb
+/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.HttpApi.Client/obj/Debug/net7.0/ref/CAServer.HttpApi.Client.dll

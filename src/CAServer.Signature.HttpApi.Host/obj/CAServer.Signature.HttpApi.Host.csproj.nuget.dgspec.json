@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi.Host/CAServer.Signature.HttpApi.Host.csproj": {}
+  },
+  "projects": {
+    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi.Host/CAServer.Signature.HttpApi.Host.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi.Host/CAServer.Signature.HttpApi.Host.csproj",
+        "projectName": "CAServer.Signature.HttpApi.Host",
+        "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi.Host/CAServer.Signature.HttpApi.Host.csproj",
+        "packagesPath": "/Users/wangyue/.nuget/packages/",
+        "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi.Host/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
+          "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/blazorise/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi/CAServer.Signature.HttpApi.csproj": {
+                "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi/CAServer.Signature.HttpApi.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.AspNetCore.DataProtection.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Serilog.Sinks.Async": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "Serilog.Sinks.RollingFile": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Volo.Abp.AspNetCore.Serilog": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Volo.Abp.Autofac": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Volo.Abp.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Volo.Abp.DistributedLocking": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Volo.Abp.Swashbuckle": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi/CAServer.Signature.HttpApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi/CAServer.Signature.HttpApi.csproj",
+        "projectName": "CAServer.Signature.HttpApi",
+        "projectPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi/CAServer.Signature.HttpApi.csproj",
+        "packagesPath": "/Users/wangyue/.nuget/packages/",
+        "outputPath": "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/src/CAServer.Signature.HttpApi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/wangyue/Desktop/didSecurity/portkey-DID-security/NuGet.Config",
+          "/Users/wangyue/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/blazorise/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AElf.Cryptography": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Volo.Abp.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Volo.Abp.AutoMapper": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
