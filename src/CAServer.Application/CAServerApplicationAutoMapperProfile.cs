@@ -4,12 +4,10 @@ using CAServer.CAAccount.Dtos;
 using CAServer.CAActivity.Dto;
 using CAServer.CAActivity.Dtos;
 using CAServer.CAActivity.Provider;
-using CAServer.Chain;
 using CAServer.Commons;
 using CAServer.Contacts;
 using CAServer.Entities.Es;
 using CAServer.Etos;
-using CAServer.Etos.Chain;
 using CAServer.Guardian;
 using CAServer.UserAssets.Dtos;
 using CAServer.UserAssets.Provider;
@@ -37,8 +35,7 @@ public class CAServerApplicationAutoMapperProfile : Profile
         CreateMap<Entities.Es.ContactAddress, ContactAddressDto>().ReverseMap();
 
         CreateMap<VerificationSignatureRequestDto, VierifierCodeRequestInput>();
-
-        CreateMap<ChainDto, ChainUpdateEto>();
+        
         // user assets
         CreateMap<IndexerTransactionFee, TransactionFee>();
         

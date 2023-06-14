@@ -77,6 +77,27 @@
     <Orleans_CodeGenInputs Remove="CAAccount\Etos\CAAccountRecoveryEto.cs" />
     <Orleans_CodeGenInputs Remove="CAAccount\ICAAccountAppService.cs" />
     <Orleans_CodeGenInputs Remove="CAAccount\INickNameAppService.cs" />
+    <Orleans_CodeGenInputs Remove="AccountValidator\EmailValidator.cs" />
+    <Orleans_CodeGenInputs Remove="AccountValidator\IAccountValidator.cs" />
+    <Orleans_CodeGenInputs Remove="AccountValidator\PhoneValidator.cs" />
+    <Orleans_CodeGenInputs Remove="Chain\Dtos\ChainDto.cs" />
+    <Orleans_CodeGenInputs Remove="Chain\Dtos\ChainResultDto.cs" />
+    <Orleans_CodeGenInputs Remove="Chain\Dtos\CreateUpdateChainDto.cs" />
+    <Orleans_CodeGenInputs Remove="Chain\Etos\ChainCreateEto.cs" />
+    <Orleans_CodeGenInputs Remove="Chain\Etos\ChainDeleteEto.cs" />
+    <Orleans_CodeGenInputs Remove="Chain\Etos\ChainUpdateEto.cs" />
+    <Orleans_CodeGenInputs Remove="Chain\IChainAppService.cs" />
+    <Orleans_CodeGenInputs Remove="Message\Dtos\ScanLoginDto.cs" />
+    <Orleans_CodeGenInputs Remove="Message\Etos\ScanLoginEto.cs" />
+    <Orleans_CodeGenInputs Remove="Message\IMessageAppService.cs" />
+    <Orleans_CodeGenInputs Remove="Message\MessageBase.cs" />
+    <Orleans_CodeGenInputs Remove="UserExtraInfo\Dtos\AddAppleUserExtraInfoDto.cs" />
+    <Orleans_CodeGenInputs Remove="UserExtraInfo\Dtos\AddAppleUserExtraInfoResultDto.cs" />
+    <Orleans_CodeGenInputs Remove="UserExtraInfo\Dtos\UserExtraInfoResultDto.cs" />
+    <Orleans_CodeGenInputs Remove="UserExtraInfo\IUserExtraInfoAppService.cs" />
+    <Orleans_CodeGenInputs Remove="ContractEventHandler\ContractServiceEto.cs" />
+    <Orleans_CodeGenInputs Remove="ContractEventHandler\CreateHolderEto.cs" />
+    <Orleans_CodeGenInputs Remove="ContractEventHandler\SocialRecoveryEto.cs" />
   </ItemGroup>
 
 </Project>

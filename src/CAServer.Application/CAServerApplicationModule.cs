@@ -1,9 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using CAServer.AccountValidator;
 using CAServer.Common;
 using CAServer.Grains;
 using CAServer.Options;
-using CAServer.Search;
 using CAServer.Signature;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,8 +35,6 @@ public class CAServerApplicationModule : AbpModule
         Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CAServerApplicationModule>(); });
         var configuration = context.Services.GetConfiguration();
         Configure<ChainOptions>(configuration.GetSection("Chains"));
-        context.Services.AddSingleton<IAccountValidator, EmailValidator>();
-        context.Services.AddSingleton<IAccountValidator, PhoneValidator>();
         Configure<ContractOptions>(configuration.GetSection("ContractOptions"));
         context.Services.AddHttpClient();
         context.Services.AddScoped<JwtSecurityTokenHandler>();
