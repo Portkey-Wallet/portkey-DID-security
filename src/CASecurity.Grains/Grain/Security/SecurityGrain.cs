@@ -5,8 +5,7 @@ using Orleans.Providers;
 namespace CASecurity.Grains.Grain;
 
 [StorageProvider(ProviderName = "Default")]
-public class SecurityGrain : Grain<SecurityState>,
-    ISecurityGrain
+public class SecurityGrain : Grain<SecurityState>, ISecurityGrain
 {
     public override async Task OnActivateAsync()
     {
@@ -20,30 +19,19 @@ public class SecurityGrain : Grain<SecurityState>,
         await base.OnDeactivateAsync();
     }
 
-
-    public async Task<bool> IsUserIpInWhiteListAsync(string ip)
+    public Task<bool> IsUserIpInWhiteListAsync(string ip)
     {
-        var dic = State.IpWhiteListDic;
-        if (dic == null || dic.Count == 0)
+        if (State.ExpireTime == null)
         {
-            return false;
+            return Task.FromResult(false);
         }
 
-        var expireTime = dic[ip];
-        if (DateTime.Now <= expireTime)
-        {
-            return true;
-        }
-
-        dic.Remove(ip);
-        await WriteStateAsync();
-        return false;
+        return Task.FromResult(DateTime.UtcNow <= State.ExpireTime);
     }
 
     public async Task AddUserIpToWhiteListAsync(string userIp)
     {
-        State.IpWhiteListDic.Add(userIp,
-            DateTime.Now.Add(TimeSpan.FromDays(15)));
+        State.ExpireTime = DateTime.UtcNow.Add(TimeSpan.FromDays(15));
         await WriteStateAsync();
     }
 }
