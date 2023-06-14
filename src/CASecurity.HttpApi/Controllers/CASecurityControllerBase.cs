@@ -5,9 +5,9 @@ namespace CAServer.Controllers;
 
 /* Inherit your controllers from this class.
  */
-public abstract class CAServerController : AbpControllerBase
+public abstract class CASecurityControllerBase : AbpControllerBase
 {
-    protected CAServerController()
+    protected CASecurityControllerBase()
     {
         LocalizationResource = typeof(CAServerResource);
     }

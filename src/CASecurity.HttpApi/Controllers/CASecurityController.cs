@@ -12,11 +12,11 @@ namespace CAVerifierServer.Controllers;
 [Area("app")]
 [ControllerName("CASecurity")]
 [Route("api/app/security")]
-public class CASecurityController : CAServerController
+public class CaSecurityControllerBase : CASecurityControllerBase
 {
     private readonly ISecurityAppService _securityAppService;
 
-    public CASecurityController(ISecurityAppService securityAppService)
+    public CaSecurityControllerBase(ISecurityAppService securityAppService)
     {
         _securityAppService = securityAppService;
     }
