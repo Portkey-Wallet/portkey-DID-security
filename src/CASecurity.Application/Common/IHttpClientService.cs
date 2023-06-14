@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace CAServer.Common;
+namespace CASecurity.Common;
 
 public interface IHttpClientService
 {

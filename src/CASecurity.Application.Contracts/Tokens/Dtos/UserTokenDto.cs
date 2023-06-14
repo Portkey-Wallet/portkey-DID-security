@@ -1,6 +1,6 @@
 using System;
 
-namespace CAServer.Tokens.Dtos;
+namespace CASecurity.Tokens.Dtos;
 
 public class UserTokenDto
 {

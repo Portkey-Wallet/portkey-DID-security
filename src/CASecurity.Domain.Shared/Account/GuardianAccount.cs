@@ -1,4 +1,4 @@
-namespace CAServer.Account;
+namespace CASecurity.Account;
 
 public class GuardianAccount
 {

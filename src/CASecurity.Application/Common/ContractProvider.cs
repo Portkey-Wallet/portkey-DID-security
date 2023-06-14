@@ -4,9 +4,9 @@ using AElf.Client.Dto;
 using AElf.Contracts.MultiToken;
 using AElf.Client.Service;
 using AElf.Types;
-using CAServer.Commons;
-using CAServer.Options;
-using CAServer.Signature;
+using CASecurity.Commons;
+using CASecurity.Options;
+using CASecurity.Signature;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Logging;
@@ -15,7 +15,7 @@ using Portkey.Contracts.CA;
 using Portkey.Contracts.TokenClaim;
 using Volo.Abp.DependencyInjection;
 
-namespace CAServer.Common;
+namespace CASecurity.Common;
 
 public interface IContractProvider
 {

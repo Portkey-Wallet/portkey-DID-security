@@ -1,4 +1,4 @@
-namespace CAServer.Options;
+namespace CASecurity.Options;
 
 public class DeviceOptions
 {

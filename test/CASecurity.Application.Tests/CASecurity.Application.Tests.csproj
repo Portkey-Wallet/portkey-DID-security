@@ -4,16 +4,16 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>CAServer</RootNamespace>
+    <RootNamespace>CASecurity</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CASecurity.Application.Contracts\CASecurity.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\src\CASecurity.Application\CASecurity.Application.csproj" />
-<!--    <ProjectReference Include="..\..\src\CAServer.EntityEventHandler\CAServer.EntityEventHandler.csproj" />-->
+<!--    <ProjectReference Include="..\..\src\CASecurity.EntityEventHandler\CASecurity.EntityEventHandler.csproj" />-->
     <ProjectReference Include="..\CASecurity.Domain.Tests\CASecurity.Domain.Tests.csproj" />
     <ProjectReference Include="..\CASecurity.Grain.Tests\CASecurity.Grain.Tests.csproj" />
-<!--    <ProjectReference Include="..\CAServer.Orleans.TestBase\CAServer.Orleans.TestBase.csproj" />-->
+<!--    <ProjectReference Include="..\CASecurity.Orleans.TestBase\CASecurity.Orleans.TestBase.csproj" />-->
   </ItemGroup>
 
   <ItemGroup>
@@ -33,17 +33,17 @@
   </ItemGroup>
 
 <!--  <ItemGroup>-->
-<!--    <Reference Include="CAServer.Domain">-->
-<!--      <HintPath>..\..\src\CAServer.Grains\bin\Debug\net7.0\CAServer.Domain.dll</HintPath>-->
+<!--    <Reference Include="CASecurity.Domain">-->
+<!--      <HintPath>..\..\src\CASecurity.Grains\bin\Debug\net7.0\CASecurity.Domain.dll</HintPath>-->
 <!--    </Reference>-->
-<!--    <Reference Include="CAServer.Grains">-->
-<!--      <HintPath>..\..\src\CAServer.Grains\bin\Debug\net7.0\CAServer.Grains.dll</HintPath>-->
+<!--    <Reference Include="CASecurity.Grains">-->
+<!--      <HintPath>..\..\src\CASecurity.Grains\bin\Debug\net7.0\CASecurity.Grains.dll</HintPath>-->
 <!--    </Reference>-->
 <!--  </ItemGroup>-->
 
 <!--  <ItemGroup>-->
-<!--    <Reference Include="CAServer.Application.Contracts">-->
-<!--      <HintPath>bin\Debug\net7.0\CAServer.Application.Contracts.dll</HintPath>-->
+<!--    <Reference Include="CASecurity.Application.Contracts">-->
+<!--      <HintPath>bin\Debug\net7.0\CASecurity.Application.Contracts.dll</HintPath>-->
 <!--    </Reference>-->
 <!--  </ItemGroup>-->
 

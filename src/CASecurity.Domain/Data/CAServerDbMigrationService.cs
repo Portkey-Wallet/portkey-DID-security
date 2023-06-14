@@ -13,20 +13,20 @@ using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.TenantManagement;
 
-namespace CAServer.Data;
+namespace CASecurity.Data;
 
-public class CAServerDbMigrationService : ITransientDependency
+public class CASecurityDbMigrationService : ITransientDependency
 {
-    public ILogger<CAServerDbMigrationService> Logger { get; set; }
+    public ILogger<CASecurityDbMigrationService> Logger { get; set; }
 
     private readonly IDataSeeder _dataSeeder;
-    private readonly IEnumerable<ICAServerDbSchemaMigrator> _dbSchemaMigrators;
+    private readonly IEnumerable<ICASecurityDbSchemaMigrator> _dbSchemaMigrators;
     private readonly ITenantRepository _tenantRepository;
     private readonly ICurrentTenant _currentTenant;
 
-    public CAServerDbMigrationService(
+    public CASecurityDbMigrationService(
         IDataSeeder dataSeeder,
-        IEnumerable<ICAServerDbSchemaMigrator> dbSchemaMigrators,
+        IEnumerable<ICASecurityDbSchemaMigrator> dbSchemaMigrators,
         ITenantRepository tenantRepository,
         ICurrentTenant currentTenant)
     {
@@ -35,7 +35,7 @@ public class CAServerDbMigrationService : ITransientDependency
         _tenantRepository = tenantRepository;
         _currentTenant = currentTenant;
 
-        Logger = NullLogger<CAServerDbMigrationService>.Instance;
+        Logger = NullLogger<CASecurityDbMigrationService>.Instance;
     }
 
     public async Task MigrateAsync()

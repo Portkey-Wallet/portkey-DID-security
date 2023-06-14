@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Org.BouncyCastle.Asn1.Crmf;
 
-namespace CAServer.UserAssets.Dtos;
+namespace CASecurity.UserAssets.Dtos;
 
 public class SearchUserAssetsDto
 {

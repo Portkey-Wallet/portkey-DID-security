@@ -1,16 +1,16 @@
-using CAServer.MongoDB;
+using CASecurity.MongoDB;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Modularity;
 
-namespace CAServer.DbMigrator;
+namespace CASecurity.DbMigrator;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(CAServerMongoDbModule),
-    typeof(CAServerApplicationContractsModule)
+    typeof(CASecurityMongoDbModule),
+    typeof(CASecurityApplicationContractsModule)
     )]
-public class CAServerDbMigratorModule : AbpModule
+public class CASecurityDbMigratorModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

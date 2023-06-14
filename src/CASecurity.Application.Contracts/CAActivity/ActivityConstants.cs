@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CAServer.CAActivity;
+namespace CASecurity.CAActivity;
 
 public static class ActivityConstants
 {

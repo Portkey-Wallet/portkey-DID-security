@@ -7,7 +7,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>CAServer.Signature</RootNamespace>
+        <RootNamespace>CASecurity.Signature</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

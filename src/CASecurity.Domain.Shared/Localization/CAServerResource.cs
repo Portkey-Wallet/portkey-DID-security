@@ -1,9 +1,9 @@
 ﻿using Volo.Abp.Localization;
 
-namespace CAServer.Localization;
+namespace CASecurity.Localization;
 
-[LocalizationResourceName("CAServer")]
-public class CAServerResource
+[LocalizationResourceName("CASecurity")]
+public class CASecurityResource
 {
 
 }

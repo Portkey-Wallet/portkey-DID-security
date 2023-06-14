@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CAServer.Dtos;
+namespace CASecurity.Dtos;
 
 public class VerifierServerResponse
 {

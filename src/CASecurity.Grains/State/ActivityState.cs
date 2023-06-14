@@ -1,6 +1,6 @@
-using CAServer.CAActivity.Dto;
+using CASecurity.CAActivity.Dto;
 
-namespace CAServer.Grains.State;
+namespace CASecurity.Grains.State;
 
 public class ActivityState
 {

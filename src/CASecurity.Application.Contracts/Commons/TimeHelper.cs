@@ -1,6 +1,6 @@
 using System;
 
-namespace CAServer.Commons;
+namespace CASecurity.Commons;
 
 public static class TimeHelper
 {

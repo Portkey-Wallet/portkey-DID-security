@@ -2,11 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <RootNamespace>CAServer.EntityEventHandler.Core</RootNamespace>
+        <RootNamespace>CASecurity.EntityEventHandler.Core</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-<!--        <ProjectReference Include="..\CAServer.Application.Contracts\CAServer.Application.Contracts.csproj" />-->
+<!--        <ProjectReference Include="..\CASecurity.Application.Contracts\CASecurity.Application.Contracts.csproj" />-->
         <ProjectReference Include="..\CASecurity.Application\CASecurity.Application.csproj" />
         <ProjectReference Include="..\CASecurity.Domain\CASecurity.Domain.csproj" />
     </ItemGroup>

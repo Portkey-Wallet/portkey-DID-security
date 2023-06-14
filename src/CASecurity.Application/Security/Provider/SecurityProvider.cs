@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AElf.Indexing.Elasticsearch;
-using CAServer.Entities.Es;
-using CAServer.UserAssets;
-using CAServer.UserAssets.Provider;
+using CASecurity.Entities.Es;
+using CASecurity.UserAssets;
+using CASecurity.UserAssets.Provider;
 using Nest;
 using Volo.Abp.DependencyInjection;
 
-namespace CAVerifierServer.Security.Provider;
+namespace CASecurity.Security.Provider;
 
 public interface ISecurityProvider
 {

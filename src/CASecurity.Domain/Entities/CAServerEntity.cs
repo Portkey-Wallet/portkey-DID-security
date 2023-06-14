@@ -1,20 +1,20 @@
 using System;
 using Volo.Abp.Domain.Entities;
 
-namespace CAServer.Entities;
+namespace CASecurity.Entities;
 
 [Serializable]
-public abstract class CAServerEntity <TKey> : Entity, IEntity<TKey>
+public abstract class CASecurityEntity <TKey> : Entity, IEntity<TKey>
 {
     /// <inheritdoc/>
     public virtual TKey Id { get; set; }
 
-    protected CAServerEntity()
+    protected CASecurityEntity()
     {
 
     }
 
-    protected CAServerEntity(TKey id)
+    protected CASecurityEntity(TKey id)
     {
         Id = id;
     }

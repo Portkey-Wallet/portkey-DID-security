@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 
-namespace CAServer.EntityEventHandler
+namespace CASecurity.EntityEventHandler
 {
     public class Program
     {
@@ -56,7 +56,7 @@ namespace CAServer.EntityEventHandler
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddApplication<CAServerEntityEventHandlerModule>();
+                    services.AddApplication<CASecurityEntityEventHandlerModule>();
                 })
                 .UseAutofac()
                 .UseSerilog();

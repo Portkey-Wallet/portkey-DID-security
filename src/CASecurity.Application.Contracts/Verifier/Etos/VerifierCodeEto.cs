@@ -1,6 +1,6 @@
 using System;
 using Volo.Abp.EventBus;
-namespace CAServer.Verifier.Etos;
+namespace CASecurity.Verifier.Etos;
 
 [EventName("VerifierCodeEto")]
 public  class VerifierCodeEto

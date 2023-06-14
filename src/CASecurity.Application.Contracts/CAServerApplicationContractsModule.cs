@@ -7,10 +7,10 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerDomainSharedModule),
+    typeof(CASecurityDomainSharedModule),
     typeof(AbpAccountApplicationContractsModule),
     typeof(AbpFeatureManagementApplicationContractsModule),
     typeof(AbpIdentityApplicationContractsModule),
@@ -19,10 +19,10 @@ namespace CAServer;
     typeof(AbpTenantManagementApplicationContractsModule),
     typeof(AbpObjectExtendingModule)
 )]
-public class CAServerApplicationContractsModule : AbpModule
+public class CASecurityApplicationContractsModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
-        CAServerDtoExtensions.Configure();
+        CASecurityDtoExtensions.Configure();
     }
 }

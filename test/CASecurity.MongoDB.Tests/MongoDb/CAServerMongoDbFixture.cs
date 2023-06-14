@@ -1,14 +1,14 @@
 using System;
 using Mongo2Go;
 
-namespace CAServer.MongoDB;
+namespace CASecurity.MongoDB;
 
-public class CAServerMongoDbFixture : IDisposable
+public class CASecurityMongoDbFixture : IDisposable
 {
     // private static readonly MongoDbRunner MongoDbRunner;
     // public static readonly string ConnectionString;
     //
-    // static CAServerMongoDbFixture()
+    // static CASecurityMongoDbFixture()
     // {
     //     MongoDbRunner = MongoDbRunner.Start(singleNodeReplSet: true, singleNodeReplSetWaitTimeout: 10);
     //     ConnectionString = MongoDbRunner.ConnectionString;

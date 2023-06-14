@@ -1,10 +1,10 @@
 ﻿using Volo.Abp.Data;
 using Volo.Abp.MongoDB;
 
-namespace CAServer.MongoDB;
+namespace CASecurity.MongoDB;
 
 [ConnectionStringName("Default")]
-public class CAServerMongoDbContext : AbpMongoDbContext
+public class CASecurityMongoDbContext : AbpMongoDbContext
 {
     /* Add mongo collections here. Example:
      * public IMongoCollection<Question> Questions => Collection<Question>();
@@ -19,11 +19,11 @@ public class CAServerMongoDbContext : AbpMongoDbContext
 
         // modelBuilder.Entity<Token>(t =>
         // {
-        //     t.CollectionName = CAServerConsts.DbTablePrefix + "Token" + CAServerConsts.DbSchema;
+        //     t.CollectionName = CASecurityConsts.DbTablePrefix + "Token" + CASecurityConsts.DbSchema;
         // });
         // modelBuilder.Entity<TokenPriceData>(t =>
         // {
-        //     t.CollectionName = CAServerConsts.DbTablePrefix + "TokenPrice" + CAServerConsts.DbSchema;
+        //     t.CollectionName = CASecurityConsts.DbTablePrefix + "TokenPrice" + CASecurityConsts.DbSchema;
         // });
         
     }

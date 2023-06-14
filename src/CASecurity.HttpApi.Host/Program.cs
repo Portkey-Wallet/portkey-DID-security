@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 
-namespace CAServer;
+namespace CASecurity;
 
 public class Program
 {
@@ -39,7 +39,7 @@ public class Program
                 .UseAutofac()
                 .UseSerilog();
             builder.Services.AddSignalR();
-            await builder.AddApplicationAsync<CAServerHttpApiHostModule>();
+            await builder.AddApplicationAsync<CASecurityHttpApiHostModule>();
             var app = builder.Build();
             await app.InitializeApplicationAsync();
             await app.RunAsync();

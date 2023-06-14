@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
-using CAServer.Grain.Tests;
+using CASecurity.Grain.Tests;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.EventBus;
 using Volo.Abp.Modularity;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerApplicationModule),
+    typeof(CASecurityApplicationModule),
     typeof(AbpEventBusModule),
-    typeof(CAServerGrainTestModule),
-    typeof(CAServerDomainTestModule)
+    typeof(CASecurityGrainTestModule),
+    typeof(CASecurityDomainTestModule)
 )]
-public class CAServerApplicationTestModule : AbpModule
+public class CASecurityApplicationTestModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
@@ -29,15 +29,15 @@ public class CAServerApplicationTestModule : AbpModule
 
         var configuration = builder.Build();
 
-        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CAServerApplicationModule>(); });
+        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CASecurityApplicationModule>(); });
 
         
-        context.Services.Configure<CAServer.Options.ChainOptions>(option =>
+        context.Services.Configure<CASecurity.Options.ChainOptions>(option =>
         {
-            option.ChainInfos = new Dictionary<string, CAServer.Options.ChainInfo>
+            option.ChainInfos = new Dictionary<string, CASecurity.Options.ChainInfo>
             {
                 {
-                    "TEST", new CAServer.Options.ChainInfo()
+                    "TEST", new CASecurity.Options.ChainInfo()
                     {
                         BaseUrl = "http://127.0.0.1:6889",
                         ChainId = "TEST",

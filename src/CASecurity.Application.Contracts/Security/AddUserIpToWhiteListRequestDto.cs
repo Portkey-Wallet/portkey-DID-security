@@ -1,6 +1,6 @@
 using System;
 
-namespace CAVerifierServer.IpWhiteList;
+namespace CASecurity.IpWhiteList;
 
 public class AddUserIpToWhiteListRequestDto
 {

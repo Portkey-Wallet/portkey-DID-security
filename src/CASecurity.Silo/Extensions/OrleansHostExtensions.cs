@@ -9,7 +9,7 @@ using Orleans.Hosting;
 using Orleans.Providers.MongoDB.Configuration;
 using Orleans.Statistics;
 
-namespace CAServer.Silo.Extensions;
+namespace CASecurity.Silo.Extensions;
 
 public static class OrleansHostExtensions
 {

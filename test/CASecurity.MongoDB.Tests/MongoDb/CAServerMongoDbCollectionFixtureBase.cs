@@ -1,9 +1,9 @@
-﻿using CAServer.MongoDB;
+﻿using CASecurity.MongoDB;
 using Xunit;
 
-namespace CAServer.MongoDB;
+namespace CASecurity.MongoDB;
 
-public class CAServerMongoDbCollectionFixtureBase : ICollectionFixture<CAServerMongoDbFixture>
+public class CASecurityMongoDbCollectionFixtureBase : ICollectionFixture<CASecurityMongoDbFixture>
 {
 
 }

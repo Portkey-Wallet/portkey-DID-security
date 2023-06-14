@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using CAVerifierServer.Account;
-using CAVerifierServer.IpWhiteList;
+using CASecurity.Account;
+using CASecurity.IpWhiteList;
 
-namespace CAVerifierServer;
+namespace CASecurity;
 
 public interface ISecurityAppService
 {

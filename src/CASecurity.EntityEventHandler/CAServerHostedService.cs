@@ -1,18 +1,18 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using CAServer.EntityEventHandler.Core;
+using CASecurity.EntityEventHandler.Core;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;
 
-namespace CAServer;
+namespace CASecurity;
 
-public class CAServerHostedService : IHostedService
+public class CASecurityHostedService : IHostedService
 {
     private readonly IAbpApplicationWithExternalServiceProvider _application;
     private readonly IServiceProvider _serviceProvider;
 
-    public CAServerHostedService(
+    public CASecurityHostedService(
         IAbpApplicationWithExternalServiceProvider application,
         IServiceProvider serviceProvider)
     {

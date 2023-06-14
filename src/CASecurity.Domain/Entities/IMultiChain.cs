@@ -1,4 +1,4 @@
-namespace CAServer.Entities;
+namespace CASecurity.Entities;
 
 public interface IMultiChain
 {

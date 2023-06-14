@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CAServer.CAActivity.Dtos;
+namespace CASecurity.CAActivity.Dtos;
 
 public class ActivityBase
 {

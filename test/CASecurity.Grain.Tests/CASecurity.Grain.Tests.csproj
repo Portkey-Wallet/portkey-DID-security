@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>CAServer.Grain.Tests</RootNamespace>
+        <RootNamespace>CASecurity.Grain.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -27,7 +27,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\CASecurity.Grains\CASecurity.Grains.csproj" />
         <ProjectReference Include="..\CASecurity.Domain.Tests\CASecurity.Domain.Tests.csproj" />
-<!--        <ProjectReference Include="..\CAServer.Orleans.TestBase\CAServer.Orleans.TestBase.csproj" />-->
+<!--        <ProjectReference Include="..\CASecurity.Orleans.TestBase\CASecurity.Orleans.TestBase.csproj" />-->
         <ProjectReference Include="..\CASecurity.TestBase\CASecurity.TestBase.csproj" />
     </ItemGroup>
 

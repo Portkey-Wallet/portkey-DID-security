@@ -1,4 +1,4 @@
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class VierifierCodeRequestInput
 {

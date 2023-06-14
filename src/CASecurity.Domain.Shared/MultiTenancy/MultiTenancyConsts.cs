@@ -1,4 +1,4 @@
-﻿namespace CAServer.MultiTenancy;
+﻿namespace CASecurity.MultiTenancy;
 
 public static class MultiTenancyConsts
 {

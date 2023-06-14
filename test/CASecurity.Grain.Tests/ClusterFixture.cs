@@ -1,6 +1,6 @@
 using AutoMapper;
-using CAServer.Grains;
-using CAServer.Signature;
+using CASecurity.Grains;
+using CASecurity.Signature;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +25,7 @@ using Volo.Abp.Reflection;
 using Volo.Abp.Threading;
 using Volo.Abp.Uow;
 
-namespace CAServer.Grain.Tests;
+namespace CASecurity.Grain.Tests;
 
 public class ClusterFixture : IDisposable, ISingletonDependency
 {
@@ -60,7 +60,7 @@ public class ClusterFixture : IDisposable, ISingletonDependency
 
                     services.AddMemoryCache();
                     services.AddDistributedMemoryCache();
-                    services.AddAutoMapper(typeof(CAServerGrainsModule).Assembly);
+                    services.AddAutoMapper(typeof(CASecurityGrainsModule).Assembly);
 
                     services.AddSingleton(typeof(DistributedCache<>));
                     services.AddSingleton(typeof(IDistributedCache<>), typeof(DistributedCache<>));
@@ -126,7 +126,7 @@ public class ClusterFixture : IDisposable, ISingletonDependency
                     });
                     services.AddTransient<IMapperAccessor>(provider => provider.GetRequiredService<MapperAccessor>());
                 })
-                .AddSimpleMessageStreamProvider(CAServerApplicationConsts.MessageStreamName)
+                .AddSimpleMessageStreamProvider(CASecurityApplicationConsts.MessageStreamName)
                 .AddMemoryGrainStorage("PubSubStore")
                 .AddMemoryGrainStorageAsDefault();
         }
@@ -659,6 +659,6 @@ public class ClusterFixture : IDisposable, ISingletonDependency
     private class TestClientBuilderConfigurator : IClientBuilderConfigurator
     {
         public void Configure(IConfiguration configuration, IClientBuilder clientBuilder) => clientBuilder
-            .AddSimpleMessageStreamProvider(CAServerApplicationConsts.MessageStreamName);
+            .AddSimpleMessageStreamProvider(CASecurityApplicationConsts.MessageStreamName);
     }
 }

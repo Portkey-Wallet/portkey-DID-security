@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CAServer.UserAssets.Provider;
+namespace CASecurity.UserAssets.Provider;
 
 public class IndexerTokenInfos
 {

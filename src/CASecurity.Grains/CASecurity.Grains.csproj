@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>CAServer.Grains</RootNamespace>
+        <RootNamespace>CASecurity.Grains</RootNamespace>
         <PackageId>CASecurity.Grains</PackageId>
     </PropertyGroup>
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class VerificationSignatureRequestDto : IValidatableObject
 {

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AElf.Types;
-using CAServer.Common;
-using CAServer.Options;
-using CAServer.UserAssets;
-using CAVerifierServer.Account;
-using CAVerifierServer.Grains.Grain;
-using CAVerifierServer.IpWhiteList;
-using CAVerifierServer.Security.Provider;
+using CASecurity.Common;
+using CASecurity.Options;
+using CASecurity.UserAssets;
+using CASecurity.Account;
+using CASecurity.Grains.Grain;
+using CASecurity.IpWhiteList;
+using CASecurity.Security.Provider;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using Orleans;
 using Volo.Abp.DependencyInjection;
 
-namespace CAVerifierServer.Security;
+namespace CASecurity.Security;
 
 public class SecurityAppService : ISecurityAppService, ISingletonDependency
 {

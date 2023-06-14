@@ -6,7 +6,7 @@ using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 using Volo.Abp.DependencyInjection;
 
-namespace CAServer.Common;
+namespace CASecurity.Common;
 
 public interface IGraphQLHelper
 {

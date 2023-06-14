@@ -7,15 +7,15 @@ using Volo.Abp.Data;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
     typeof(AbpAutofacModule),
     typeof(AbpTestBaseModule),
     typeof(AbpAuthorizationModule),
-    typeof(CAServerDomainModule)
+    typeof(CASecurityDomainModule)
 )]
-public class CAServerTestBaseModule : AbpModule
+public class CASecurityTestBaseModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {

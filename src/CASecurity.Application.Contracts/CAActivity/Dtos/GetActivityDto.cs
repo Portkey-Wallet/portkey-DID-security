@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using CAServer.CAActivity.Dtos;
+using CASecurity.CAActivity.Dtos;
 
-namespace CAServer.CAActivity.Dto;
+namespace CASecurity.CAActivity.Dto;
 
 public class GetActivitiesDto
 {

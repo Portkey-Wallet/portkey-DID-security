@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using CAServer.Commons;
+using CASecurity.Commons;
 
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class VerifierServerInput : VerifierServerBase , IValidatableObject
 {

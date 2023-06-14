@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CAServer.Entities.Es;
-using CAServer.UserAssets.Dtos;
+using CASecurity.Entities.Es;
+using CASecurity.UserAssets.Dtos;
 
-namespace CAServer.UserAssets.Provider;
+namespace CASecurity.UserAssets.Provider;
 
 public interface IUserAssetsProvider
 {

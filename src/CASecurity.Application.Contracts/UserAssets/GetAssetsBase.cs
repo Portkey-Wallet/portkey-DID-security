@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Volo.Abp.Application.Dtos;
 
-namespace CAServer.UserAssets;
+namespace CASecurity.UserAssets;
 
 public class GetAssetsBase : PagedResultRequestDto
 {

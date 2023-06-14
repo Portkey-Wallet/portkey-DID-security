@@ -1,4 +1,4 @@
-namespace CAServer.Signature;
+namespace CASecurity.Signature;
 
 public class SignatureServerOptions
 {

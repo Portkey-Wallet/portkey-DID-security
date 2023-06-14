@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace CAVerifierServer.IpWhiteList;
+namespace CASecurity.IpWhiteList;
 
 public class IpCheckResultDtos
 {

@@ -1,4 +1,4 @@
-namespace CAServer.Grains;
+namespace CASecurity.Grains;
 
 public static class GrainIdHelper
 {

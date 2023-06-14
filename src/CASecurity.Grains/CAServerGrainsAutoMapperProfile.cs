@@ -3,11 +3,11 @@ using AutoMapper;
 using Google.Protobuf.Collections;
 using Portkey.Contracts.CA;
 
-namespace CAServer.Grains;
+namespace CASecurity.Grains;
 
-public class CAServerGrainsAutoMapperProfile : Profile
+public class CASecurityGrainsAutoMapperProfile : Profile
 {
-    public CAServerGrainsAutoMapperProfile()
+    public CASecurityGrainsAutoMapperProfile()
     {
 
         CreateMap<GetHolderInfoOutput, ValidateCAHolderInfoWithManagerInfosExistsInput>()

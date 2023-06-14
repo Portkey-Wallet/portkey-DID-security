@@ -1,10 +1,10 @@
 using AutoMapper;
 
-namespace CAServer.EntityEventHandler.Core;
+namespace CASecurity.EntityEventHandler.Core;
 
-public class CAServerEventHandlerAutoMapperProfile : Profile
+public class CASecurityEventHandlerAutoMapperProfile : Profile
 {
-    public CAServerEventHandlerAutoMapperProfile()
+    public CASecurityEventHandlerAutoMapperProfile()
     {
         //CreateMap<GuardianEto, GuardianIndex>();
     }

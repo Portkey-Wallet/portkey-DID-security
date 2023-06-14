@@ -1,8 +1,8 @@
-using CAVerifierServer.Grains.State;
+using CASecurity.Grains.State;
 using Orleans;
 using Orleans.Providers;
 
-namespace CAVerifierServer.Grains.Grain;
+namespace CASecurity.Grains.Grain;
 
 [StorageProvider(ProviderName = "Default")]
 public class SecurityGrain : Grain<SecurityState>,

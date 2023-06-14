@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace CAServer.UserAssets;
+namespace CASecurity.UserAssets;
 
 public class SearchUserAssetsRequestDto : GetAssetsBase
 {

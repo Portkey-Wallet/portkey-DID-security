@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace CAServer.Controllers;
+namespace CASecurity.Controllers;
 
 public class HomeController : AbpController
 {

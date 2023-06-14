@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class VerificationCodeResponse
 {

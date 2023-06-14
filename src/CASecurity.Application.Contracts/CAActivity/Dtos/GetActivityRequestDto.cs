@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace CAServer.CAActivity.Dto;
+namespace CASecurity.CAActivity.Dto;
 
 public class GetActivityRequestDto : IValidatableObject
 {

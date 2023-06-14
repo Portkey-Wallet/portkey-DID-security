@@ -1,5 +1,5 @@
-﻿using CAServer.Grains;
-using CAServer.Signature;
+﻿using CASecurity.Grains;
+using CASecurity.Signature;
 using Microsoft.Extensions.DependencyInjection;
 using Orleans;
 using Volo.Abp.AutoMapper;
@@ -7,18 +7,18 @@ using Volo.Abp.Caching;
 using Volo.Abp.Modularity;
 using Volo.Abp.ObjectMapping;
 
-namespace CAServer.Grain.Tests;
+namespace CASecurity.Grain.Tests;
 
 [DependsOn(
-    typeof(CAServerGrainsModule),
-    typeof(CAServerDomainTestModule),
-    typeof(CAServerDomainModule),
+    typeof(CASecurityGrainsModule),
+    typeof(CASecurityDomainTestModule),
+    typeof(CASecurityDomainModule),
     typeof(AbpCachingModule),
     typeof(AbpAutoMapperModule),
     typeof(AbpObjectMappingModule),
-    typeof(CAServerSignatureModule)
+    typeof(CASecuritySignatureModule)
 )]
-public class CAServerGrainTestModule : AbpModule
+public class CASecurityGrainTestModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

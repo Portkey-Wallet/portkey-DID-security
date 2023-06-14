@@ -6,7 +6,7 @@ var configuration = Argument("configuration", "Debug");
 var rootPath     = "./";
 var srcPath      = rootPath + "src/";
 var testPath     = rootPath + "test/";
-var solution     = rootPath + "CAServer.sln";
+var solution     = rootPath + "CASecurity.sln";
 
 Task("Clean")
     .Description("clean up project cache")

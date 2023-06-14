@@ -1,6 +1,6 @@
 using Volo.Abp.Application.Dtos;
 
-namespace CAServer.Tokens.Dtos;
+namespace CASecurity.Tokens.Dtos;
 
 public class GetUserTokenListInput : PagedResultRequestDto
 {

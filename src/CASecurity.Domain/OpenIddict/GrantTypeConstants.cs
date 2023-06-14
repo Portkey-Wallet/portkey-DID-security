@@ -1,4 +1,4 @@
-﻿namespace CAServer.OpenIddict;
+﻿namespace CASecurity.OpenIddict;
 
 public class GrantTypeConstants
 {

@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace CAServer.Grain.Tests;
+namespace CASecurity.Grain.Tests;
 
 [CollectionDefinition(ClusterCollection.Name)]
 public class ClusterCollection:ICollectionFixture<ClusterFixture>

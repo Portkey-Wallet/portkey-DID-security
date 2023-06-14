@@ -1,6 +1,6 @@
-namespace CAServer.Entities;
+namespace CASecurity.Entities;
 
-public class MultiChainEntity<TKey> : CAServerEntity<TKey>, IMultiChain
+public class MultiChainEntity<TKey> : CASecurityEntity<TKey>, IMultiChain
 {
     public virtual int ChainId { get; set; }
 

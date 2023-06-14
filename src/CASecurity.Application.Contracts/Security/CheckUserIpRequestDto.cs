@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace CAVerifierServer.Account;
+namespace CASecurity.Account;
 
 public class CheckUserIpRequestDto
 {

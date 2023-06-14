@@ -2,27 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CAServer.CAActivity.Provider;
-using CAServer.Common;
-using CAServer.Entities.Es;
-using CAServer.Options;
-using CAServer.Tokens;
-using CAServer.UserAssets.Dtos;
-using CAServer.UserAssets.Provider;
+using CASecurity.CAActivity.Provider;
+using CASecurity.Common;
+using CASecurity.Entities.Es;
+using CASecurity.Options;
+using CASecurity.Tokens;
+using CASecurity.UserAssets.Dtos;
+using CASecurity.UserAssets.Provider;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Orleans.Runtime;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Users;
-using Token = CAServer.UserAssets.Dtos.Token;
-using TokenInfo = CAServer.UserAssets.Provider.TokenInfo;
+using Token = CASecurity.UserAssets.Dtos.Token;
+using TokenInfo = CASecurity.UserAssets.Provider.TokenInfo;
 
-namespace CAServer.UserAssets;
+namespace CASecurity.UserAssets;
 
 [RemoteService(false)]
 [DisableAuditing]
-public class UserAssetsAppService : CAServerAppService, IUserAssetsAppService
+public class UserAssetsAppService : CASecurityAppService, IUserAssetsAppService
 {
     private readonly IUserAssetsProvider _userAssetsProvider;
 

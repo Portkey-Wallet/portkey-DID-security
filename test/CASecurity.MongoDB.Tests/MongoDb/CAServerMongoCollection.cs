@@ -1,9 +1,9 @@
 ﻿using Xunit;
 
-namespace CAServer.MongoDB;
+namespace CASecurity.MongoDB;
 
-[CollectionDefinition(CAServerTestConsts.CollectionDefinitionName)]
-public class CAServerMongoCollection : CAServerMongoDbCollectionFixtureBase
+[CollectionDefinition(CASecurityTestConsts.CollectionDefinitionName)]
+public class CASecurityMongoCollection : CASecurityMongoDbCollectionFixtureBase
 {
 
 }

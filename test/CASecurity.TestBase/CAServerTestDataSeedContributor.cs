@@ -2,9 +2,9 @@
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace CAServer;
+namespace CASecurity;
 
-public class CAServerTestDataSeedContributor : IDataSeedContributor, ITransientDependency
+public class CASecurityTestDataSeedContributor : IDataSeedContributor, ITransientDependency
 {
     public Task SeedAsync(DataSeedContext context)
     {

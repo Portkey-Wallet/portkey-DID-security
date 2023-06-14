@@ -8,18 +8,18 @@ using Volo.Abp.Caching;
 using Volo.Abp.Modularity;
 using Volo.Abp.ObjectMapping;
 
-namespace CAServer.Orleans.TestBase;
+namespace CASecurity.Orleans.TestBase;
 
 [DependsOn(
     typeof(AbpAutofacModule),
     typeof(AbpTestBaseModule),
     typeof(AbpAuthorizationModule),
-    typeof(CAServerDomainModule),
+    typeof(CASecurityDomainModule),
     typeof(AbpCachingModule),
     typeof(AbpAutoMapperModule),
     typeof(AbpObjectMappingModule)
 )]
-public class CAServerOrleansTestBaseModule : AbpModule
+public class CASecurityOrleansTestBaseModule : AbpModule
 {
     private ClusterFixture _fixture;
 

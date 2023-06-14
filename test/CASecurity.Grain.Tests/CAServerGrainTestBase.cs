@@ -1,13 +1,13 @@
 using Orleans.TestingHost;
 using Volo.Abp.Caching;
 
-namespace CAServer.Grain.Tests;
+namespace CASecurity.Grain.Tests;
 
-public class CAServerGrainTestBase :CAServerTestBase<CAServerGrainTestModule>
+public class CASecurityGrainTestBase :CASecurityTestBase<CASecurityGrainTestModule>
 {
     protected readonly TestCluster Cluster;
 
-    public CAServerGrainTestBase()
+    public CASecurityGrainTestBase()
     {
         Cluster = GetRequiredService<ClusterFixture>().Cluster;
 

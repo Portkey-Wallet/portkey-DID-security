@@ -2,9 +2,9 @@ using System;
 using AElf.Indexing.Elasticsearch;
 using Nest;
 
-namespace CAServer.Entities.Es;
+namespace CASecurity.Entities.Es;
 
-public class UserTokenIndex : CAServerEntity<Guid>, IIndexBuild
+public class UserTokenIndex : CASecurityEntity<Guid>, IIndexBuild
 {
     [Keyword] public Guid UserId { get; set; }
     [Keyword] public bool IsDisplay { get; set; }

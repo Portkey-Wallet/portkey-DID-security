@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CAServer.Localization;
+using CASecurity.Localization;
 using Volo.Abp.Application.Services;
 
-namespace CAServer;
+namespace CASecurity;
 
 /* Inherit your application services from this class.
  */
-public abstract class CAServerAppService : ApplicationService
+public abstract class CASecurityAppService : ApplicationService
 {
-    protected CAServerAppService()
+    protected CASecurityAppService()
     {
-        LocalizationResource = typeof(CAServerResource);
+        LocalizationResource = typeof(CASecurityResource);
     }
 }

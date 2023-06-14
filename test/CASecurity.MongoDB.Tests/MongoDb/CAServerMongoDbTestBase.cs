@@ -1,6 +1,6 @@
-﻿namespace CAServer.MongoDB;
+﻿namespace CASecurity.MongoDB;
 
-public abstract class CAServerMongoDbTestBase : CAServerTestBase<CAServerMongoDbTestModule>
+public abstract class CASecurityMongoDbTestBase : CASecurityTestBase<CASecurityMongoDbTestModule>
 {
 
 }

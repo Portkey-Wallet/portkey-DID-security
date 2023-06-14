@@ -1,7 +1,7 @@
 using AElf.Indexing.Elasticsearch.Options;
-using CAServer.EntityEventHandler.Core;
-using CAServer.Grains;
-using CAServer.MongoDB;
+using CASecurity.EntityEventHandler.Core;
+using CASecurity.Grains;
+using CASecurity.MongoDB;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Orleans;
@@ -15,22 +15,22 @@ using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict.Tokens;
 using Volo.Abp.Threading;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(typeof(AbpAutofacModule),
-    typeof(CAServerMongoDbModule),
+    typeof(CASecurityMongoDbModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(CAServerEntityEventHandlerCoreModule),
+    typeof(CASecurityEntityEventHandlerCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpEventBusRabbitMqModule))]
-public class CAServerEntityEventHandlerModule : AbpModule
+public class CASecurityEntityEventHandlerModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();
         ConfigureTokenCleanupService();
         //ConfigureEsIndexCreation();
-        context.Services.AddHostedService<CAServerHostedService>();
+        context.Services.AddHostedService<CASecurityHostedService>();
 
         context.Services.AddSingleton<IClusterClient>(o =>
         {
@@ -48,7 +48,7 @@ public class CAServerEntityEventHandlerModule : AbpModule
                     options.ServiceId = configuration["Orleans:ServiceId"];
                 })
                 .ConfigureApplicationParts(parts =>
-                    parts.AddApplicationPart(typeof(CAServerGrainsModule).Assembly).WithReferences())
+                    parts.AddApplicationPart(typeof(CASecurityGrainsModule).Assembly).WithReferences())
                 //.AddSimpleMessageStreamProvider(AElfIndexerApplicationConsts.MessageStreamName)
                 .ConfigureLogging(builder => builder.AddProvider(o.GetService<ILoggerProvider>()))
                 .Build();
@@ -70,7 +70,7 @@ public class CAServerEntityEventHandlerModule : AbpModule
     //Create the ElasticSearch Index based on Domain Entity
     private void ConfigureEsIndexCreation()
     {
-        Configure<IndexCreateOption>(x => { x.AddModule(typeof(CAServerDomainModule)); });
+        Configure<IndexCreateOption>(x => { x.AddModule(typeof(CASecurityDomainModule)); });
     }
     
     // TODO Temporary Needed fixed later.

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CAServer.Tokens.Dtos;
+using CASecurity.Tokens.Dtos;
 using Volo.Abp.Application.Dtos;
 
-namespace CAServer.Tokens;
+namespace CASecurity.Tokens;
 
 public interface ITokenAppService
 {

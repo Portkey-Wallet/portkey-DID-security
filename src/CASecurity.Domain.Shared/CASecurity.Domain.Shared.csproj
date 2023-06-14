@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>CAServer</RootNamespace>
+    <RootNamespace>CASecurity</RootNamespace>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\CAServer\*.json" />
-    <Content Remove="Localization\CAServer\*.json" />
+    <EmbeddedResource Include="Localization\CASecurity\*.json" />
+    <Content Remove="Localization\CASecurity\*.json" />
   </ItemGroup>
 
   <ItemGroup>

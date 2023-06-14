@@ -8,10 +8,10 @@ using Volo.Abp.TenantManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.VirtualFileSystem;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerApplicationContractsModule),
+    typeof(CASecurityApplicationContractsModule),
     typeof(AbpAccountHttpApiClientModule),
     typeof(AbpIdentityHttpApiClientModule),
     typeof(AbpPermissionManagementHttpApiClientModule),
@@ -19,20 +19,20 @@ namespace CAServer;
     typeof(AbpFeatureManagementHttpApiClientModule),
     typeof(AbpSettingManagementHttpApiClientModule)
 )]
-public class CAServerHttpApiClientModule : AbpModule
+public class CASecurityHttpApiClientModule : AbpModule
 {
     public const string RemoteServiceName = "Default";
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services.AddHttpClientProxies(
-            typeof(CAServerApplicationContractsModule).Assembly,
+            typeof(CASecurityApplicationContractsModule).Assembly,
             RemoteServiceName
         );
 
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
-            options.FileSets.AddEmbedded<CAServerHttpApiClientModule>();
+            options.FileSets.AddEmbedded<CASecurityHttpApiClientModule>();
         });
     }
 }

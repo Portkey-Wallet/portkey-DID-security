@@ -2,18 +2,18 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using CAServer.Data;
+using CASecurity.Data;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.MongoDB;
 
-namespace CAServer.MongoDB;
+namespace CASecurity.MongoDB;
 
-public class MongoDbCAServerDbSchemaMigrator : ICAServerDbSchemaMigrator, ITransientDependency
+public class MongoDbCASecurityDbSchemaMigrator : ICASecurityDbSchemaMigrator, ITransientDependency
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public MongoDbCAServerDbSchemaMigrator(IServiceProvider serviceProvider)
+    public MongoDbCASecurityDbSchemaMigrator(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }

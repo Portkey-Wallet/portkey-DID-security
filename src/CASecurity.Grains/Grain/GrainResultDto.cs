@@ -1,4 +1,4 @@
-namespace CAServer.Grains.Grain;
+namespace CASecurity.Grains.Grain;
 
 public class GrainResultDto<T> : GrainResultDto
 {

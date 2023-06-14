@@ -1,8 +1,8 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using CAServer.Common;
-using CAServer.Grains;
-using CAServer.Options;
-using CAServer.Signature;
+using CASecurity.Common;
+using CASecurity.Grains;
+using CASecurity.Options;
+using CASecurity.Signature;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
@@ -14,25 +14,25 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerDomainModule),
+    typeof(CASecurityDomainModule),
     typeof(AbpAccountApplicationModule),
-    typeof(CAServerApplicationContractsModule),
+    typeof(CASecurityApplicationContractsModule),
     typeof(AbpIdentityApplicationModule),
     typeof(AbpPermissionManagementApplicationModule),
     typeof(AbpTenantManagementApplicationModule),
     typeof(AbpFeatureManagementApplicationModule),
     typeof(AbpSettingManagementApplicationModule),
-    typeof(CAServerGrainsModule),
-    typeof(CAServerSignatureModule)
+    typeof(CASecurityGrainsModule),
+    typeof(CASecuritySignatureModule)
 )]
-public class CAServerApplicationModule : AbpModule
+public class CASecurityApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CAServerApplicationModule>(); });
+        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CASecurityApplicationModule>(); });
         var configuration = context.Services.GetConfiguration();
         Configure<ChainOptions>(configuration.GetSection("Chains"));
         Configure<ContractOptions>(configuration.GetSection("ContractOptions"));

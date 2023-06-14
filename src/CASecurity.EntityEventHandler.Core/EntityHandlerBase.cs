@@ -1,7 +1,7 @@
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.ObjectMapping;
 
-namespace CAServer.EntityEventHandler.Core;
+namespace CASecurity.EntityEventHandler.Core;
 
 public class EntityHandlerBase : ITransientDependency
 {

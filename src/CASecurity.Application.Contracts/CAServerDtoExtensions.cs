@@ -2,9 +2,9 @@
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
 
-namespace CAServer;
+namespace CASecurity;
 
-public static class CAServerDtoExtensions
+public static class CASecurityDtoExtensions
 {
     private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 

@@ -1,10 +1,10 @@
 using System;
 using System.IO;
 using System.Linq;
-using CAServer.Grains;
-using CAServer.MongoDB;
-using CAServer.MultiTenancy;
-using CAServer.Options;
+using CASecurity.Grains;
+using CASecurity.MongoDB;
+using CASecurity.MultiTenancy;
+using CASecurity.Options;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
@@ -38,20 +38,20 @@ using Volo.Abp.Swashbuckle;
 using Volo.Abp.Threading;
 using Volo.Abp.VirtualFileSystem;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerHttpApiModule),
+    typeof(CASecurityHttpApiModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpDistributedLockingModule),
     typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
-    typeof(CAServerApplicationModule),
-    typeof(CAServerMongoDbModule),
+    typeof(CASecurityApplicationModule),
+    typeof(CASecurityMongoDbModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
 )]
-public class CAServerHttpApiHostModule : AbpModule
+public class CASecurityHttpApiHostModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
@@ -86,16 +86,16 @@ public class CAServerHttpApiHostModule : AbpModule
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.ReplaceEmbeddedByPhysical<CAServerDomainSharedModule>(
+                options.FileSets.ReplaceEmbeddedByPhysical<CASecurityDomainSharedModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}CASecurity.Domain.Shared"));
-                options.FileSets.ReplaceEmbeddedByPhysical<CAServerDomainModule>(
+                options.FileSets.ReplaceEmbeddedByPhysical<CASecurityDomainModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}CASecurity.Domain"));
-                options.FileSets.ReplaceEmbeddedByPhysical<CAServerApplicationContractsModule>(
+                options.FileSets.ReplaceEmbeddedByPhysical<CASecurityApplicationContractsModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}CASecurity.Application.Contracts"));
-                options.FileSets.ReplaceEmbeddedByPhysical<CAServerApplicationModule>(
+                options.FileSets.ReplaceEmbeddedByPhysical<CASecurityApplicationModule>(
                     Path.Combine(hostingEnvironment.ContentRootPath,
                         $"..{Path.DirectorySeparatorChar}CASecurity.Application"));
             });
@@ -106,7 +106,7 @@ public class CAServerHttpApiHostModule : AbpModule
     {
         Configure<AbpAspNetCoreMvcOptions>(options =>
         {
-            options.ConventionalControllers.Create(typeof(CAServerApplicationModule).Assembly);
+            options.ConventionalControllers.Create(typeof(CASecurityApplicationModule).Assembly);
         });
     }
 
@@ -117,7 +117,7 @@ public class CAServerHttpApiHostModule : AbpModule
             {
                 options.Authority = configuration["AuthServer:Authority"];
                 options.RequireHttpsMetadata = Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);
-                options.Audience = "CAServer";
+                options.Audience = "CASecurity";
             });
     }
 
@@ -125,7 +125,7 @@ public class CAServerHttpApiHostModule : AbpModule
     {
         context.Services.AddAbpSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "CAServer API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "CASecurity API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
                 options.CustomSchemaIds(type => type.FullName);
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -169,7 +169,7 @@ public class CAServerHttpApiHostModule : AbpModule
                     options.ServiceId = configuration["Orleans:ServiceId"];
                 })
                 .ConfigureApplicationParts(parts =>
-                    parts.AddApplicationPart(typeof(CAServerGrainsModule).Assembly).WithReferences())
+                    parts.AddApplicationPart(typeof(CASecurityGrainsModule).Assembly).WithReferences())
                 .ConfigureLogging(builder => builder.AddProvider(o.GetService<ILoggerProvider>()))
                 .Build();
         });
@@ -207,11 +207,11 @@ public class CAServerHttpApiHostModule : AbpModule
         IConfiguration configuration,
         IWebHostEnvironment hostingEnvironment)
     {
-        var dataProtectionBuilder = context.Services.AddDataProtection().SetApplicationName("CAServer");
+        var dataProtectionBuilder = context.Services.AddDataProtection().SetApplicationName("CASecurity");
         if (!hostingEnvironment.IsDevelopment())
         {
             var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-            dataProtectionBuilder.PersistKeysToStackExchangeRedis(redis, "CAServer-Protection-Keys");
+            dataProtectionBuilder.PersistKeysToStackExchangeRedis(redis, "CASecurity-Protection-Keys");
         }
     }
 
@@ -286,7 +286,7 @@ public class CAServerHttpApiHostModule : AbpModule
             app.UseSwagger();
             app.UseAbpSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "CAServer API");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "CASecurity API");
             });
         }
 

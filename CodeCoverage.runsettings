@@ -7,7 +7,7 @@
         <Configuration>
           <Format>cobertura</Format>
           <Exclude>[xunit.*]*,[*Tests]*</Exclude> <!-- [Assembly-Filter]Type-Filter -->
-          <ExcludeByFile>**/src/CAServer.Application.Contracts/Contracts/*.c.cs,**/src/CAServer.Application.Contracts/Contracts/*.g.cs,**/test/**/*.cs,**/src/CAServer.Application.Contracts/Permissions/**/*.cs,**/src/CAServer.DbMigrator/**/*.cs,**/src/CAServer.Domain/**/*.cs,**/src/CAServer.Domain.Shared/**/*.cs,**/src/CAServer.EntityEventHandler/**/*.cs,**/src/CAServer.EntityFrameworkCore/**/*.cs,**/src/CAServer.HttpApi.Host/**/*.cs,**/src/CAServer.HttpApi.Client/**/*.cs,**/src/CAServer.AuthServer/**/*.cs,**/src/CAServer.MongoDB/**/*.cs,**/src/CAServer.HttpApi/Controllers/*.cs,**/src/CAServer.HttpApi/Hubs/*.cs,**/src/CAServer.HttpApi/HubsEventHandler/*.cs,**/src/CAServer.CoinGeckoApi/**/*.cs</ExcludeByFile>
+          <ExcludeByFile>**/src/CASecurity.Application.Contracts/Contracts/*.c.cs,**/src/CASecurity.Application.Contracts/Contracts/*.g.cs,**/test/**/*.cs,**/src/CASecurity.Application.Contracts/Permissions/**/*.cs,**/src/CASecurity.DbMigrator/**/*.cs,**/src/CASecurity.Domain/**/*.cs,**/src/CASecurity.Domain.Shared/**/*.cs,**/src/CASecurity.EntityEventHandler/**/*.cs,**/src/CASecurity.EntityFrameworkCore/**/*.cs,**/src/CASecurity.HttpApi.Host/**/*.cs,**/src/CASecurity.HttpApi.Client/**/*.cs,**/src/CASecurity.AuthServer/**/*.cs,**/src/CASecurity.MongoDB/**/*.cs,**/src/CASecurity.HttpApi/Controllers/*.cs,</ExcludeByFile>
           <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute</ExcludeByAttribute>
           <SingleHit>false</SingleHit>
         </Configuration>

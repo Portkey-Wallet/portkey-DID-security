@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using CAServer.UserAssets;
+using CASecurity.UserAssets;
 using Volo.Abp.Application.Dtos;
 
-namespace CAServer.CAActivity.Dtos;
+namespace CASecurity.CAActivity.Dtos;
 
 public class GetTwoCaTransactionRequestDto : PagedResultRequestDto
 {

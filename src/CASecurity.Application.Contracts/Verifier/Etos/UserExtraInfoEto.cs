@@ -1,7 +1,7 @@
 using System;
 using Volo.Abp.EventBus;
 
-namespace CAServer.Verifier.Etos;
+namespace CASecurity.Verifier.Etos;
 
 [EventName("UserExtraInfoEto")]
 public class UserExtraInfoEto

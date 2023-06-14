@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CAServer.UserAssets;
+namespace CASecurity.UserAssets;
 
 public class GetNftItemsRequestDto : GetAssetsBase
 {

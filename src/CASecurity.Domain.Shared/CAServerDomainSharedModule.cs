@@ -1,4 +1,4 @@
-﻿using CAServer.Localization;
+﻿using CASecurity.Localization;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -13,7 +13,7 @@ using Volo.Abp.TenantManagement;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
     typeof(AbpAuditLoggingDomainSharedModule),
@@ -25,34 +25,34 @@ namespace CAServer;
     typeof(AbpSettingManagementDomainSharedModule),
     typeof(AbpTenantManagementDomainSharedModule)    
     )]
-public class CAServerDomainSharedModule : AbpModule
+public class CASecurityDomainSharedModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
-        CAServerGlobalFeatureConfigurator.Configure();
-        CAServerModuleExtensionConfigurator.Configure();
+        CASecurityGlobalFeatureConfigurator.Configure();
+        CASecurityModuleExtensionConfigurator.Configure();
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
-            options.FileSets.AddEmbedded<CAServerDomainSharedModule>();
+            options.FileSets.AddEmbedded<CASecurityDomainSharedModule>();
         });
 
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Resources
-                .Add<CAServerResource>("en")
+                .Add<CASecurityResource>("en")
                 .AddBaseTypes(typeof(AbpValidationResource))
-                .AddVirtualJson("/Localization/CAServer");
+                .AddVirtualJson("/Localization/CASecurity");
 
-            options.DefaultResourceType = typeof(CAServerResource);
+            options.DefaultResourceType = typeof(CASecurityResource);
         });
 
         Configure<AbpExceptionLocalizationOptions>(options =>
         {
-            options.MapCodeNamespace("CAServer", typeof(CAServerResource));
+            options.MapCodeNamespace("CASecurity", typeof(CASecurityResource));
         });
     }
 }

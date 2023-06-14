@@ -1,10 +1,10 @@
-using CAServer.MongoDB;
+using CASecurity.MongoDB;
 using Xunit;
 
-namespace CAServer;
+namespace CASecurity;
 
-[CollectionDefinition(CAServerTestConsts.CollectionDefinitionName)]
-public class CAServerDomainCollection
+[CollectionDefinition(CASecurityTestConsts.CollectionDefinitionName)]
+public class CASecurityDomainCollection
 {
 
 }

@@ -1,4 +1,4 @@
-namespace CAServer.CAAccount.Dtos;
+namespace CASecurity.CAAccount.Dtos;
 
 public enum GuardianIdentifierType
 {

@@ -1,6 +1,6 @@
 using System.Data;
 
-namespace CAVerifierServer.Grains.State;
+namespace CASecurity.Grains.State;
 
 public class SecurityState
 {

@@ -1,5 +1,5 @@
 using AutoMapper;
-using CAServer.Grains;
+using CASecurity.Grains;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Orleans.Hosting;
@@ -10,7 +10,7 @@ using Volo.Abp.DependencyInjection;
 using Volo.Abp.ObjectMapping;
 using Volo.Abp.Reflection;
 
-namespace CAServer.Orleans.TestBase;
+namespace CASecurity.Orleans.TestBase;
 
 public class ClusterFixture : IDisposable, ISingletonDependency
 {
@@ -41,7 +41,7 @@ public class ClusterFixture : IDisposable, ISingletonDependency
                     // services.AddSingleton<IRequestLimitProvider, RequestLimitProvider>();
                     services.AddMemoryCache();
                     services.AddDistributedMemoryCache();
-                    services.AddAutoMapper(typeof(CAServerGrainsModule).Assembly);
+                    services.AddAutoMapper(typeof(CASecurityGrainsModule).Assembly);
 
                     services.AddSingleton(typeof(IDistributedCache), typeof(MemoryDistributedCache));
                     // services.AddSingleton(typeof(IDistributedCache<>), typeof(MemoryDistributedCache<>));
@@ -100,7 +100,7 @@ public class ClusterFixture : IDisposable, ISingletonDependency
                     
                     // services.Configure<CoinGeckoOptions>(o => { o.CoinIdMapping["ELF"] = "aelf"; });
                 })
-                // .AddSimpleMessageStreamProvider(CAServerApplicationConsts.MessageStreamName)
+                // .AddSimpleMessageStreamProvider(CASecurityApplicationConsts.MessageStreamName)
                 .AddMemoryGrainStorage("PubSubStore")
                 .AddMemoryGrainStorageAsDefault();
         }
@@ -114,6 +114,6 @@ public class ClusterFixture : IDisposable, ISingletonDependency
     // private class TestClientBuilderConfigurator : IClientBuilderConfigurator
     // {
     //     public void Configure(IConfiguration configuration, IClientBuilder clientBuilder) => clientBuilder
-    //         .AddSimpleMessageStreamProvider(CAServerApplicationConsts.MessageStreamName);
+    //         .AddSimpleMessageStreamProvider(CASecurityApplicationConsts.MessageStreamName);
     // }
 }

@@ -1,4 +1,4 @@
-namespace CAServer.CAActivity.Dto;
+namespace CASecurity.CAActivity.Dto;
 
 public class TransactionType
 {

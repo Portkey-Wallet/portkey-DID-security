@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using CAServer.Dtos;
-using CAServer.Verifier.Dtos;
+using CASecurity.Dtos;
+using CASecurity.Verifier.Dtos;
 
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public interface IVerifierAppService
 {

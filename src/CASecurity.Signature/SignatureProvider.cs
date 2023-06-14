@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Volo.Abp.DependencyInjection;
 
-namespace CAServer.Signature;
+namespace CASecurity.Signature;
 
 public interface ISignatureProvider
 {

@@ -1,5 +1,5 @@
 ﻿using Localization.Resources.AbpUi;
-using CAServer.Localization;
+using CASecurity.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -10,10 +10,10 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.EventBus.RabbitMq;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerApplicationContractsModule),
+    typeof(CASecurityApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpIdentityHttpApiModule),
     typeof(AbpPermissionManagementHttpApiModule),
@@ -22,7 +22,7 @@ namespace CAServer;
     typeof(AbpSettingManagementHttpApiModule),
     typeof(AbpEventBusRabbitMqModule)
     )]
-public class CAServerHttpApiModule : AbpModule
+public class CASecurityHttpApiModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
@@ -34,7 +34,7 @@ public class CAServerHttpApiModule : AbpModule
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Resources
-                .Get<CAServerResource>()
+                .Get<CASecurityResource>()
                 .AddBaseTypes(
                     typeof(AbpUiResource)
                 );

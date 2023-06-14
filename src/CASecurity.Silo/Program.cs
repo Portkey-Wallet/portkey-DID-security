@@ -1,12 +1,12 @@
-﻿using CAServer.Silo;
-using CAServer.Silo.Extensions;
+﻿using CASecurity.Silo;
+using CASecurity.Silo.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 
-namespace CAServer;
+namespace CASecurity;
 public class Program
 {
     public async static Task<int> Main(string[] args)
@@ -49,7 +49,7 @@ public class Program
         Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostcontext, services) =>
             {
-                services.AddApplication<CAServerOrleansSiloModule>();
+                services.AddApplication<CASecurityOrleansSiloModule>();
             })
             .UseOrleansSnapshot()
             .UseAutofac()

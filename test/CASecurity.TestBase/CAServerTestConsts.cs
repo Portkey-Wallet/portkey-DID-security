@@ -1,6 +1,6 @@
-﻿namespace CAServer;
+﻿namespace CASecurity;
 
-public static class CAServerTestConsts
+public static class CASecurityTestConsts
 {
-    public const string CollectionDefinitionName = "CAServer collection";
+    public const string CollectionDefinitionName = "CASecurity collection";
 }

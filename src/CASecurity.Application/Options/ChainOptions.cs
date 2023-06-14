@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CAServer.Options;
+namespace CASecurity.Options;
 
 public class ChainOptions
 {

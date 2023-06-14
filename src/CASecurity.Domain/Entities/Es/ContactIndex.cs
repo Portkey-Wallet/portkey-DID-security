@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using AElf.Indexing.Elasticsearch;
 using Nest;
 
-namespace CAServer.Entities.Es;
+namespace CASecurity.Entities.Es;
 
-public class ContactIndex : CAServerEsEntity<Guid>, IIndexBuild
+public class ContactIndex : CASecurityEsEntity<Guid>, IIndexBuild
 {
     [Keyword] public string Index { get; set; }
     [Keyword] public string Name { get; set; }

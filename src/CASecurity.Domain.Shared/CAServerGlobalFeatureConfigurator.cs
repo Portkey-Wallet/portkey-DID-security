@@ -1,8 +1,8 @@
 ﻿using Volo.Abp.Threading;
 
-namespace CAServer;
+namespace CASecurity;
 
-public static class CAServerGlobalFeatureConfigurator
+public static class CASecurityGlobalFeatureConfigurator
 {
     private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 

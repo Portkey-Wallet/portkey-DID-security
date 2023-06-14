@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CAServer.Verifier.Dtos;
+namespace CASecurity.Verifier.Dtos;
 
 public class VerifyTokenRequestDto
 {

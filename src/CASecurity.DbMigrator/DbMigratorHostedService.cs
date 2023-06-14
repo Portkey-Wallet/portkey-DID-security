@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using CAServer.Data;
+using CASecurity.Data;
 using Serilog;
 using Volo.Abp;
 
-namespace CAServer.DbMigrator;
+namespace CASecurity.DbMigrator;
 
 public class DbMigratorHostedService : IHostedService
 {
@@ -22,7 +22,7 @@ public class DbMigratorHostedService : IHostedService
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        using (var application = await AbpApplicationFactory.CreateAsync<CAServerDbMigratorModule>(options =>
+        using (var application = await AbpApplicationFactory.CreateAsync<CASecurityDbMigratorModule>(options =>
         {
            options.Services.ReplaceConfiguration(_configuration);
            options.UseAutofac();
@@ -33,7 +33,7 @@ public class DbMigratorHostedService : IHostedService
 
             await application
                 .ServiceProvider
-                .GetRequiredService<CAServerDbMigrationService>()
+                .GetRequiredService<CASecurityDbMigrationService>()
                 .MigrateAsync();
 
             await application.ShutdownAsync();

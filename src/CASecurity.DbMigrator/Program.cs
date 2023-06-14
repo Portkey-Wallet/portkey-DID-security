@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 
-namespace CAServer.DbMigrator;
+namespace CASecurity.DbMigrator;
 
 class Program
 {
@@ -18,9 +18,9 @@ class Program
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
             .MinimumLevel.Override("Volo.Abp", LogEventLevel.Warning)
 #if DEBUG
-                .MinimumLevel.Override("CAServer", LogEventLevel.Debug)
+                .MinimumLevel.Override("CASecurity", LogEventLevel.Debug)
 #else
-                .MinimumLevel.Override("CAServer", LogEventLevel.Information)
+                .MinimumLevel.Override("CASecurity", LogEventLevel.Information)
 #endif
                 .Enrich.FromLogContext()
             .WriteTo.Async(c => c.File("Logs/logs.txt"))

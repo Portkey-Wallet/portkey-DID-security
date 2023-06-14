@@ -1,14 +1,14 @@
 using Orleans.TestingHost;
 using Volo.Abp.Modularity;
 
-namespace CAServer.Orleans.TestBase;
+namespace CASecurity.Orleans.TestBase;
 
-public abstract class CAServerOrleansTestBase<TStartupModule> : CAServerTestBase<TStartupModule>
+public abstract class CASecurityOrleansTestBase<TStartupModule> : CASecurityTestBase<TStartupModule>
     where TStartupModule : IAbpModule
 {
     protected readonly TestCluster Cluster;
 
-    public CAServerOrleansTestBase()
+    public CASecurityOrleansTestBase()
     {
         Cluster = GetRequiredService<ClusterFixture>().Cluster;
     }

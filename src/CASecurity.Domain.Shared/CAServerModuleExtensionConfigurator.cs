@@ -3,9 +3,9 @@ using Volo.Abp.Identity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
 
-namespace CAServer;
+namespace CASecurity;
 
-public static class CAServerModuleExtensionConfigurator
+public static class CASecurityModuleExtensionConfigurator
 {
     private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 

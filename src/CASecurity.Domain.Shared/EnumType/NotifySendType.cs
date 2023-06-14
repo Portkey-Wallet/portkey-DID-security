@@ -1,4 +1,4 @@
-namespace CAServer;
+namespace CASecurity;
 
 public enum NotifySendType
 {

@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using CAServer.Tokens.Dtos;
+using CASecurity.Tokens.Dtos;
 
-namespace CAServer.Tokens
+namespace CASecurity.Tokens
 {
     public interface IUserTokenAppService
     {

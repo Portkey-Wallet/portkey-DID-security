@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using CAServer.Controllers;
-using CAVerifierServer.Account;
-using CAVerifierServer.IpWhiteList;
+using CASecurity.Controllers;
+using CASecurity.Account;
+using CASecurity.IpWhiteList;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
 
-namespace CAVerifierServer.Controllers;
+namespace CASecurity.Controllers;
 
 
 [RemoteService]

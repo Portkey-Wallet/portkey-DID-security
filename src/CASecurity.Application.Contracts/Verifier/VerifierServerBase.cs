@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class VerifierServerBase
 {

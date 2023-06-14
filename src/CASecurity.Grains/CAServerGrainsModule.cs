@@ -1,18 +1,18 @@
-using CAServer.Signature;
+using CASecurity.Signature;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 
-namespace CAServer.Grains;
+namespace CASecurity.Grains;
 
-[DependsOn(typeof(CAServerApplicationContractsModule),
+[DependsOn(typeof(CASecurityApplicationContractsModule),
     typeof(AbpAutoMapperModule),
-    typeof(CAServerSignatureModule))]
-public class CAServerGrainsModule : AbpModule
+    typeof(CASecuritySignatureModule))]
+public class CASecurityGrainsModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CAServerGrainsModule>(); });
+        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<CASecurityGrainsModule>(); });
 
         var configuration = context.Services.GetConfiguration();
         var connStr = configuration["GraphQL:Configuration"];

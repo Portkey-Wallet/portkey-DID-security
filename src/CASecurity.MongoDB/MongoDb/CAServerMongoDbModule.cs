@@ -10,10 +10,10 @@ using Volo.Abp.SettingManagement.MongoDB;
 using Volo.Abp.TenantManagement.MongoDB;
 using Volo.Abp.Uow;
 
-namespace CAServer.MongoDB;
+namespace CASecurity.MongoDB;
 
 [DependsOn(
-    typeof(CAServerDomainModule),
+    typeof(CASecurityDomainModule),
     typeof(AbpPermissionManagementMongoDbModule),
     typeof(AbpSettingManagementMongoDbModule),
     typeof(AbpIdentityMongoDbModule),
@@ -23,11 +23,11 @@ namespace CAServer.MongoDB;
     typeof(AbpTenantManagementMongoDbModule),
     typeof(AbpFeatureManagementMongoDbModule)
     )]
-public class CAServerMongoDbModule : AbpModule
+public class CASecurityMongoDbModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddMongoDbContext<CAServerMongoDbContext>(options =>
+        context.Services.AddMongoDbContext<CASecurityMongoDbContext>(options =>
         {
             options.AddDefaultRepositories();
         });

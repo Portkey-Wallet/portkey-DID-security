@@ -1,6 +1,6 @@
-﻿namespace CAServer;
+﻿namespace CASecurity;
 
-public abstract class CAServerDomainTestBase : CAServerTestBase<CAServerDomainTestModule>
+public abstract class CASecurityDomainTestBase : CASecurityTestBase<CASecurityDomainTestModule>
 {
 
 }

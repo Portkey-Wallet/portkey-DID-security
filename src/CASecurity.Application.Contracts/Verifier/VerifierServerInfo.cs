@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class VerifierServerInfo
 {

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AElf.Indexing.Elasticsearch;
-using CAServer.Common;
-using CAServer.Entities.Es;
-using CAServer.UserAssets.Dtos;
+using CASecurity.Common;
+using CASecurity.Entities.Es;
+using CASecurity.UserAssets.Dtos;
 using GraphQL;
 using Nest;
 using Volo.Abp.DependencyInjection;
 
-namespace CAServer.UserAssets.Provider;
+namespace CASecurity.UserAssets.Provider;
 
 public class UserAssetsProvider : IUserAssetsProvider, ISingletonDependency
 {

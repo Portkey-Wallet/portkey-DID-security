@@ -1,8 +1,8 @@
 using System;
-using CAServer.Tokens.Dtos;
+using CASecurity.Tokens.Dtos;
 using Volo.Abp.EventBus;
 
-namespace CAServer.Tokens.Etos;
+namespace CASecurity.Tokens.Etos;
 
 [EventName("UserTokenEto")]
 public class UserTokenEto

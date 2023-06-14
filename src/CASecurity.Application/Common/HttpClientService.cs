@@ -2,7 +2,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace CAServer.Common;
+namespace CASecurity.Common;
 
 public class HttpClientService : IHttpClientService
 {

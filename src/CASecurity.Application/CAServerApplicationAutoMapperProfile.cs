@@ -1,21 +1,21 @@
 ﻿using System;
 using AutoMapper;
-using CAServer.CAAccount.Dtos;
-using CAServer.CAActivity.Dto;
-using CAServer.CAActivity.Dtos;
-using CAServer.CAActivity.Provider;
-using CAServer.Guardian;
-using CAServer.UserAssets.Dtos;
-using CAServer.UserAssets.Provider;
-using CAServer.Verifier;
-using CAServer.Verifier.Dtos;
+using CASecurity.CAAccount.Dtos;
+using CASecurity.CAActivity.Dto;
+using CASecurity.CAActivity.Dtos;
+using CASecurity.CAActivity.Provider;
+using CASecurity.Guardian;
+using CASecurity.UserAssets.Dtos;
+using CASecurity.UserAssets.Provider;
+using CASecurity.Verifier;
+using CASecurity.Verifier.Dtos;
 using Portkey.Contracts.CA;
 
-namespace CAServer;
+namespace CASecurity;
 
-public class CAServerApplicationAutoMapperProfile : Profile
+public class CASecurityApplicationAutoMapperProfile : Profile
 {
-    public CAServerApplicationAutoMapperProfile()
+    public CASecurityApplicationAutoMapperProfile()
     {
 
         CreateMap<VerificationSignatureRequestDto, VierifierCodeRequestInput>();
@@ -75,7 +75,7 @@ public class CAServerApplicationAutoMapperProfile : Profile
             .ForMember(t => t.CaHash, m => m.MapFrom(f => f.CaHash.ToHex()))
             .ForMember(t => t.CaAddress, m => m.MapFrom(f => f.CaAddress.ToBase58()));
 
-        CreateMap<CAServer.Entities.Es.ContactAddress, UserContactAddressDto>();
+        CreateMap<CASecurity.Entities.Es.ContactAddress, UserContactAddressDto>();
         
         CreateMap<TransactionsDto, IndexerTransactions>()
             .ForMember(t => t.CaHolderTransaction, m => m.MapFrom(f => f.TwoCaHolderTransaction));

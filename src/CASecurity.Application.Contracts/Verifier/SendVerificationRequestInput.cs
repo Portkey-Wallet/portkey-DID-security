@@ -1,6 +1,6 @@
 using System;
 
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class SendVerificationRequestInput : VerifierServerBase
 {

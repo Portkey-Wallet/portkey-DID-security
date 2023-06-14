@@ -5,7 +5,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>CAServer.Silo</RootNamespace>
+        <RootNamespace>CASecurity.Silo</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,8 +21,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <!--        <ProjectReference Include="..\CAServer.Application\CAServer.Application.csproj" />-->
-        <!--        <ProjectReference Include="..\CAServer.BackGround\CAServer.BackGround.csproj" />-->
+        <!--        <ProjectReference Include="..\CASecurity.Application\CASecurity.Application.csproj" />-->
+        <!--        <ProjectReference Include="..\CASecurity.BackGround\CASecurity.BackGround.csproj" />-->
         <ProjectReference Include="..\CASecurity.Grains\CASecurity.Grains.csproj" />
     </ItemGroup>
 

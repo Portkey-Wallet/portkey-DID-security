@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CAServer.Guardian;
+namespace CASecurity.Guardian;
 
 public class GuardianBase
 {

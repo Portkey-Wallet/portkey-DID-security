@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CAServer.UserAssets;
+namespace CASecurity.UserAssets;
 
 public class GetRecentTransactionUsersRequestDto : GetAssetsBase
 {

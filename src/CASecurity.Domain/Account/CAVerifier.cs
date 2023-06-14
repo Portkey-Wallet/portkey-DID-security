@@ -1,6 +1,6 @@
 using System;
 
-namespace CAServer.Account;
+namespace CASecurity.Account;
 
 public class CAVerifier
 {

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace CAServer.Data;
+namespace CASecurity.Data;
 
-public interface ICAServerDbSchemaMigrator
+public interface ICASecurityDbSchemaMigrator
 {
     Task MigrateAsync();
 }

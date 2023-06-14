@@ -1,6 +1,6 @@
 using Orleans;
 
-namespace CAVerifierServer.Grains.Grain;
+namespace CASecurity.Grains.Grain;
 
 public interface ISecurityGrain : IGrainWithStringKey
 {

@@ -2,7 +2,7 @@
 using AElf.Indexing.Elasticsearch.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using CAServer.MultiTenancy;
+using CASecurity.MultiTenancy;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.Emailing;
@@ -17,10 +17,10 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.Users;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerDomainSharedModule),
+    typeof(CASecurityDomainSharedModule),
     typeof(AbpAuditLoggingDomainModule),
     // typeof(AbpBackgroundJobsDomainModule),
     typeof(AbpFeatureManagementDomainModule),
@@ -33,7 +33,7 @@ namespace CAServer;
     typeof(AbpEmailingModule),
     typeof(AElfIndexingElasticsearchModule)
 )]
-public class CAServerDomainModule : AbpModule
+public class CASecurityDomainModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
@@ -60,6 +60,6 @@ public class CAServerDomainModule : AbpModule
     
     private void ConfigureEsIndexCreation()
     {
-        Configure<IndexCreateOption>(x => { x.AddModule(typeof(CAServerDomainModule)); });
+        Configure<IndexCreateOption>(x => { x.AddModule(typeof(CASecurityDomainModule)); });
     }
 }

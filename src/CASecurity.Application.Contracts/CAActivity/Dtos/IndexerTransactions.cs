@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using CAServer.UserAssets.Provider;
+using CASecurity.UserAssets.Provider;
 
-namespace CAServer.CAActivity.Provider;
+namespace CASecurity.CAActivity.Provider;
 
 public class IndexerTransactions
 {

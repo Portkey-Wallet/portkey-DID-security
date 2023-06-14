@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace CAServer;
+namespace CASecurity;
 
-public static class CAServerConsts
+public static class CASecurityConsts
 {
     public const string DbTablePrefix = "App";
 

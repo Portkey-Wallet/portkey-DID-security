@@ -1,4 +1,4 @@
-namespace CAServer.Grains.State;
+namespace CASecurity.Grains.State;
 
 public class SampleState
 {

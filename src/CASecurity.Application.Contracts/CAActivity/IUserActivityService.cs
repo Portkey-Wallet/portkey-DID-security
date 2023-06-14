@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CAServer.CAActivity.Dto;
-using CAServer.CAActivity.Dtos;
+using CASecurity.CAActivity.Dto;
+using CASecurity.CAActivity.Dtos;
 using Volo.Abp.Application.Services;
 
-namespace CAServer.CAActivity;
+namespace CASecurity.CAActivity;
 
 public interface IUserActivityAppService:IApplicationService
 {

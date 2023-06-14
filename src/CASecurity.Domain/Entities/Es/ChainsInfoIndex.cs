@@ -2,9 +2,9 @@ using System;
 using AElf.Indexing.Elasticsearch;
 using Nest;
 
-namespace CAServer.Entities.Es;
+namespace CASecurity.Entities.Es;
 
-public class ChainsInfoIndex : CAServerEsEntity<string>, IIndexBuild
+public class ChainsInfoIndex : CASecurityEsEntity<string>, IIndexBuild
 {
     [Keyword] public string ChainId { get; set; }
     [Keyword] public string ChainName { get; set; }

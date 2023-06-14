@@ -1,8 +1,8 @@
 using Volo.Abp.Domain.Entities;
 
-namespace CAServer.Entities.Es;
+namespace CASecurity.Entities.Es;
 
-public abstract class CAServerEsEntity<TKey> : Entity, IEntity<TKey>
+public abstract class CASecurityEsEntity<TKey> : Entity, IEntity<TKey>
 {
     public virtual TKey Id { get; set; }
 

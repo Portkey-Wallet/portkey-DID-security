@@ -1,6 +1,6 @@
 using System;
 
-namespace CAServer.security;
+namespace CASecurity.security;
 
 public class SecurityRequestDto
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Google.Protobuf.Collections;
 using Volo.Abp.Domain.Entities;
 
-namespace CAServer.Verifier;
+namespace CASecurity.Verifier;
 
 public class GuardianVerifierServer
 {

@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace CAServer.Orleans.TestBase;
+namespace CASecurity.Orleans.TestBase;
 
 
 [CollectionDefinition(ClusterCollection.Name)]

@@ -5,7 +5,7 @@ using System.Reflection;
 using AElf.Indexing.Elasticsearch;
 using AElf.Indexing.Elasticsearch.Options;
 using AElf.Indexing.Elasticsearch.Services;
-using CAServer.MongoDB;
+using CASecurity.MongoDB;
 using Elasticsearch.Net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -13,18 +13,18 @@ using Volo.Abp;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
-namespace CAServer;
+namespace CASecurity;
 
 [DependsOn(
-    typeof(CAServerMongoDbTestModule)
+    typeof(CASecurityMongoDbTestModule)
     )]
-public class CAServerDomainTestModule : AbpModule
+public class CASecurityDomainTestModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<IndexCreateOption>(x =>
         {
-            x.AddModule(typeof(CAServerDomainModule));
+            x.AddModule(typeof(CASecurityDomainModule));
         });
         
         // Do not modify this!!!
@@ -38,7 +38,7 @@ public class CAServerDomainTestModule : AbpModule
             options.NumberOfReplicas = 1;
             options.NumberOfShards = 1;
             options.Refresh = Refresh.True;
-            options.IndexPrefix = "CAServer";
+            options.IndexPrefix = "CASecurity";
         });
     }
     
@@ -53,7 +53,7 @@ public class CAServerDomainTestModule : AbpModule
             foreach (var t in types)
             {
                 AsyncHelper.RunSync(async () =>
-                    await elasticIndexService.DeleteIndexAsync("caserver." + t.Name.ToLower()));
+                    await elasticIndexService.DeleteIndexAsync("CASecurity." + t.Name.ToLower()));
             }
         });
     }

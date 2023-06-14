@@ -1,8 +1,8 @@
-﻿namespace CAServer.Settings;
+﻿namespace CASecurity.Settings;
 
-public static class CAServerSettings
+public static class CASecuritySettings
 {
-    private const string Prefix = "CAServer";
+    private const string Prefix = "CASecurity";
 
     //Add your own setting names here. Example:
     //public const string MySetting1 = Prefix + ".MySetting1";

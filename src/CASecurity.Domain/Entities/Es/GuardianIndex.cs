@@ -2,9 +2,9 @@ using System;
 using AElf.Indexing.Elasticsearch;
 using Nest;
 
-namespace CAServer.Entities.Es;
+namespace CASecurity.Entities.Es;
 
-public class GuardianIndex : CAServerEsEntity<string>, IIndexBuild
+public class GuardianIndex : CASecurityEsEntity<string>, IIndexBuild
 {
     [Keyword] public string Identifier { get; set; }
     [Keyword] public string IdentifierHash { get; set; }

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CAServer.Verifier.Dtos;
+namespace CASecurity.Verifier.Dtos;
 
 public class GoogleUserInfoDto
 {

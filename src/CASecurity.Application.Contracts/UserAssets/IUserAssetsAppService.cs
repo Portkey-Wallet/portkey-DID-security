@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using CAServer.UserAssets.Dtos;
+using CASecurity.UserAssets.Dtos;
 
-namespace CAServer.UserAssets;
+namespace CASecurity.UserAssets;
 
 public interface IUserAssetsAppService
 {

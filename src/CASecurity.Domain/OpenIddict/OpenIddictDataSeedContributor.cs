@@ -14,7 +14,7 @@ using Volo.Abp.OpenIddict.Applications;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.Uow;
 
-namespace CAServer.OpenIddict;
+namespace CASecurity.OpenIddict;
 
 /* Creates initial data that is needed to property run the application
  * and make client-to-server communication possible.
@@ -50,15 +50,15 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
 
     private async Task CreateScopesAsync()
     {
-        if (await _scopeManager.FindByNameAsync("CAServer") == null)
+        if (await _scopeManager.FindByNameAsync("CASecurity") == null)
         {
             await _scopeManager.CreateAsync(new OpenIddictScopeDescriptor
             {
-                Name = "CAServer",
-                DisplayName = "CAServer API",
+                Name = "CASecurity",
+                DisplayName = "CASecurity API",
                 Resources =
                 {
-                    "CAServer"
+                    "CASecurity"
                 }
             });
         }
@@ -73,25 +73,25 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
             OpenIddictConstants.Permissions.Scopes.Phone,
             OpenIddictConstants.Permissions.Scopes.Profile,
             OpenIddictConstants.Permissions.Scopes.Roles,
-            "CAServer"
+            "CASecurity"
         };
 
         var configurationSection = _configuration.GetSection("OpenIddict:Applications");
 
         //Web Client
-        var webClientId = configurationSection["CAServer_Web:ClientId"];
+        var webClientId = configurationSection["CASecurity_Web:ClientId"];
         if (!webClientId.IsNullOrWhiteSpace())
         {
-            var webClientRootUrl = configurationSection["CAServer_Web:RootUrl"].EnsureEndsWith('/');
+            var webClientRootUrl = configurationSection["CASecurity_Web:RootUrl"].EnsureEndsWith('/');
 
-            /* CAServer_Web client is only needed if you created a tiered
+            /* CASecurity_Web client is only needed if you created a tiered
              * solution. Otherwise, you can delete this client. */
             await CreateApplicationAsync(
                 name: webClientId,
                 type: OpenIddictConstants.ClientTypes.Confidential,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
                 displayName: "Web Application",
-                secret: configurationSection["CAServer_Web:ClientSecret"] ?? "1q2w3e*",
+                secret: configurationSection["CASecurity_Web:ClientSecret"] ?? "1q2w3e*",
                 grantTypes: new List<string> //Hybrid flow
                 {
                     OpenIddictConstants.GrantTypes.AuthorizationCode,
@@ -105,15 +105,15 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         //Console Test / Angular Client
-        var consoleAndAngularClientId = configurationSection["CAServer_App:ClientId"];
+        var consoleAndAngularClientId = configurationSection["CASecurity_App:ClientId"];
         if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
         {
-            var consoleAndAngularClientRootUrl = configurationSection["CAServer_App:RootUrl"]?.TrimEnd('/');
+            var consoleAndAngularClientRootUrl = configurationSection["CASecurity_App:RootUrl"]?.TrimEnd('/');
             await CreateApplicationAsync(
                 name: consoleAndAngularClientId,
                 type: OpenIddictConstants.ClientTypes.Public,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
-                displayName: "CAServer_App",
+                displayName: "CASecurity_App",
                 secret: null,
                 grantTypes: new List<string>
                 {
@@ -131,10 +131,10 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         // Blazor Client
-        var blazorClientId = configurationSection["CAServer_Blazor:ClientId"];
+        var blazorClientId = configurationSection["CASecurity_Blazor:ClientId"];
         if (!blazorClientId.IsNullOrWhiteSpace())
         {
-            var blazorRootUrl = configurationSection["CAServer_Blazor:RootUrl"].TrimEnd('/');
+            var blazorRootUrl = configurationSection["CASecurity_Blazor:RootUrl"].TrimEnd('/');
 
             await CreateApplicationAsync(
                 name: blazorClientId,
@@ -154,17 +154,17 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         // Blazor Server Tiered Client
-        var blazorServerTieredClientId = configurationSection["CAServer_BlazorServerTiered:ClientId"];
+        var blazorServerTieredClientId = configurationSection["CASecurity_BlazorServerTiered:ClientId"];
         if (!blazorServerTieredClientId.IsNullOrWhiteSpace())
         {
-            var blazorServerTieredRootUrl = configurationSection["CAServer_BlazorServerTiered:RootUrl"].EnsureEndsWith('/');
+            var blazorServerTieredRootUrl = configurationSection["CASecurity_BlazorServerTiered:RootUrl"].EnsureEndsWith('/');
 
             await CreateApplicationAsync(
                 name: blazorServerTieredClientId,
                 type: OpenIddictConstants.ClientTypes.Confidential,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
                 displayName: "Blazor Server Application",
-                secret: configurationSection["CAServer_BlazorServerTiered:ClientSecret"] ?? "1q2w3e*",
+                secret: configurationSection["CASecurity_BlazorServerTiered:ClientSecret"] ?? "1q2w3e*",
                 grantTypes: new List<string> //Hybrid flow
                 {
                     OpenIddictConstants.GrantTypes.AuthorizationCode,
@@ -178,10 +178,10 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         // Swagger Client
-        var swaggerClientId = configurationSection["CAServer_Swagger:ClientId"];
+        var swaggerClientId = configurationSection["CASecurity_Swagger:ClientId"];
         if (!swaggerClientId.IsNullOrWhiteSpace())
         {
-            var swaggerRootUrl = configurationSection["CAServer_Swagger:RootUrl"].TrimEnd('/');
+            var swaggerRootUrl = configurationSection["CASecurity_Swagger:RootUrl"].TrimEnd('/');
 
             await CreateApplicationAsync(
                 name: swaggerClientId,
