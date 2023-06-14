@@ -97,7 +97,7 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
         }
 
         var contactNum = await _securityProvider.GetContactCountAsync(request.UserId);
-        if (contactNum > 2)
+        if (contactNum >= 1)
         {
             await grain.AddUserIpToWhiteListAsync(request.UserIp);
         }
