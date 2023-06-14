@@ -98,6 +98,8 @@
     <Orleans_CodeGenInputs Remove="ContractEventHandler\ContractServiceEto.cs" />
     <Orleans_CodeGenInputs Remove="ContractEventHandler\CreateHolderEto.cs" />
     <Orleans_CodeGenInputs Remove="ContractEventHandler\SocialRecoveryEto.cs" />
+    <Orleans_CodeGenInputs Remove="Device\Dtos\DevcieDto.cs" />
+    <Orleans_CodeGenInputs Remove="Device\IDeviceAppService.cs" />
   </ItemGroup>
 
 </Project>

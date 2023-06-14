@@ -4,10 +4,6 @@ using CAServer.CAAccount.Dtos;
 using CAServer.CAActivity.Dto;
 using CAServer.CAActivity.Dtos;
 using CAServer.CAActivity.Provider;
-using CAServer.Commons;
-using CAServer.Contacts;
-using CAServer.Entities.Es;
-using CAServer.Etos;
 using CAServer.Guardian;
 using CAServer.UserAssets.Dtos;
 using CAServer.UserAssets.Provider;
@@ -21,18 +17,6 @@ public class CAServerApplicationAutoMapperProfile : Profile
 {
     public CAServerApplicationAutoMapperProfile()
     {
-        CreateMap<ContactAddressDto, ContactAddress>().ReverseMap();
-        CreateMap<ContactAddressDto, ContactAddressEto>();
-        CreateMap<ContactDto, ContactCreateEto>().ForMember(c => c.ModificationTime,
-                d => d.MapFrom(s => TimeHelper.GetDateTimeFromTimeStamp(s.ModificationTime)))
-            .ForMember(c => c.Id, d => d.Condition(src => src.Id != Guid.Empty));
-
-        CreateMap<ContactDto, ContactUpdateEto>().ForMember(c => c.ModificationTime,
-            d => d.MapFrom(s => TimeHelper.GetDateTimeFromTimeStamp(s.ModificationTime)));
-
-        CreateMap<ContactIndex, ContactDto>().ForMember(c => c.ModificationTime,
-            d => d.MapFrom(s => new DateTimeOffset(s.ModificationTime).ToUnixTimeMilliseconds()));
-        CreateMap<Entities.Es.ContactAddress, ContactAddressDto>().ReverseMap();
 
         CreateMap<VerificationSignatureRequestDto, VierifierCodeRequestInput>();
         
