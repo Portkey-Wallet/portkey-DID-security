@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>CAServer.Grains</RootNamespace>
+        <PackageId>CASecurity.Grains</PackageId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.6.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.6.5" />
+        <PackageReference Include="MongoDB.Bson" Version="2.17.1" />
+        <PackageReference Include="AElf.Client" Version="1.1.0" />
+        <PackageReference Include="AElf.Core" Version="1.2.3" />
+        <PackageReference Include="AElf.CSharp.Core" Version="1.2.3" />
+        <PackageReference Include="AElf.Kernel.Types" Version="1.2.3" />
+        <PackageReference Include="AElf.Types" Version="1.2.3" />
+        <PackageReference Include="Volo.Abp.Autofac" Version="7.0.0" />
+        <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="7.0.0" />
+        <PackageReference Include="Volo.Abp.Caching" Version="7.0.0" />
+        <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="5.1.0" />
+        <PackageReference Include="GraphQL.Client" Version="5.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CASecurity.Application.Contracts\CASecurity.Application.Contracts.csproj" />
+        <ProjectReference Include="..\CASecurity.Domain\CASecurity.Domain.csproj" />
+        <ProjectReference Include="..\CASecurity.Signature\CASecurity.Signature.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Orleans_CodeGenInputs Remove="Grain\Activity\ActivityGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Activity\GraphQLClient.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Activity\IActivityGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\UserExtraInfo\IUserExtraInfoGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\UserExtraInfo\UserExtraInfoGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\UserExtraInfo\UserExtraInfoGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\ThirdPart\IOrderGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\ThirdPart\OrderGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\ThirdPart\OrderGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Guardian\GuardianGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Guardian\GuardianGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Guardian\IGuardianGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\CrossChain\CrossChainTransferDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\CrossChain\CrossChainTransferGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\CrossChain\ICrossChainTransferGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Chain\ChainGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Chain\ChainGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Chain\ChainMessage.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Chain\IChainGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\CAAccountOption.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\CreateHolderResultGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\IRecoveryGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\IRegisterGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\RecoveryGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\RecoveryGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\RecoveryMessage.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\RegisterGrain.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\RegisterGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\RegisterMessage.cs" />
+      <Orleans_CodeGenInputs Remove="Grain\Account\SocialRecoveryResultGrainDto.cs" />
+      <Orleans_CodeGenInputs Remove="State\ApplicationHandler\GraphQlState.cs" />
+      <Orleans_CodeGenInputs Remove="State\ApplicationHandler\SyncRecordState.cs" />
+      <Orleans_CodeGenInputs Remove="State\Order\OrderState.cs" />
+      <Orleans_CodeGenInputs Remove="State\Guardian\GuardianState.cs" />
+      <Orleans_CodeGenInputs Remove="State\CrossChain\CrossChainTransferState.cs" />
+      <Orleans_CodeGenInputs Remove="State\Tokens\CurrentTokenPriceState.cs" />
+      <Orleans_CodeGenInputs Remove="State\Tokens\TokenPriceBase.cs" />
+      <Orleans_CodeGenInputs Remove="State\Tokens\TokenPriceSnapshotState.cs" />
+      <Orleans_CodeGenInputs Remove="State\Tokens\UserTokenState.cs" />
+      <Orleans_CodeGenInputs Remove="State\Tokens\UserTokenSymbolState.cs" />
+    </ItemGroup>
+
+</Project>

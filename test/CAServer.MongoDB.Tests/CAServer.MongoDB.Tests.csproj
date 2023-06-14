@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CAServer.MongoDB\CAServer.MongoDB.csproj" />
+    <ProjectReference Include="..\..\src\CASecurity.MongoDB\CASecurity.MongoDB.csproj" />
     <ProjectReference Include="..\CAServer.TestBase\CAServer.TestBase.csproj" />
   </ItemGroup>
 

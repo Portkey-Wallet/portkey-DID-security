@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CAServer.Application.Contracts\CAServer.Application.Contracts.csproj" />
-    <ProjectReference Include="..\..\src\CAServer.Application\CAServer.Application.csproj" />
+    <ProjectReference Include="..\..\src\CASecurity.Application.Contracts\CASecurity.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\CASecurity.Application\CASecurity.Application.csproj" />
 <!--    <ProjectReference Include="..\..\src\CAServer.EntityEventHandler\CAServer.EntityEventHandler.csproj" />-->
     <ProjectReference Include="..\CAServer.Domain.Tests\CAServer.Domain.Tests.csproj" />
     <ProjectReference Include="..\CAServer.Grain.Tests\CAServer.Grain.Tests.csproj" />

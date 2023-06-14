@@ -11,7 +11,7 @@
     <PackageReference Include="Volo.Abp.TestBase" Version="7.0.0" />
     <PackageReference Include="Volo.Abp.Autofac" Version="7.0.0" />
     <PackageReference Include="Volo.Abp.Authorization" Version="7.0.0" />
-    <ProjectReference Include="..\..\src\CAServer.Domain\CAServer.Domain.csproj" />
+    <ProjectReference Include="..\..\src\CASecurity.Domain\CASecurity.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
