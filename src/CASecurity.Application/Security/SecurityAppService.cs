@@ -108,8 +108,6 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             CaAddressInfos = caAddressInfos
         };
         var tokenAsync = await _userAssetsAppService.GetTokenAsync(requestDto);
-        // var tokenInfos = await _securityProvider.GetUserTokenInfoAsync(caAddressInfos, "",
-        //     0, requestDto.SkipCount + requestDto.MaxResultCount);
         if (tokenAsync.Data != null)
         {
             if (tokenAsync.Data.Any(token => int.Parse(token.Balance) > 0))
@@ -128,10 +126,5 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
 
         var jo = JObject.Parse(jsonStr);
         return jo["deviceInfo"]?.ToString();
-    }
-
-    public Task RemoveIpFromWhiteListAsync(string userIp)
-    {
-        throw new NotImplementedException();
     }
 }

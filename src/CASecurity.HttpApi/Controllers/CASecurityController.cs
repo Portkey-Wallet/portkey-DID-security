@@ -34,15 +34,4 @@ public class CASecurityController : CAServerController
     {
         await _securityAppService.AddIpToWhiteListAsync(requestDto);
     }
-    
-    [HttpPost]
-    [Route("removeIpFromWhiteList")]
-    public async Task RemoveIpFromWhiteList(string userIp)
-    {
-        await _securityAppService.RemoveIpFromWhiteListAsync(userIp);
-    }
-    
-    
-    
-    
 }
