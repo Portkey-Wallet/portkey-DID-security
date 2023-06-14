@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CA9AC87F-097
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{04DBDB01-70F4-4E06-B468-8F87850B22BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAServer.Application.Tests", "test\CAServer.Application.Tests\CAServer.Application.Tests.csproj", "{50B2631D-129C-47B3-A587-029CCD6099BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.Application.Tests", "test\CASecurity.Application.Tests\CASecurity.Application.Tests.csproj", "{50B2631D-129C-47B3-A587-029CCD6099BC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.MongoDB", "src\CASecurity.MongoDB\CASecurity.MongoDB.csproj", "{E3444355-D47E-431E-BDD0-DD3A7113B2AE}"
 EndProject
@@ -25,11 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.HttpApi.Client",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.HttpApi.Host", "src\CASecurity.HttpApi.Host\CASecurity.HttpApi.Host.csproj", "{E6D5BF0E-DE92-4D82-A352-EF04B37CB11C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAServer.TestBase", "test\CAServer.TestBase\CAServer.TestBase.csproj", "{91853F21-9CD9-4132-BC29-A7D5D84FFFE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.TestBase", "test\CASecurity.TestBase\CASecurity.TestBase.csproj", "{91853F21-9CD9-4132-BC29-A7D5D84FFFE7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAServer.Domain.Tests", "test\CAServer.Domain.Tests\CAServer.Domain.Tests.csproj", "{E512F4D9-9375-480F-A2F6-A46509F9D824}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.Domain.Tests", "test\CASecurity.Domain.Tests\CASecurity.Domain.Tests.csproj", "{E512F4D9-9375-480F-A2F6-A46509F9D824}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAServer.MongoDB.Tests", "test\CAServer.MongoDB.Tests\CAServer.MongoDB.Tests.csproj", "{6015D17B-104B-4EC2-A9B7-D8A40C891458}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.MongoDB.Tests", "test\CASecurity.MongoDB.Tests\CASecurity.MongoDB.Tests.csproj", "{6015D17B-104B-4EC2-A9B7-D8A40C891458}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CASecurity.DbMigrator", "src\CASecurity.DbMigrator\CASecurity.DbMigrator.csproj", "{AA94D832-1CCC-4715-95A9-A483F23A1A5D}"
 EndProject
@@ -41,9 +41,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASecurity.Silo", "src\CASe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASecurity.Grains", "src\CASecurity.Grains\CASecurity.Grains.csproj", "{D1C7244B-0BCF-466E-A9DB-37744BBF6927}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAServer.Orleans.TestBase", "test\CAServer.Orleans.TestBase\CAServer.Orleans.TestBase.csproj", "{EB1B1C54-CA78-4457-BC6C-B927B92FE2C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASecurity.Orleans.TestBase", "test\CASecurity.Orleans.TestBase\CASecurity.Orleans.TestBase.csproj", "{EB1B1C54-CA78-4457-BC6C-B927B92FE2C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAServer.Grain.Tests", "test\CAServer.Grain.Tests\CAServer.Grain.Tests.csproj", "{A19D89D5-6A78-4AF6-8388-C2679D459BA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASecurity.Grain.Tests", "test\CASecurity.Grain.Tests\CASecurity.Grain.Tests.csproj", "{A19D89D5-6A78-4AF6-8388-C2679D459BA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CASecurity.Signature", "src\CASecurity.Signature\CASecurity.Signature.csproj", "{EC87414A-45DA-4FEB-9A25-874C5A852B91}"
 EndProject

@@ -11,8 +11,8 @@
     <ProjectReference Include="..\..\src\CASecurity.Application.Contracts\CASecurity.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\src\CASecurity.Application\CASecurity.Application.csproj" />
 <!--    <ProjectReference Include="..\..\src\CAServer.EntityEventHandler\CAServer.EntityEventHandler.csproj" />-->
-    <ProjectReference Include="..\CAServer.Domain.Tests\CAServer.Domain.Tests.csproj" />
-    <ProjectReference Include="..\CAServer.Grain.Tests\CAServer.Grain.Tests.csproj" />
+    <ProjectReference Include="..\CASecurity.Domain.Tests\CASecurity.Domain.Tests.csproj" />
+    <ProjectReference Include="..\CASecurity.Grain.Tests\CASecurity.Grain.Tests.csproj" />
 <!--    <ProjectReference Include="..\CAServer.Orleans.TestBase\CAServer.Orleans.TestBase.csproj" />-->
   </ItemGroup>
 
