@@ -10,14 +10,17 @@ using CASecurity.Account;
 using CASecurity.Grains.Grain;
 using CASecurity.IpWhiteList;
 using CASecurity.Security.Provider;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using Orleans;
-using Volo.Abp.DependencyInjection;
+using Volo.Abp;
+using Volo.Abp.Auditing;
 
 namespace CASecurity.Security;
 
-public class SecurityAppService : ISecurityAppService, ISingletonDependency
+[RemoteService(false), DisableAuditing]
+public class SecurityAppService : CASecurityAppService, ISecurityAppService
 {
     private readonly IClusterClient _clusterClient;
     private readonly IContractProvider _contractProvider;
@@ -55,6 +58,7 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
 
     public async Task AddIpToWhiteListAsync(AddUserIpToWhiteListRequestDto request)
     {
+        Logger.LogInformation("request ip: {ip}", request.UserIp);
         var grain = _clusterClient.GetGrain<ISecurityGrain>(request.UserIp);
 
         var result = await grain.IsUserIpInWhiteListAsync(request.UserIp);
@@ -81,6 +85,9 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
             var count = output.GuardianList.Guardians.Count;
             if (count >= 2)
             {
+                Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
+                    "greater than or equal to tow guardians.");
+                
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
                 return;
             }
@@ -91,6 +98,9 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
                 .ToList();
             if (devices is { Count: >= 2 })
             {
+                Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
+                    "greater than or equal to tow devices.");
+                
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
                 return;
             }
@@ -99,6 +109,8 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
         var contactNum = await _securityProvider.GetContactCountAsync(request.UserId);
         if (contactNum >= 1)
         {
+            Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
+                "greater than or equal to one contact.");
             await grain.AddUserIpToWhiteListAsync(request.UserIp);
         }
 
@@ -112,6 +124,8 @@ public class SecurityAppService : ISecurityAppService, ISingletonDependency
         {
             if (tokenAsync.Data.Any(token => int.Parse(token.Balance) > 0))
             {
+                Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
+                    "balance greater than 0.");
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
             }
         }
