@@ -21,7 +21,7 @@ public class SecurityGrain : Grain<SecurityState>, ISecurityGrain
 
     public Task<bool> IsUserIpInWhiteListAsync(string ip)
     {
-        return State.ExpireTime == null ? Task.FromResult(false) : Task.FromResult(DateTime.UtcNow <= State.ExpireTime);
+        return Task.FromResult(State.ExpireTime != null && DateTime.UtcNow <= State.ExpireTime);
     }
 
     public async Task AddUserIpToWhiteListAsync(string userIp)
