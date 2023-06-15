@@ -61,12 +61,6 @@ public class SecurityAppService : CASecurityAppService, ISecurityAppService
         Logger.LogInformation("request ip: {ip}", request.UserIp);
         var grain = _clusterClient.GetGrain<ISecurityGrain>(request.UserIp);
 
-        var result = await grain.IsUserIpInWhiteListAsync(request.UserIp);
-        if (result)
-        {
-            return;
-        }
-
         var caHolderIndex = await _securityProvider.GetCaHolderIndexAsync(request.UserId);
         var caHash = caHolderIndex.CaHash;
         var caAddress = new List<string>();
