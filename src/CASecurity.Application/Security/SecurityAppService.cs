@@ -106,6 +106,7 @@ public class SecurityAppService : CASecurityAppService, ISecurityAppService
             Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
                 "greater than or equal to one contact.");
             await grain.AddUserIpToWhiteListAsync(request.UserIp);
+            return;
         }
 
         var requestDto = new GetTokenRequestDto()
