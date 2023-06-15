@@ -58,16 +58,16 @@ public class UserAssetsAppService : CASecurityAppService, IUserAssetsAppService
                 TotalRecordCount = 0
             };
 
-            var userDefaultTokenSymbols = await _userAssetsProvider.GetUserDefaultTokenSymbolAsync(CurrentUser.GetId());
+            var userDefaultTokenSymbols = await _userAssetsProvider.GetUserDefaultTokenSymbolAsync(requestDto.UserId);
 
             var userTokenSymbols = new List<UserTokenIndex>();
 
             userTokenSymbols.AddRange(userDefaultTokenSymbols);
-            userTokenSymbols.AddRange(await _userAssetsProvider.GetUserIsDisplayTokenSymbolAsync(CurrentUser.GetId()));
+            userTokenSymbols.AddRange(await _userAssetsProvider.GetUserIsDisplayTokenSymbolAsync(requestDto.UserId));
 
             if (userTokenSymbols.IsNullOrEmpty())
             {
-                Logger.LogError("get no result from current user {id}", CurrentUser.GetId());
+                Logger.LogError("get no result from current user {id}", requestDto.UserId);
                 return dto;
             }
 
@@ -113,7 +113,7 @@ public class UserAssetsAppService : CASecurityAppService, IUserAssetsAppService
             if (!res.CaHolderTokenBalanceInfo.Data.IsNullOrEmpty())
             {
                 var userNotDisplayTokenAsync =
-                    await _userAssetsProvider.GetUserNotDisplayTokenAsync(CurrentUser.GetId());
+                    await _userAssetsProvider.GetUserNotDisplayTokenAsync(requestDto.UserId);
 
                 while (list.Count < requestDto.MaxResultCount + requestDto.SkipCount)
                 {

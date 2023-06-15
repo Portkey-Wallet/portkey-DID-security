@@ -23,7 +23,16 @@ public class CASecurityApplicationAutoMapperProfile : Profile
         // user assets
         CreateMap<IndexerTransactionFee, TransactionFee>();
         
-
+        CreateMap<IndexerTokenInfo, Token>()
+            .ForMember(t => t.Balance, m => m.MapFrom(f => f.Balance.ToString()))
+            .ForMember(t => t.Symbol, m => m.MapFrom(f => f.TokenInfo == null ? null : f.TokenInfo.Symbol))
+            .ForMember(t => t.Decimals, m => m.MapFrom(f => f.TokenInfo == null ? new decimal() : f.TokenInfo.Decimals))
+            .ForMember(t => t.TokenContractAddress,
+                m => m.MapFrom(f =>
+                    f.TokenInfo == null || f.TokenInfo.TokenContractAddress.IsNullOrEmpty()
+                        ? null
+                        : f.TokenInfo.TokenContractAddress));
+        
         CreateMap<IndexerNftInfo, NftItem>()
             .ForMember(t => t.Balance, m => m.MapFrom(f => f.Balance.ToString()))
             .ForMember(t => t.Symbol, m => m.MapFrom(f => f.NftInfo == null ? null : f.NftInfo.Symbol))

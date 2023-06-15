@@ -67,21 +67,21 @@ public class SecurityAppService : CASecurityAppService, ISecurityAppService
         var caAddressInfos = new List<CAAddressInfo>();
         foreach (var chainInfo in _chainOptions.ChainInfos)
         {
-            caAddress.Add(chainInfo.Value.ContractAddress);
-            caAddressInfos.Add(new CAAddressInfo
-            {
-                ChainId = chainInfo.Key,
-                CaAddress = chainInfo.Value.ContractAddress
-            });
-
             var output =
                 await _contractProvider.GetHolderInfoAsync(Hash.LoadFromHex(caHash), null, chainInfo.Value.ChainId);
             var count = output.GuardianList.Guardians.Count;
+            caAddress.Add(output.CaAddress.ToBase58());
+            caAddressInfos.Add(new CAAddressInfo
+            {
+                ChainId = chainInfo.Key,
+                CaAddress = output.CaAddress.ToBase58()
+            });
+
             if (count >= 2)
             {
                 Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
                     "greater than or equal to tow guardians.");
-                
+
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
                 return;
             }
@@ -94,7 +94,7 @@ public class SecurityAppService : CASecurityAppService, ISecurityAppService
             {
                 Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
                     "greater than or equal to tow devices.");
-                
+
                 await grain.AddUserIpToWhiteListAsync(request.UserIp);
                 return;
             }
@@ -111,13 +111,14 @@ public class SecurityAppService : CASecurityAppService, ISecurityAppService
 
         var requestDto = new GetTokenRequestDto()
         {
+            UserId = request.UserId,
             CaAddresses = caAddress,
             CaAddressInfos = caAddressInfos
         };
         var tokenAsync = await _userAssetsAppService.GetTokenAsync(requestDto);
         if (tokenAsync.Data != null)
         {
-            if (tokenAsync.Data.Any(token => int.Parse(token.Balance) > 0))
+            if (tokenAsync.Data.Any(token => long.Parse(token.Balance) > 0))
             {
                 Logger.LogInformation("add ip into whitelist, ip: {ip}, rule: {rule}", request.UserIp,
                     "balance greater than 0.");
