@@ -129,12 +129,20 @@ public class SecurityAppService : CASecurityAppService, ISecurityAppService
 
     private string GetDevices(string jsonStr)
     {
-        if (jsonStr.IsNullOrWhiteSpace())
+        try
         {
+            if (jsonStr.IsNullOrWhiteSpace() || !jsonStr.Contains("deviceInfo"))
+            {
+                return string.Empty;
+            }
+
+            var jo = JObject.Parse(jsonStr);
+            return jo["deviceInfo"]?.ToString();
+        }
+        catch (Exception e)
+        {
+            Logger.LogError(e, "get device info fail: {info}", jsonStr);
             return string.Empty;
         }
-
-        var jo = JObject.Parse(jsonStr);
-        return jo["deviceInfo"]?.ToString();
     }
 }
