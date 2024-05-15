@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using CASecurity.Common;
 using CASecurity.Grains;
 using CASecurity.MongoDB;
 using CASecurity.MultiTenancy;
@@ -294,6 +295,8 @@ public class CASecurityHttpApiHostModule : AbpModule
         app.UseAbpSerilogEnrichers();
         app.UseUnitOfWork();
         app.UseConfiguredEndpoints();
+
+        ConfigurationProvidersHelper.DisplayConfigurationProviders(context);
 
         StartOrleans(context.ServiceProvider);
     }
