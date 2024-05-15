@@ -1,4 +1,5 @@
-﻿using CASecurity.Silo;
+﻿using CASecurity.Common;
+using CASecurity.Silo;
 using CASecurity.Silo.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,21 +12,7 @@ public class Program
 {
     public async static Task<int> Main(string[] args)
     {
-        var configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .Build();
-        Log.Logger = new LoggerConfiguration()
-#if DEBUG
-            .MinimumLevel.Debug()
-#else
-            .MinimumLevel.Information()
-#endif
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.FromLogContext()
-            .WriteTo.Async(c => c.File("Logs/logs.txt"))
-            .WriteTo.Async(c => c.Console())
-            .CreateLogger();
-        
+        Log.Logger = LogHelper.CreateLogger(LogEventLevel.Debug);
         try
         {
             Log.Information("Starting CASecurity.Silo.");
@@ -47,6 +34,7 @@ public class Program
 
     internal static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
+            .UseApolloForHostBuilder()
             .ConfigureServices((hostcontext, services) =>
             {
                 services.AddApplication<CASecurityOrleansSiloModule>();
