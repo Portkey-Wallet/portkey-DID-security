@@ -19,6 +19,7 @@ public static class OrleansHostExtensions
         {
             var configSection = context.Configuration.GetSection("Orleans");
             Console.WriteLine("configSection\t" + JsonConvert.SerializeObject(configSection));
+            Console.WriteLine("configSection AdvertisedIP\t" + configSection.GetValue<string>("AdvertisedIP"));
             //Configure OrleansSnapshot
             siloBuilder
                 .ConfigureEndpoints(advertisedIP:IPAddress.Parse(configSection.GetValue<string>("AdvertisedIP")),siloPort: configSection.GetValue<int>("SiloPort"), gatewayPort: configSection.GetValue<int>("GatewayPort"), listenOnAnyHostAddress: true)
