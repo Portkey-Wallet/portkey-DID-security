@@ -15,16 +15,10 @@ public static class OrleansHostExtensions
 {
      public static IHostBuilder UseOrleansSnapshot(this IHostBuilder hostBuilder)
     {
-        var configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .Build();
-        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-        var configSection = configuration.GetSection("Orleans");
-        if (configSection == null)
-            throw new ArgumentNullException(nameof(configSection), "The OrleansServer node is missing");
-        Console.WriteLine("configSection\t" + JsonConvert.SerializeObject(configSection));
-        return hostBuilder.UseOrleans(siloBuilder =>
+        return hostBuilder.UseOrleans((context, siloBuilder) =>
         {
+            var configSection = context.Configuration.GetSection("Orleans");
+            Console.WriteLine("configSection\t" + JsonConvert.SerializeObject(configSection));
             //Configure OrleansSnapshot
             siloBuilder
                 .ConfigureEndpoints(advertisedIP:IPAddress.Parse(configSection.GetValue<string>("AdvertisedIP")),siloPort: configSection.GetValue<int>("SiloPort"), gatewayPort: configSection.GetValue<int>("GatewayPort"), listenOnAnyHostAddress: true)
