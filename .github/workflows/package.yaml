@@ -9,7 +9,7 @@ env:
 
 jobs:
   publish:
-    runs-on: forest-server-runner
+    runs-on: portkey-security-server-runner
     strategy:
       matrix:
         servicename: [CASecurity.Silo,CASecurity.HttpApi.Host]
@@ -27,7 +27,7 @@ jobs:
           retention-days: 1
   build-and-push-image:
     needs: publish
-    runs-on: forest-server-runner
+    runs-on: portkey-security-server-runner
     strategy:
       matrix:
         servicename: [CASecurity.Silo,CASecurity.HttpApi.Host]
