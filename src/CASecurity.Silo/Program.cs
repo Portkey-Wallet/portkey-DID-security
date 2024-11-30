@@ -24,6 +24,11 @@ public class Program
         catch (Exception ex)
         {
             Log.Fatal(ex, "Host terminated unexpectedly!");
+            Console.WriteLine("Host terminated unexpectedly!");
+            Console.WriteLine(ex);
+            Console.WriteLine(ex.StackTrace);
+            Console.WriteLine(ex.Message);
+            Console.WriteLine("Host terminated unexpectedly!");
             return 1;
         }
         finally

@@ -1,3 +1,4 @@
+using System;
 using Com.Ctrip.Framework.Apollo.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +16,7 @@ public static class CASecurityBuilderExtensions
             .ConfigureAppConfiguration((_, builder) => { builder.AddJsonFile("appsettings.apollo.json"); })
             .ConfigureAppConfiguration((context, builder) =>
             {
+                Console.WriteLine("IsApolloEnabled \t" + context.Configuration.GetValue<bool>("IsApolloEnabled", false));
                 if (!context.Configuration.GetValue<bool>("IsApolloEnabled", false))
                 {
                     return;
