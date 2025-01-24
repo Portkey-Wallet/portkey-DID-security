@@ -1,18 +1,23 @@
-﻿using CASecurity.Common;
-using CASecurity.Silo;
+﻿using CASecurity.Silo;
 using CASecurity.Silo.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Serilog.Events;
 
 namespace CASecurity;
 public class Program
 {
     public async static Task<int> Main(string[] args)
     {
-        Log.Logger = LogHelper.CreateLogger(LogEventLevel.Debug);
+        var configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .Build();
+        Log.Logger = new LoggerConfiguration()
+            .Enrich.FromLogContext()
+            .ReadFrom.Configuration(configuration)
+            .CreateLogger();
+        
         try
         {
             Log.Information("Starting CASecurity.Silo.");

@@ -1,3 +1,4 @@
+using AElf.OpenTelemetry;
 using CASecurity.Common;
 using CASecurity.Grains;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +11,8 @@ namespace CASecurity.Silo;
 
 [DependsOn(typeof(AbpAutofacModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(CASecurityGrainsModule)
+    typeof(CASecurityGrainsModule),
+    typeof(OpenTelemetryModule)
 )]
 public class CASecurityOrleansSiloModule : AbpModule
 {

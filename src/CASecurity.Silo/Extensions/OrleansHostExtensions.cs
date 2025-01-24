@@ -1,59 +1,89 @@
 using System.Net;
+using CASecurity.Silo.MongoDB;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Orleans;
 using Orleans.Configuration;
-using Orleans.Hosting;
 using Orleans.Providers.MongoDB.Configuration;
-using Orleans.Statistics;
+using Orleans.Providers.MongoDB.StorageProviders.Serializers;
 
 namespace CASecurity.Silo.Extensions;
 
 public static class OrleansHostExtensions
 {
-     public static IHostBuilder UseOrleansSnapshot(this IHostBuilder hostBuilder)
+    public static IHostBuilder UseOrleansSnapshot(this IHostBuilder hostBuilder)
     {
         return hostBuilder.UseOrleans((context, siloBuilder) =>
         {
-            var configSection = context.Configuration.GetSection("Orleans");
-            Console.WriteLine("configSection\t" + JsonConvert.SerializeObject(configSection));
-            Console.WriteLine("configSection AdvertisedIP\t" + configSection.GetValue<string>("AdvertisedIP"));
-            var isRunningInKubernetes = configSection.GetValue<bool>("isRunningInKubernetes");
-            var advertisedIP = isRunningInKubernetes ?  Environment.GetEnvironmentVariable("POD_IP") :configSection.GetValue<string>("AdvertisedIP");
-            var clusterId = isRunningInKubernetes ? Environment.GetEnvironmentVariable("ORLEANS_CLUSTER_ID") : configSection.GetValue<string>("ClusterId");
-            var serviceId = isRunningInKubernetes ? Environment.GetEnvironmentVariable("ORLEANS_SERVICE_ID") : configSection.GetValue<string>("ServiceId");
-            
             //Configure OrleansSnapshot
+            var orleansConfigSection = context.Configuration.GetSection("Orleans");
+            var isRunningInKubernetes = orleansConfigSection.GetValue<bool>("isRunningInKubernetes");
+            var advertisedIP = isRunningInKubernetes ?  Environment.GetEnvironmentVariable("POD_IP") :orleansConfigSection.GetValue<string>("AdvertisedIP");
+            var clusterId = isRunningInKubernetes ? Environment.GetEnvironmentVariable("ORLEANS_CLUSTER_ID") : orleansConfigSection.GetValue<string>("ClusterId");
+            var serviceId = isRunningInKubernetes ? Environment.GetEnvironmentVariable("ORLEANS_SERVICE_ID") : orleansConfigSection.GetValue<string>("ServiceId");
+
             siloBuilder
-                //.ConfigureEndpoints(advertisedIP:IPAddress.Parse(configSection.GetValue<string>("AdvertisedIP")),siloPort: configSection.GetValue<int>("SiloPort"), gatewayPort: configSection.GetValue<int>("GatewayPort"), listenOnAnyHostAddress: true)
-                .ConfigureEndpoints(advertisedIP: IPAddress.Parse(advertisedIP),
-                    siloPort: configSection.GetValue<int>("SiloPort"),
-                    gatewayPort: configSection.GetValue<int>("GatewayPort"), listenOnAnyHostAddress: true)
-                .UseMongoDBClient(configSection.GetValue<string>("MongoDBClient"))
+                .ConfigureEndpoints(
+                    advertisedIP: IPAddress.Parse(advertisedIP),
+                    siloPort: orleansConfigSection.GetValue<int>("SiloPort"),
+                    gatewayPort: orleansConfigSection.GetValue<int>("GatewayPort"), listenOnAnyHostAddress: true)
+                .UseMongoDBClient(orleansConfigSection.GetValue<string>("MongoDBClient"))
                 .UseMongoDBClustering(options =>
                 {
-                    options.DatabaseName = configSection.GetValue<string>("DataBase");;
+                    options.DatabaseName = orleansConfigSection.GetValue<string>("DataBase");
                     options.Strategy = MongoDBMembershipStrategy.SingleDocument;
                 })
-                .AddMongoDBGrainStorage("Default",(MongoDBGrainStorageOptions op) =>
+                .Configure<JsonGrainStateSerializerOptions>(options => options.ConfigureJsonSerializerSettings =
+                    settings =>
+                    {
+                        settings.NullValueHandling = NullValueHandling.Include;
+                        settings.ObjectCreationHandling = ObjectCreationHandling.Replace;
+                        settings.DefaultValueHandling = DefaultValueHandling.Populate;
+                    })
+                .ConfigureServices(services =>
+                    services.AddSingleton<IGrainStateSerializer, VerifierJsonGrainStateSerializer>())
+                .AddCaSecurityMongoDBGrainStorage("Default", (MongoDBGrainStorageOptions op) =>
                 {
                     op.CollectionPrefix = "GrainStorage";
-                    op.DatabaseName = configSection.GetValue<string>("DataBase");
-                
-                    op.ConfigureJsonSerializerSettings = jsonSettings =>
+                    op.DatabaseName = orleansConfigSection.GetValue<string>("DataBase");
+
+                    var grainIdPrefix = orleansConfigSection
+                        .GetSection("GrainSpecificIdPrefix").GetChildren()
+                        .ToDictionary(o => o.Key.ToLower(), o => o.Value);
+                    op.KeyGenerator = id =>
                     {
-                        // jsonSettings.ContractResolver = new PrivateSetterContractResolver();
-                        jsonSettings.NullValueHandling = NullValueHandling.Include;
-                        jsonSettings.DefaultValueHandling = DefaultValueHandling.Populate;
-                        jsonSettings.ObjectCreationHandling = ObjectCreationHandling.Replace;
+                        var grainType = id.Type.ToString();
+                        if (grainIdPrefix.TryGetValue(grainType, out var prefix))
+                        {
+                            return $"{prefix}+{id.Key}";
+                        }
+
+                        return id.ToString();
                     };
-                    
+                    op.CreateShardKeyForCosmos = orleansConfigSection.GetValue<bool>("CreateShardKeyForMongoDB", false);
+                })
+                .Configure<GrainCollectionOptions>(options =>
+                {
+                    // Override the value of CollectionAge to
+                    var collection = orleansConfigSection
+                        .GetSection(nameof(GrainCollectionOptions.ClassSpecificCollectionAge))
+                        .GetChildren();
+                    foreach (var item in collection)
+                    {
+                        options.ClassSpecificCollectionAge[item.Key] = TimeSpan.FromSeconds(int.Parse(item.Value));
+                    }
+                })
+                .Configure<GrainCollectionNameOptions>(options =>
+                {
+                    var collectionName = orleansConfigSection
+                        .GetSection(nameof(GrainCollectionNameOptions.GrainSpecificCollectionName)).GetChildren();
+                    options.GrainSpecificCollectionName = collectionName.ToDictionary(o => o.Key, o => o.Value);
                 })
                 .UseMongoDBReminders(options =>
                 {
-                    options.DatabaseName = configSection.GetValue<string>("DataBase");
+                    options.DatabaseName = orleansConfigSection.GetValue<string>("DataBase");
                     options.CreateShardKeyForCosmos = false;
                 })
                 .Configure<ClusterOptions>(options =>
@@ -61,18 +91,18 @@ public static class OrleansHostExtensions
                     options.ClusterId = clusterId;
                     options.ServiceId = serviceId;
                 })
-               // .AddMemoryGrainStorage("PubSubStore")
-                .ConfigureApplicationParts(parts => parts.AddFromApplicationBaseDirectory())
-                .UseDashboard(options => {
-                    options.Username = configSection.GetValue<string>("DashboardUserName");
-                    options.Password = configSection.GetValue<string>("DashboardPassword");
+                .ConfigureLogging(logging => { logging.SetMinimumLevel(LogLevel.Debug).AddConsole(); })
+                .AddActivityPropagation()
+                .UseDashboard(options =>
+                {
+                    options.Username = orleansConfigSection.GetValue<string>("DashboardUserName");
+                    options.Password = orleansConfigSection.GetValue<string>("DashboardPassword");
                     options.Host = "*";
-                    options.Port = configSection.GetValue<int>("DashboardPort");
+                    options.Port = orleansConfigSection.GetValue<int>("DashboardPort");
                     options.HostSelf = true;
-                    options.CounterUpdateIntervalMs = configSection.GetValue<int>("DashboardCounterUpdateIntervalMs");
-                })
-                .UseLinuxEnvironmentStatistics()
-                .ConfigureLogging(logging => { logging.SetMinimumLevel(LogLevel.Debug).AddConsole(); });
+                    options.CounterUpdateIntervalMs =
+                        orleansConfigSection.GetValue<int>("DashboardCounterUpdateIntervalMs");
+                });
         });
     }
 }
