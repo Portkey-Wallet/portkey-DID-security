@@ -26,6 +26,7 @@ namespace CASecurity;
     typeof(AbpFeatureManagementApplicationModule),
     typeof(AbpSettingManagementApplicationModule),
     typeof(CASecurityGrainsModule),
+    typeof(CASecurityGrainsModule),
     typeof(CASecuritySignatureModule)
 )]
 public class CASecurityApplicationModule : AbpModule

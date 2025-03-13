@@ -1,8 +1,8 @@
 using System;
 using System.IO;
 using System.Linq;
+using AElf.OpenTelemetry;
 using CASecurity.Common;
-using CASecurity.Grains;
 using CASecurity.MongoDB;
 using CASecurity.MultiTenancy;
 using CASecurity.Options;
@@ -19,11 +19,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Orleans;
-using Orleans.Configuration;
-using Orleans.Providers.MongoDB.Configuration;
 using StackExchange.Redis;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
@@ -50,7 +47,8 @@ namespace CASecurity;
     typeof(CASecurityApplicationModule),
     typeof(CASecurityMongoDbModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpSwashbuckleModule),
+    typeof(OpenTelemetryModule)
 )]
 public class CASecurityHttpApiHostModule : AbpModule
 {
@@ -71,7 +69,6 @@ public class CASecurityHttpApiHostModule : AbpModule
         ConfigureGraphQl(context, configuration);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
-        ConfigureOrleans(context, configuration);
     }
 
     private void ConfigureCache(IConfiguration configuration)
@@ -152,54 +149,13 @@ public class CASecurityHttpApiHostModule : AbpModule
         );
     }
 
-    private static void ConfigureOrleans(ServiceConfigurationContext context, IConfiguration configuration)
-    {
-        context.Services.AddSingleton<IClusterClient>(o =>
-        {
-            return new ClientBuilder()
-                .ConfigureDefaults()
-                .UseMongoDBClient(configuration["Orleans:MongoDBClient"])
-                .UseMongoDBClustering(options =>
-                {
-                    options.DatabaseName = configuration["Orleans:DataBase"];
-                    options.Strategy = MongoDBMembershipStrategy.SingleDocument;
-                })
-                .Configure<ClusterOptions>(options =>
-                {
-                    options.ClusterId = configuration["Orleans:ClusterId"];
-                    options.ServiceId = configuration["Orleans:ServiceId"];
-                })
-                .ConfigureApplicationParts(parts =>
-                    parts.AddApplicationPart(typeof(CASecurityGrainsModule).Assembly).WithReferences())
-                .ConfigureLogging(builder => builder.AddProvider(o.GetService<ILoggerProvider>()))
-                .Build();
-        });
-    }
-
     private void ConfigureLocalization()
     {
         Configure<AbpLocalizationOptions>(options =>
         {
-            options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
-            options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
-            options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
-            options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
-            options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
-            options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
-            options.Languages.Add(new LanguageInfo("is", "is", "Icelandic", "is"));
-            options.Languages.Add(new LanguageInfo("it", "it", "Italiano", "it"));
-            options.Languages.Add(new LanguageInfo("ro-RO", "ro-RO", "Română"));
-            options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
-            options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
-            options.Languages.Add(new LanguageInfo("ru", "ru", "Русский"));
-            options.Languages.Add(new LanguageInfo("sk", "sk", "Slovak"));
-            options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
             options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
             options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
-            options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch", "de"));
-            options.Languages.Add(new LanguageInfo("es", "es", "Español", "es"));
-            options.Languages.Add(new LanguageInfo("el", "el", "Ελληνικά"));
         });
     }
 
@@ -297,24 +253,9 @@ public class CASecurityHttpApiHostModule : AbpModule
         app.UseConfiguredEndpoints();
 
         ConfigurationProvidersHelper.DisplayConfigurationProviders(context);
-
-        StartOrleans(context.ServiceProvider);
     }
 
     public override void OnApplicationShutdown(ApplicationShutdownContext context)
     {
-        StopOrleans(context.ServiceProvider);
-    }
-
-    private static void StartOrleans(IServiceProvider serviceProvider)
-    {
-        var client = serviceProvider.GetRequiredService<IClusterClient>();
-        AsyncHelper.RunSync(async () => await client.Connect());
-    }
-
-    private static void StopOrleans(IServiceProvider serviceProvider)
-    {
-        var client = serviceProvider.GetRequiredService<IClusterClient>();
-        AsyncHelper.RunSync(client.Close);
     }
 }

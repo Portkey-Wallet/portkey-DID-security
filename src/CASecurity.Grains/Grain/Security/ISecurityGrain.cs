@@ -1,5 +1,3 @@
-using Orleans;
-
 namespace CASecurity.Grains.Grain;
 
 public interface ISecurityGrain : IGrainWithStringKey

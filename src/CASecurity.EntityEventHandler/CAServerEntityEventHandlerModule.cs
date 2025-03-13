@@ -1,19 +1,14 @@
 using AElf.Indexing.Elasticsearch.Options;
+using AElf.OpenTelemetry;
 using CASecurity.EntityEventHandler.Core;
-using CASecurity.Grains;
 using CASecurity.MongoDB;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Orleans;
-using Orleans.Configuration;
-using Orleans.Providers.MongoDB.Configuration;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.EventBus.RabbitMq;
 using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict.Tokens;
-using Volo.Abp.Threading;
 
 namespace CASecurity;
 
@@ -22,6 +17,7 @@ namespace CASecurity;
     typeof(AbpAspNetCoreSerilogModule),
     typeof(CASecurityEntityEventHandlerCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
+    typeof(OpenTelemetryModule),
     typeof(AbpEventBusRabbitMqModule))]
 public class CASecurityEntityEventHandlerModule : AbpModule
 {
@@ -31,40 +27,13 @@ public class CASecurityEntityEventHandlerModule : AbpModule
         ConfigureTokenCleanupService();
         //ConfigureEsIndexCreation();
         context.Services.AddHostedService<CASecurityHostedService>();
-
-        context.Services.AddSingleton<IClusterClient>(o =>
-        {
-            return new ClientBuilder()
-                .ConfigureDefaults()
-                .UseMongoDBClient(configuration["Orleans:MongoDBClient"])
-                .UseMongoDBClustering(options =>
-                {
-                    options.DatabaseName = configuration["Orleans:DataBase"];;
-                    options.Strategy = MongoDBMembershipStrategy.SingleDocument;
-                })
-                .Configure<ClusterOptions>(options =>
-                {
-                    options.ClusterId = configuration["Orleans:ClusterId"];
-                    options.ServiceId = configuration["Orleans:ServiceId"];
-                })
-                .ConfigureApplicationParts(parts =>
-                    parts.AddApplicationPart(typeof(CASecurityGrainsModule).Assembly).WithReferences())
-                //.AddSimpleMessageStreamProvider(AElfIndexerApplicationConsts.MessageStreamName)
-                .ConfigureLogging(builder => builder.AddProvider(o.GetService<ILoggerProvider>()))
-                .Build();
-        });
-        
     }
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
-        var client = context.ServiceProvider.GetRequiredService<IClusterClient>();
-        AsyncHelper.RunSync(async ()=> await client.Connect());
     }
 
     public override void OnApplicationShutdown(ApplicationShutdownContext context)
     {
-        var client = context.ServiceProvider.GetRequiredService<IClusterClient>();
-        AsyncHelper.RunSync(client.Close);
     }
 
     //Create the ElasticSearch Index based on Domain Entity

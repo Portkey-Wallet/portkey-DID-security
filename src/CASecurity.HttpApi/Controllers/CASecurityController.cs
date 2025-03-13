@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using CASecurity.Controllers;
+using Asp.Versioning;
 using CASecurity.Account;
 using CASecurity.IpWhiteList;
 using Microsoft.AspNetCore.Mvc;
@@ -7,16 +7,15 @@ using Volo.Abp;
 
 namespace CASecurity.Controllers;
 
-
 [RemoteService]
 [Area("app")]
 [ControllerName("CASecurity")]
 [Route("api/app/security")]
-public class CaSecurityControllerBase : CASecurityControllerBase
+public class CaSecurityController : CASecurityControllerBase
 {
     private readonly ISecurityAppService _securityAppService;
 
-    public CaSecurityControllerBase(ISecurityAppService securityAppService)
+    public CaSecurityController(ISecurityAppService securityAppService)
     {
         _securityAppService = securityAppService;
     }

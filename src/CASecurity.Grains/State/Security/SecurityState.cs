@@ -1,6 +1,7 @@
 namespace CASecurity.Grains.State;
 
+[GenerateSerializer]
 public class SecurityState
 {
-    public DateTime? ExpireTime { get; set; }
+    [Id(0)] public DateTime? ExpireTime { get; set; }
 }
