@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File name extension must be .runsettings -->
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>      
+       <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>cobertura</Format>
+          <Exclude>[xunit.*]*,[*Tests]*</Exclude> <!-- [Assembly-Filter]Type-Filter -->
+          <ExcludeByFile>**/src/CASecurity.Application.Contracts/Contracts/*.c.cs,**/src/CASecurity.Application.Contracts/Contracts/*.g.cs,**/test/**/*.cs,**/src/CASecurity.Application.Contracts/Permissions/**/*.cs,**/src/CASecurity.DbMigrator/**/*.cs,**/src/CASecurity.Domain/**/*.cs,**/src/CASecurity.Domain.Shared/**/*.cs,**/src/CASecurity.EntityEventHandler/**/*.cs,**/src/CASecurity.EntityFrameworkCore/**/*.cs,**/src/CASecurity.HttpApi.Host/**/*.cs,**/src/CASecurity.HttpApi.Client/**/*.cs,**/src/CASecurity.AuthServer/**/*.cs,**/src/CASecurity.MongoDB/**/*.cs,**/src/CASecurity.HttpApi/Controllers/*.cs,</ExcludeByFile>
+          <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute</ExcludeByAttribute>
+          <SingleHit>false</SingleHit>
+        </Configuration>
+      </DataCollector>    
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
